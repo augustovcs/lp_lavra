@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="ocre">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lavra · problema — PAS + antes/depois</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{--sans:"Inter",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--maxw:1080px;--ease:cubic-bezier(.4,0,.1,1)}
+  html[data-theme="ocre"]{--bg:#F1EAD9;--surface:#FBF7EE;--ink:#1E1D18;--muted:#3C3A31;--soft:#6B6A5E;--line:#E3DCC9;--accent:#9A7B1F;--accent-2:#B8932E;--accent-ink:#2E2408;--feat:#232820;--feat-ink:#F1EAD9;--feat-soft:#C7C6B6;--feat-accent:#DDC079;--bad:#7A2E32}
+  html[data-theme="floresta"]{--bg:#1B1F16;--surface:#242A1D;--ink:#EDE7D7;--muted:#C4C5B4;--soft:#8C8E7C;--line:#343C2B;--accent:#DDC079;--accent-2:#E6CD8C;--accent-ink:#2E2408;--feat:#F1EAD9;--feat-ink:#1E1D18;--feat-soft:#4A4940;--feat-accent:#9A7B1F;--bad:#C98A82}
+  html[data-theme="musgo"]{--bg:#EAE8DB;--surface:#F4F2E8;--ink:#1E2019;--muted:#3A3E33;--soft:#6A6E5F;--line:#DAD8C7;--accent:#5C6B45;--accent-2:#6E7C57;--accent-ink:#ECF1E0;--feat:#2C3322;--feat-ink:#EAE8DB;--feat-soft:#BAC3A4;--feat-accent:#93A079;--bad:#8E3A3E}
+  html[data-theme="vinho"]{--bg:#EFE6DF;--surface:#F8F1EB;--ink:#1E1715;--muted:#3A302E;--soft:#6E605C;--line:#E4D8CF;--accent:#7A2E32;--accent-2:#8E3A3E;--accent-ink:#F6E9E6;--feat:#2A1A1B;--feat-ink:#EFE6DF;--feat-soft:#C9A9A4;--feat-accent:#C98A82;--bad:#8E3A3E}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .5s var(--ease),color .5s var(--ease)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  .top{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
+  .top-in{display:flex;align-items:center;gap:18px;height:64px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.04em}.logo .dot{color:var(--accent)}
+  .top-title{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:.92rem}
+  .pal{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--line);border-radius:100px}
+  .pal span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .sw{width:19px;height:19px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:transform .2s,border-color .2s}
+  .sw:hover{transform:scale(1.15)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+  .sw.s-ocre{background:#9A7B1F}.sw.s-floresta{background:#232820}.sw.s-musgo{background:#5C6B45}.sw.s-vinho{background:#7A2E32}
+
+  .pat{padding:56px 0;border-bottom:1px solid var(--line)}
+  .pat-head{margin-bottom:36px}
+  .pat-num{font-family:var(--serif);font-size:.9rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .pat-head h2{font-weight:700;font-size:1.55rem;letter-spacing:-.025em;margin:14px 0 6px}
+  .pat-head p{font-family:var(--serif);color:var(--muted);font-size:1.02rem;max-width:680px}
+  .pat-head .tag{display:inline-block;font-size:.74rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 12px;margin-top:10px}
+
+  .eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+
+  /* PAS statement */
+  .pas{font-weight:700;letter-spacing:-.025em;line-height:1.16}
+  .pas .dim{color:var(--soft)}
+  .pas .hl{color:var(--accent)}
+
+  /* before/after base */
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ba .col{border:1px solid var(--line);border-radius:16px;padding:26px;background:var(--surface)}
+  .ba .col.bad{background:transparent}
+  .ba .ch{display:flex;align-items:center;gap:10px;font-weight:500;margin-bottom:16px;font-size:.95rem}
+  .ba .col.bad .ch{color:var(--bad)}
+  .ba .col.good .ch{color:var(--accent)}
+  .ba .ico{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;flex:none}
+  .ba .bad .ico{background:color-mix(in srgb,var(--bad) 16%,transparent);color:var(--bad)}
+  .ba .good .ico{background:color-mix(in srgb,var(--accent) 20%,transparent);color:var(--accent)}
+  .ba ul{list-style:none;display:grid;gap:11px}
+  .ba li{display:flex;gap:10px;color:var(--muted);font-size:.95rem;align-items:flex-start}
+  .ba .bad li::before{content:"✕";color:var(--bad);font-size:.8rem;margin-top:2px}
+  .ba .good li::before{content:"→";color:var(--accent);margin-top:1px}
+
+  /* ===== V1 — PAS no topo, antes/depois embaixo ===== */
+  .v1 .pas{font-size:clamp(1.8rem,4vw,2.8rem);max-width:880px;margin-bottom:40px}
+
+  /* ===== V2 — PAS à esquerda (sticky), antes/depois à direita ===== */
+  .v2{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+  .v2 .pas{font-size:clamp(1.6rem,3.2vw,2.3rem)}
+  .v2 .left .eyebrow{margin-bottom:16px}
+  .v2 .ba{grid-template-columns:1fr;gap:14px}
+  .v2 .ba .col{display:flex;flex-direction:column}
+
+  /* ===== V3 — PAS partido: "antes" puxa o problema, "depois" puxa a solução ===== */
+  .v3 .pasrow{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:14px}
+  .v3 .half{padding:0 4px}
+  .v3 .half .k{font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+  .v3 .half.p .k{color:var(--bad)}
+  .v3 .half.s .k{color:var(--accent)}
+  .v3 .half .ph{font-weight:700;font-size:clamp(1.4rem,2.8vw,2rem);letter-spacing:-.02em;line-height:1.2}
+  .v3 .half.p .ph{color:var(--ink)}
+  .v3 .half.p .ph .dim{color:var(--soft)}
+  .v3 .half.s .ph{color:var(--ink)}
+  .v3 .half.s .ph .hl{color:var(--accent)}
+  .v3 .ba .col{background:var(--surface)}
+  .v3 .ba .col.bad{background:var(--surface)}
+  .v3 .ba .col.good{background:var(--feat);border-color:transparent}
+  .v3 .ba .good .ch{color:var(--feat-accent)}
+  .v3 .ba .good .ico{background:color-mix(in srgb,var(--feat-accent) 22%,transparent);color:var(--feat-accent)}
+  .v3 .ba .good li{color:var(--feat-soft)}
+  .v3 .ba .good li::before{color:var(--feat-accent)}
+
+  footer{padding:48px 0;text-align:center;color:var(--soft);font-size:.86rem}
+  @media(max-width:820px){
+    .v2{grid-template-columns:1fr;gap:28px}
+    .ba,.v3 .pasrow{grid-template-columns:1fr}
+    .v3 .half.s{margin-top:6px}
+    .pal span{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <span class="logo">Lavra<span class="dot">.</span></span>
+    <span class="top-title">problema · PAS + antes/depois</span>
+    <div class="pal" role="group" aria-label="Trocar paleta">
+      <span>Cores</span>
+      <button class="sw s-ocre" data-theme="ocre" aria-label="Ocre" aria-pressed="true"></button>
+      <button class="sw s-floresta" data-theme="floresta" aria-label="Floresta" aria-pressed="false"></button>
+      <button class="sw s-musgo" data-theme="musgo" aria-label="Musgo" aria-pressed="false"></button>
+      <button class="sw s-vinho" data-theme="vinho" aria-label="Vinho" aria-pressed="false"></button>
+    </div>
+  </div>
+</div>
+
+<!-- V1 -->
+<section class="pat v1"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">01</span><h2>Empilhado — frase em cima, contraste embaixo</h2><p>A frase PAS abre a seção com impacto tipográfico; o antes/depois aterrissa em concreto logo abaixo. O fluxo mais natural de ler.</p><span class="tag">Mais direto</span></div>
+  <p class="eyebrow">Soa familiar?</p>
+  <p class="pas"><span class="dim">Você tem a ideia.</span> Falta quem tire ela do papel — e cada mês parado é cliente que você não atende. <span class="hl">A gente constrói.</span></p>
+  <div class="ba">
+    <div class="col bad"><div class="ch"><span class="ico">✕</span> Como costuma ser</div><ul><li>A ideia mora só na sua cabeça</li><li>A equipe perde horas em planilha</li><li>Orçamento caro e cheio de jargão</li><li>Você sem saber o status de nada</li></ul></div>
+    <div class="col good"><div class="ch"><span class="ico">✓</span> Com a Lavra</div><ul><li>A ideia no ar, do conceito à escala</li><li>Sistema sob medida que a equipe ama</li><li>Caminho claro: escopo, time e prazo</li><li>Você só acompanha funcionando</li></ul></div>
+  </div>
+</div></section>
+
+<!-- V2 -->
+<section class="pat v2-wrap"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">02</span><h2>Lado a lado — frase fixa, contraste ao lado</h2><p>A frase PAS fica à esquerda como âncora; o antes/depois empilhado à direita. Dá um ar editorial e mantém a mensagem sempre à vista.</p><span class="tag">Editorial / âncora</span></div>
+  <div class="v2">
+    <div class="left">
+      <p class="eyebrow">A real é que…</p>
+      <p class="pas"><span class="dim">Você tem a ideia.</span> Falta execução — e ela não vai se construir sozinha. <span class="hl">É aí que a gente entra.</span></p>
+    </div>
+    <div class="ba">
+      <div class="col bad"><div class="ch"><span class="ico">✕</span> Hoje</div><ul><li>Ideia parada esperando alguém fazer</li><li>Trabalho manual comendo o tempo do time</li><li>Medo de começar e ficar na mão</li></ul></div>
+      <div class="col good"><div class="ch"><span class="ico">✓</span> Com a Lavra</div><ul><li>Ideia virando software de verdade</li><li>Processo automatizado, equipe livre</li><li>Time sênior do começo ao fim</li></ul></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- V3 -->
+<section class="pat v3"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">03</span><h2>Espelhado — a frase se parte em problema e solução</h2><p>A frase PAS se divide em duas: o lado "antes" puxa o problema, o lado "depois" puxa a solução, cada um sobre a sua coluna. O contraste fica total.</p><span class="tag">Mais sofisticado</span></div>
+  <div class="pasrow">
+    <div class="half p"><p class="k">O problema</p><p class="ph"><span class="dim">Você tem a ideia.</span> Falta quem execute.</p></div>
+    <div class="half s"><p class="k">A solução</p><p class="ph">Você pensa, <span class="hl">a gente faz acontecer.</span></p></div>
+  </div>
+  <div class="ba">
+    <div class="col bad"><div class="ch"><span class="ico">✕</span> Como costuma ser</div><ul><li>Ideia parada na sua cabeça</li><li>Planilha que trava e ninguém mantém</li><li>Orçamento caro, lento e confuso</li><li>Você perdido no meio do processo</li></ul></div>
+    <div class="col good"><div class="ch"><span class="ico">✓</span> Com a Lavra</div><ul><li>Ideia no ar, do conceito à escala</li><li>Sistema sob medida pro seu fluxo</li><li>Caminho claro, sem jargão</li><li>Você só acompanha funcionando</li></ul></div>
+  </div>
+</div></section>
+
+<footer>Lavra · marca fictícia para demonstração · Inter + Fraunces</footer>
+
+<script>
+  const root=document.documentElement, sws=document.querySelectorAll('.sw');
+  sws.forEach(b=>b.addEventListener('click',()=>{root.dataset.theme=b.dataset.theme;sws.forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false'));}));
+</script>
+</body>
+</html>

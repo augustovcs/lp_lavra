@@ -1,0 +1,44 @@
+---
+// Mensagem já montada para o WhatsApp. Troque o número (formato internacional, sem +).
+const WHATSAPP_NUMBER = '5500000000000';
+const waMessage = encodeURIComponent('Oi, Lavra! Tenho uma ideia que quero tirar do papel.');
+const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`;
+const steps = [
+  'Você conta a ideia',
+  'A gente devolve um caminho',
+  'Começamos a construir',
+];
+---
+<section class="sec cta-final" aria-label="Próximo passo">
+  <div class="wrap">
+    <div class="c9">
+      <h2 class="cta-h">É simples começar.</h2>
+      <p class="cta-sub">Sem compromisso na primeira conversa.</p>
+      <div class="steps">
+        {steps.map((s, idx) => (
+          <span class="stp"><b>{idx + 1}</b> {s}</span>
+        ))}
+      </div>
+      <div class="row">
+        <a class="btn btn-solid" href={waLink} target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#contato">Preencher o formulário</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c9 { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 56px 44px; text-align: center; }
+  .cta-h { font-weight: 800; letter-spacing: -.03em; line-height: 1.05; font-size: clamp(1.9rem, 4vw, 2.6rem); }
+  .cta-sub { font-family: var(--serif); color: var(--muted); font-size: 1.15rem; margin: 14px auto 24px; max-width: 480px; }
+  .steps { display: flex; justify-content: center; gap: 12px 26px; flex-wrap: wrap; margin-bottom: 30px; }
+  .stp { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .95rem; }
+  .stp b { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-size: .78rem; font-weight: 700; }
+  .row { display: flex; gap: 13px; flex-wrap: wrap; justify-content: center; }
+
+  @media (max-width: 600px) {
+    .c9 { padding: 40px 24px; }
+  }
+</style>

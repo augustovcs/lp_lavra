@@ -1,0 +1,55 @@
+---
+const steps = [
+  { k: 'Passo 01', t: 'Descoberta', d: 'A gente senta com você pra entender a ideia, o problema e o que significa dar certo — antes de qualquer linha de código.', lines: ['w7', 'w5'] },
+  { k: 'Passo 02', t: 'Design', d: 'Desenhamos e prototipamos cedo, pra você ajustar enquanto ainda é barato mudar.', lines: ['w8', 'w5', 'blk'] },
+  { k: 'Passo 03', t: 'Construção', d: 'Entregas curtas, contínuas e testadas: você vê o software crescer toda semana, sem surpresa no fim.', lines: ['w7', 'w8', 'blk'] },
+  { k: 'Passo 04', t: 'No ar & evolução', d: 'Colocamos no ar e seguimos por perto — medindo, ajustando e fazendo a solução acompanhar o seu negócio.', lines: ['w5', 'w7', 'blk'] },
+];
+---
+<section class="sec processo" id="processo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Como trabalhamos</span>
+      <h2>Um caminho curto e honesto.</h2>
+      <p>Entender antes de codar, entregar em ciclos e melhorar com dado.</p>
+    </div>
+
+    <div class="zz">
+      {steps.map((s) => (
+        <div class="z">
+          <div class="vis">
+            <div class="mock">
+              <div class="mock-bar"><i></i><i></i><i></i></div>
+              <div class="mock-body">
+                {s.lines.map((c) => (c === 'blk' ? <span class="blk"></span> : <span class={`l ${c}`}></span>))}
+              </div>
+            </div>
+          </div>
+          <div class="txt">
+            <span class="pill">{s.k}</span>
+            <h3 class="zt">{s.t}</h3>
+            <p class="zd">{s.d}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .zz { display: grid; gap: 8px; }
+  .z { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; padding: 18px 0; }
+  .z:nth-child(even) .vis { order: 2; }
+  .vis .mock { aspect-ratio: 5 / 3; box-shadow: 0 18px 40px -24px rgba(0, 0, 0, .4); }
+  .txt .pill {
+    display: inline-block; font-size: .74rem; color: var(--accent);
+    border: 1px solid var(--line); border-radius: 100px; padding: 3px 12px; margin-bottom: 12px;
+  }
+  .zt { font-weight: 700; font-size: 1.5rem; letter-spacing: -.02em; margin: 0 0 8px; }
+  .zd { color: var(--muted); max-width: 46ch; }
+
+  @media (max-width: 820px) {
+    .z { grid-template-columns: 1fr; gap: 20px; padding: 14px 0; }
+    .z:nth-child(even) .vis { order: 0; }
+  }
+</style>

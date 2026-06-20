@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="ocre">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lavra · 10 padrões de seção de serviços</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{--sans:"Inter",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--maxw:1080px;--ease:cubic-bezier(.4,0,.1,1)}
+  html[data-theme="ocre"]{--bg:#F1EAD9;--surface:#FBF7EE;--ink:#1E1D18;--muted:#3C3A31;--soft:#6B6A5E;--line:#E3DCC9;--accent:#9A7B1F;--accent-2:#B8932E;--accent-ink:#2E2408;--feat:#232820;--feat-ink:#F1EAD9;--feat-soft:#C7C6B6}
+  html[data-theme="floresta"]{--bg:#1B1F16;--surface:#242A1D;--ink:#EDE7D7;--muted:#C4C5B4;--soft:#8C8E7C;--line:#343C2B;--accent:#DDC079;--accent-2:#E6CD8C;--accent-ink:#2E2408;--feat:#F1EAD9;--feat-ink:#1E1D18;--feat-soft:#4A4940}
+  html[data-theme="musgo"]{--bg:#EAE8DB;--surface:#F4F2E8;--ink:#1E2019;--muted:#3A3E33;--soft:#6A6E5F;--line:#DAD8C7;--accent:#5C6B45;--accent-2:#6E7C57;--accent-ink:#ECF1E0;--feat:#2C3322;--feat-ink:#EAE8DB;--feat-soft:#BAC3A4}
+  html[data-theme="vinho"]{--bg:#EFE6DF;--surface:#F8F1EB;--ink:#1E1715;--muted:#3A302E;--soft:#6E605C;--line:#E4D8CF;--accent:#7A2E32;--accent-2:#8E3A3E;--accent-ink:#F6E9E6;--feat:#2A1A1B;--feat-ink:#EFE6DF;--feat-soft:#C9A9A4}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .5s var(--ease),color .5s var(--ease)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+  .top{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
+  .top-in{display:flex;align-items:center;gap:18px;height:64px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.04em}.logo .dot{color:var(--accent)}
+  .top-title{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:.92rem}
+  .pal{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--line);border-radius:100px}
+  .pal span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .sw{width:19px;height:19px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:transform .2s,border-color .2s}
+  .sw:hover{transform:scale(1.15)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+  .sw.s-ocre{background:#9A7B1F}.sw.s-floresta{background:#232820}.sw.s-musgo{background:#5C6B45}.sw.s-vinho{background:#7A2E32}
+
+  .pat{padding:48px 0;border-bottom:1px solid var(--line)}
+  .pat-head{margin-bottom:30px}
+  .pat-num{font-family:var(--serif);font-size:.9rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .pat-head h2{font-weight:700;font-size:1.5rem;letter-spacing:-.025em;margin:14px 0 6px}
+  .pat-head p{font-family:var(--serif);color:var(--muted);font-size:1.02rem;max-width:670px}
+  .pat-head .tag{display:inline-block;font-size:.74rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 12px;margin-top:10px}
+
+  .ic{font-family:var(--serif);font-size:1.2rem;color:var(--accent)}
+  .sv-title{font-weight:700;font-size:1.15rem;letter-spacing:-.015em;margin:10px 0 6px;line-height:1.25}
+  .sv-desc{color:var(--muted);font-size:.96rem}
+  .ondemand{font-size:.78rem;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 11px;display:inline-block}
+
+  /* 1 simple cards */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 22px;transition:transform .25s var(--ease),border-color .25s}
+  .card:hover{transform:translateY(-5px);border-color:var(--accent)}
+
+  /* 2 icon list rows */
+  .rows{display:grid;gap:0;border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:48px 1fr auto;gap:20px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--line)}
+  .row .gl{width:46px;height:46px;border-radius:12px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);font-family:var(--serif)}
+  .row .sv-title{margin:0}.row .sv-desc{margin-top:2px}
+  .row .arrow{color:var(--soft);font-size:1.2rem}
+
+  /* 3 alternating */
+  .alt{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:26px 0;border-bottom:1px dashed var(--line)}
+  .alt:nth-child(even) .alt-mock{order:2}
+  .alt h3{font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:8px}
+  .alt p{color:var(--muted)}
+
+  /* 4 bento */
+  .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:120px;gap:14px}
+  .bento .b{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,transform .25s}
+  .bento .b:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .bento .b1{grid-column:span 2;grid-row:span 2}
+  .bento .b2{grid-column:span 2}
+  .bento .b4{grid-column:span 2}
+  .bento .b.accent{background:var(--accent)}
+  .bento .b.accent .sv-title,.bento .b.accent .sv-desc,.bento .b.accent .ic{color:var(--accent-ink)}
+  .bento .b.accent .sv-desc{opacity:.85}
+  .bento .b .sv-desc{margin-top:auto}
+
+  /* 5 tabs */
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+  .tab{font-family:var(--sans);font-size:.92rem;padding:9px 17px;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.2s}
+  .tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .tabpane{display:none;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+  .tabpane.on{display:grid}
+  .tabpane h3{font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:8px}
+  .tabpane p{color:var(--muted)}
+  .tabpane ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .tabpane li{color:var(--muted);font-size:.95rem;padding-left:20px;position:relative}
+  .tabpane li::before{content:"→";position:absolute;left:0;color:var(--accent)}
+
+  /* 6 numbered editorial */
+  .numlist{display:grid;gap:0}
+  .numrow{display:grid;grid-template-columns:80px 1fr;gap:24px;padding:26px 0;border-top:1px solid var(--line);align-items:start}
+  .numrow .nn{font-family:var(--serif);font-size:2.2rem;color:var(--accent);line-height:1}
+  .numrow h3{font-weight:700;font-size:1.4rem;letter-spacing:-.02em;margin-bottom:6px}
+  .numrow p{color:var(--muted);max-width:54ch}
+
+  /* 7 feature spotlight + minis */
+  .spot{display:grid;grid-template-columns:1.3fr 1fr;gap:18px}
+  .spot .main{background:var(--feat);border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+  .spot .main .ic{color:var(--accent)}
+  .spot .main h3{font-weight:700;font-size:1.7rem;letter-spacing:-.02em;color:var(--feat-ink);margin:12px 0 8px}
+  .spot .main p{color:var(--feat-soft)}
+  .spot .col{display:grid;gap:14px}
+  .spot .mini{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .spot .mini .sv-title{margin:6px 0 2px;font-size:1.05rem}
+
+  /* 8 icon grid centered */
+  .icg{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 20px;text-align:center}
+  .icg .gl{width:54px;height:54px;border-radius:14px;margin:0 auto 14px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);font-family:var(--serif);font-size:1.3rem}
+
+  /* 9 accordion */
+  .acc{border-top:1px solid var(--line)}
+  .acc-item{border-bottom:1px solid var(--line)}
+  .acc-h{width:100%;background:transparent;border:none;cursor:pointer;display:flex;align-items:center;gap:18px;padding:22px 4px;text-align:left;color:var(--ink);font-family:var(--sans)}
+  .acc-h .ic{font-family:var(--serif)}
+  .acc-h h3{font-weight:700;font-size:1.2rem;letter-spacing:-.015em;flex:1}
+  .acc-h .pl{transition:transform .3s;color:var(--soft)}
+  .acc-item.open .pl{transform:rotate(45deg)}
+  .acc-panel{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+  .acc-inner{padding:0 4px 24px 42px;color:var(--muted);max-width:60ch}
+
+  /* 10 pricing-style */
+  .price{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .price .pc{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:28px 24px;display:flex;flex-direction:column}
+  .price .pc.feat{border:2px solid var(--accent)}
+  .price .badge{align-self:flex-start;font-size:.72rem;background:var(--accent);color:var(--accent-ink);border-radius:100px;padding:3px 11px;margin-bottom:12px;font-weight:500}
+  .price h3{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;margin-bottom:4px}
+  .price .from{color:var(--soft);font-size:.9rem;margin-bottom:14px}
+  .price ul{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:20px;flex:1}
+  .price li{color:var(--muted);font-size:.93rem;padding-left:22px;position:relative}
+  .price li::before{content:"✓";position:absolute;left:0;color:var(--accent)}
+  .price .btn{margin-top:auto;text-align:center;font-weight:500;font-size:.92rem;padding:11px;border-radius:8px;border:1.5px solid var(--ink);color:var(--ink);background:transparent;cursor:pointer}
+  .price .pc.feat .btn{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+
+  /* shared mock */
+  .mock{background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;aspect-ratio:4/3}
+  .mock-bar{height:24px;display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid var(--line)}
+  .mock-bar i{width:7px;height:7px;border-radius:50%;background:var(--line)}
+  .mock-body{flex:1;padding:14px;display:flex;flex-direction:column;gap:8px}
+  .mock-body .l{height:9px;border-radius:4px;background:var(--ink);opacity:.13}
+  .w7{width:70%}.w5{width:50%}.w8{width:85%}
+  .mock-body .blk{margin-top:auto;height:32px;border-radius:8px;background:var(--accent);width:48%}
+
+  footer{padding:48px 0;text-align:center;color:var(--soft);font-size:.86rem}
+  @media(max-width:820px){
+    .grid4,.icg{grid-template-columns:1fr 1fr}
+    .alt,.tabpane.on,.spot,.price{grid-template-columns:1fr;gap:24px}
+    .alt:nth-child(even) .alt-mock{order:0}
+    .bento{grid-template-columns:1fr 1fr;grid-auto-rows:110px}
+    .bento .b1,.bento .b2,.bento .b4{grid-column:span 2}
+    .pal span{display:none}
+  }
+  @media(max-width:520px){.grid4,.icg{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <span class="logo">Lavra<span class="dot">.</span></span>
+    <span class="top-title">10 padrões de seção de serviços</span>
+    <div class="pal" role="group" aria-label="Trocar paleta">
+      <span>Cores</span>
+      <button class="sw s-ocre" data-theme="ocre" aria-label="Ocre" aria-pressed="true"></button>
+      <button class="sw s-floresta" data-theme="floresta" aria-label="Floresta" aria-pressed="false"></button>
+      <button class="sw s-musgo" data-theme="musgo" aria-label="Musgo" aria-pressed="false"></button>
+      <button class="sw s-vinho" data-theme="vinho" aria-label="Vinho" aria-pressed="false"></button>
+    </div>
+  </div>
+</div>
+
+<!-- 1 SIMPLE CARDS -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">01</span><h2>Cards simples</h2><p>Quatro cartões iguais, um por serviço. O padrão clássico — claro, escaneável e fácil de manter. Funciona sempre.</p><span class="tag">Mais seguro</span></div>
+  <div class="grid4">
+    <div class="card"><span class="ic">◰</span><h3 class="sv-title">Sistemas web</h3><p class="sv-desc">Do MVP ao produto maduro, feito pro seu fluxo.</p></div>
+    <div class="card"><span class="ic">⚡</span><h3 class="sv-title">Automações</h3><p class="sv-desc">Python na veia: escalável e sem burocracia.</p></div>
+    <div class="card"><span class="ic">◇</span><h3 class="sv-title">Landing pages</h3><p class="sv-desc">Páginas autorais que convertem visita em contato.</p></div>
+    <div class="card"><span class="ic">▤</span><h3 class="sv-title">Apps</h3><p class="sv-desc">Sob demanda, quando a ideia pede.</p><span class="ondemand" style="margin-top:10px">sob demanda</span></div>
+  </div>
+</div></section>
+
+<!-- 2 ICON LIST ROWS -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">02</span><h2>Lista com ícones</h2><p>Linhas horizontais, cada serviço com ícone, nome e descrição. Denso e direto, ótimo quando a descrição é curta.</p><span class="tag">Direto</span></div>
+  <div class="rows">
+    <div class="row"><div class="gl">◰</div><div><h3 class="sv-title">Sistemas web</h3><p class="sv-desc">Do MVP ao produto maduro, feito sob medida pro seu fluxo.</p></div><span class="arrow">→</span></div>
+    <div class="row"><div class="gl">⚡</div><div><h3 class="sv-title">Automações em Python</h3><p class="sv-desc">Escaláveis e sem amarra de ferramenta — nada de no-code.</p></div><span class="arrow">→</span></div>
+    <div class="row"><div class="gl">◇</div><div><h3 class="sv-title">Landing pages autorais</h3><p class="sv-desc">Páginas únicas que viram a vitrine do seu negócio.</p></div><span class="arrow">→</span></div>
+    <div class="row"><div class="gl">▤</div><div><h3 class="sv-title">Apps <span class="ondemand">sob demanda</span></h3><p class="sv-desc">Se a ideia pede um app, a gente faz.</p></div><span class="arrow">→</span></div>
+  </div>
+</div></section>
+
+<!-- 3 ALTERNATING -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">03</span><h2>Alternado (zigue-zague)</h2><p>Cada serviço numa faixa, com texto e visual alternando de lado. Dá espaço pra explicar e mostrar — mais editorial.</p><span class="tag">Espaço pra explicar</span></div>
+  <div class="alt"><div class="alt-mock"><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w7"></span><span class="l w5"></span><span class="blk"></span></div></div></div><div><span class="ic">◰</span><h3>Sistemas web</h3><p>Plataformas sob medida que a sua equipe adora usar — do primeiro protótipo ao produto que escala.</p></div></div>
+  <div class="alt"><div class="alt-mock"><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w8"></span><span class="l w5"></span><span class="blk"></span></div></div></div><div><span class="ic">⚡</span><h3>Automações em Python</h3><p>Tiramos o trabalho repetitivo das costas da sua equipe, com código escalável e sem amarras.</p></div></div>
+</div></section>
+
+<!-- 4 BENTO -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">04</span><h2>Bento grid</h2><p>Blocos de tamanhos diferentes (estilo Apple). É o padrão dominante de 2026 — escaneável e com cara de produto maduro.</p><span class="tag">Tendência forte / na moda</span></div>
+  <div class="bento">
+    <div class="b b1"><span class="ic">◰</span><h3 class="sv-title" style="font-size:1.4rem;margin-top:12px">Sistemas web</h3><p class="sv-desc">Do MVP ao produto maduro, feito sob medida pro fluxo real do seu negócio. É o carro-chefe.</p></div>
+    <div class="b b2 accent"><span class="ic">⚡</span><h3 class="sv-title">Automações em Python</h3><p class="sv-desc">Escaláveis e sem burocracia.</p></div>
+    <div class="b"><span class="ic">◇</span><h3 class="sv-title">Landing pages</h3><p class="sv-desc">Autorais e únicas.</p></div>
+    <div class="b"><span class="ic">▤</span><h3 class="sv-title">Apps</h3><p class="sv-desc">Sob demanda.</p></div>
+    <div class="b b4"><span class="ic">↗</span><h3 class="sv-title">Você pensa, a gente faz</h3><p class="sv-desc">Do conceito ao ar, sem você se preocupar com a parte técnica.</p></div>
+  </div>
+</div></section>
+
+<!-- 5 TABS -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">05</span><h2>Abas</h2><p>Botões trocam o conteúdo no mesmo espaço. Compacto e interativo — bom quando cada serviço tem bastante a explicar.</p><span class="tag">Compacto + interativo</span></div>
+  <div class="tabs" id="svtabs">
+    <button class="tab on" data-t="0">Sistemas web</button>
+    <button class="tab" data-t="1">Automações</button>
+    <button class="tab" data-t="2">Landing pages</button>
+    <button class="tab" data-t="3">Apps</button>
+  </div>
+  <div class="tabpanes">
+    <div class="tabpane on"><div><h3>Sistemas web</h3><p>Plataformas sob medida, do MVP ao produto maduro.</p><ul><li>Sistemas internos e portais</li><li>Integrações entre ferramentas</li><li>Web 100%, roda em qualquer lugar</li></ul></div><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w7"></span><span class="l w5"></span><span class="blk"></span></div></div></div>
+    <div class="tabpane"><div><h3>Automações em Python</h3><p>O trabalho repetitivo, no automático.</p><ul><li>Relatórios que se geram sozinhos</li><li>Integrações entre sistemas</li><li>Escalável, sem no-code</li></ul></div><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w8"></span><span class="l w5"></span><span class="blk"></span></div></div></div>
+    <div class="tabpane"><div><h3>Landing pages autorais</h3><p>A vitrine do seu negócio, única.</p><ul><li>Design sob medida</li><li>Rápidas e otimizadas</li><li>Feitas pra converter</li></ul></div><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w5"></span><span class="blk"></span></div></div></div>
+    <div class="tabpane"><div><h3>Apps <span class="ondemand">sob demanda</span></h3><p>Se a ideia pede um app, a gente constrói.</p><ul><li>Avaliamos escopo e valor juntos</li><li>Do conceito ao lançamento</li></ul></div><div class="mock"><div class="mock-bar"><i></i><i></i><i></i></div><div class="mock-body"><span class="l w7"></span><span class="l w8"></span><span class="blk"></span></div></div></div>
+  </div>
+</div></section>
+
+<!-- 6 NUMBERED EDITORIAL -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">06</span><h2>Lista numerada editorial</h2><p>Números grandes, muito respiro, ar de revista. Sóbrio e elegante — combina demais com a estética da marca.</p><span class="tag">Editorial / type-first</span></div>
+  <div class="numlist">
+    <div class="numrow"><span class="nn">01</span><div><h3>Sistemas web</h3><p>Plataformas sob medida que a sua equipe adora usar, do MVP ao produto maduro.</p></div></div>
+    <div class="numrow"><span class="nn">02</span><div><h3>Automações em Python</h3><p>O trabalho repetitivo no automático, com código escalável e sem amarras.</p></div></div>
+    <div class="numrow"><span class="nn">03</span><div><h3>Landing pages autorais</h3><p>Páginas únicas que viram a vitrine do seu negócio e convertem visita em contato.</p></div></div>
+    <div class="numrow"><span class="nn">04</span><div><h3>Apps <span class="ondemand">sob demanda</span></h3><p>Se a ideia pede um app, a gente avalia e constrói do conceito ao lançamento.</p></div></div>
+  </div>
+</div></section>
+
+<!-- 7 SPOTLIGHT -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">07</span><h2>Destaque + secundários</h2><p>Um serviço principal num bloco grande escuro, os outros em cartões menores. Bom pra puxar o carro-chefe.</p><span class="tag">Quando há um serviço principal</span></div>
+  <div class="spot">
+    <div class="main"><span class="ic">◰</span><div><h3>Sistemas web</h3><p>Nosso carro-chefe: plataformas sob medida, do conceito à escala, que a sua equipe adora usar.</p></div></div>
+    <div class="col">
+      <div class="mini"><span class="ic">⚡</span><h3 class="sv-title">Automações em Python</h3><p class="sv-desc">Escaláveis e sem burocracia.</p></div>
+      <div class="mini"><span class="ic">◇</span><h3 class="sv-title">Landing pages autorais</h3><p class="sv-desc">A vitrine do seu negócio.</p></div>
+      <div class="mini"><span class="ic">▤</span><h3 class="sv-title">Apps <span class="ondemand">sob demanda</span></h3><p class="sv-desc">Quando a ideia pede.</p></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 8 ICON GRID CENTERED -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">08</span><h2>Grade de ícones centralizada</h2><p>Ícone, título e uma linha, tudo centralizado. Leve e arejado — bom quando as descrições são bem curtas.</p><span class="tag">Leve e minimalista</span></div>
+  <div class="icg">
+    <div><div class="gl">◰</div><h3 class="sv-title">Sistemas web</h3><p class="sv-desc">Sob medida, do MVP à escala.</p></div>
+    <div><div class="gl">⚡</div><h3 class="sv-title">Automações</h3><p class="sv-desc">Python, escalável e sem burocracia.</p></div>
+    <div><div class="gl">◇</div><h3 class="sv-title">Landing pages</h3><p class="sv-desc">Autorais e que convertem.</p></div>
+    <div><div class="gl">▤</div><h3 class="sv-title">Apps</h3><p class="sv-desc">Sob demanda.</p></div>
+  </div>
+</div></section>
+
+<!-- 9 ACCORDION -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">09</span><h2>Sanfona</h2><p>Linhas que abrem com detalhe ao clicar. Mantém a seção curta e deixa o visitante aprofundar só no que interessa.</p><span class="tag">Curto, com profundidade opcional</span></div>
+  <div class="acc" id="svacc">
+    <div class="acc-item open"><button class="acc-h"><span class="ic">◰</span><h3>Sistemas web</h3><span class="pl">+</span></button><div class="acc-panel"><div class="acc-inner">Plataformas sob medida, do MVP ao produto maduro: sistemas internos, portais e integrações, tudo rodando 100% na web.</div></div></div>
+    <div class="acc-item"><button class="acc-h"><span class="ic">⚡</span><h3>Automações em Python</h3><span class="pl">+</span></button><div class="acc-panel"><div class="acc-inner">Tiramos o trabalho repetitivo das costas da equipe com automações escaláveis e sem amarra de ferramenta — Python na veia, nada de no-code.</div></div></div>
+    <div class="acc-item"><button class="acc-h"><span class="ic">◇</span><h3>Landing pages autorais</h3><span class="pl">+</span></button><div class="acc-panel"><div class="acc-inner">Páginas únicas, rápidas e otimizadas, desenhadas pra virar a vitrine do seu negócio e converter visita em contato.</div></div></div>
+    <div class="acc-item"><button class="acc-h"><span class="ic">▤</span><h3>Apps (sob demanda)</h3><span class="pl">+</span></button><div class="acc-panel"><div class="acc-inner">Se a ideia pede um app, avaliamos escopo e valor junto com você e construímos do conceito ao lançamento.</div></div></div>
+  </div>
+</div></section>
+
+<!-- 10 PRICING-STYLE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">10</span><h2>Estilo "pacotes"</h2><p>Serviços apresentados como ofertas, com o que inclui e um CTA. Direto pra venda — bom se vocês quiserem orientar a escolha.</p><span class="tag">Orientado à venda</span></div>
+  <div class="price">
+    <div class="pc"><h3>Landing page</h3><span class="from">a partir de uma página</span><ul><li>Design autoral</li><li>Otimizada e rápida</li><li>Feita pra converter</li></ul><button class="btn">Quero uma landing</button></div>
+    <div class="pc feat"><span class="badge">Mais procurado</span><h3>Sistema web</h3><span class="from">do MVP à escala</span><ul><li>Sob medida pro seu fluxo</li><li>Integrações inclusas</li><li>Suporte e evolução</li></ul><button class="btn">Começar um sistema</button></div>
+    <div class="pc"><h3>Automação</h3><span class="from">por processo</span><ul><li>Python, escalável</li><li>Sem no-code</li><li>Roda sozinha</li></ul><button class="btn">Automatizar algo</button></div>
+  </div>
+</div></section>
+
+<footer>Lavra · marca fictícia para demonstração · Inter + Fraunces</footer>
+
+<script>
+  const root=document.documentElement, sws=document.querySelectorAll('.sw');
+  sws.forEach(b=>b.addEventListener('click',()=>{root.dataset.theme=b.dataset.theme;sws.forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false'));}));
+
+  // tabs
+  (function(){const tabs=document.getElementById('svtabs');if(!tabs)return;
+    const panes=document.querySelectorAll('.tabpane');
+    tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(!b)return;
+      const i=+b.dataset.t;
+      tabs.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+      panes.forEach((p,k)=>p.classList.toggle('on',k===i));
+    });
+  })();
+
+  // accordion
+  const acc=document.getElementById('svacc');
+  acc.addEventListener('click',e=>{const h=e.target.closest('.acc-h');if(!h)return;
+    const item=h.parentElement,panel=item.querySelector('.acc-panel'),open=item.classList.contains('open');
+    acc.querySelectorAll('.acc-item').forEach(it=>{it.classList.remove('open');it.querySelector('.acc-panel').style.maxHeight=null;});
+    if(!open){item.classList.add('open');panel.style.maxHeight=panel.scrollHeight+'px';}
+  });
+  const f=document.querySelector('.acc-item.open .acc-panel');if(f)f.style.maxHeight=f.scrollHeight+'px';
+</script>
+</body>
+</html>

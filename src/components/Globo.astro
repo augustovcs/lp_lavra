@@ -1,0 +1,94 @@
+---
+// Mini-section: alcance global — sistemas escaláveis que rodam em qualquer lugar.
+const points = [
+  'Roda 100% na web — abre em qualquer navegador, em qualquer país',
+  'Infra que escala sob demanda, do primeiro usuário ao milésimo',
+  'Disponível onde seu cliente estiver, com baixa latência',
+];
+---
+<section class="sec globo" id="global" aria-label="Alcance global">
+  <div class="wrap globo-grid">
+    <div class="globo-copy">
+      <span class="eyebrow">Sem fronteiras</span>
+      <h2>Sistemas que <em>escalam</em> e funcionam em qualquer lugar do mundo.</h2>
+      <p class="globo-lead">
+        A gente constrói para a web e para a escala desde o primeiro dia: o seu
+        software abre rápido em São Paulo, Lisboa, Tóquio ou Nova York — e aguenta
+        crescer junto com o seu negócio.
+      </p>
+      <ul class="globo-points">
+        {points.map((p) => <li>{p}</li>)}
+      </ul>
+    </div>
+
+    <div class="globo-stage">
+      <canvas
+        id="globe"
+        class="globe-canvas"
+        role="img"
+        aria-label="Globo terrestre destacando cidades atendidas em vários continentes"
+      ></canvas>
+    </div>
+  </div>
+</section>
+
+<style>
+  .globo {
+    background: var(--feat);
+    color: var(--feat-ink);
+    border-bottom-color: var(--feat-line);
+    overflow: hidden;
+  }
+  .globo-grid {
+    display: grid;
+    grid-template-columns: 0.72fr 1.28fr;
+    gap: 28px;
+    align-items: center;
+  }
+  .globo .eyebrow { color: var(--feat-accent); }
+  .globo h2 {
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+    letter-spacing: -.025em;
+    line-height: 1.12;
+    color: var(--feat-ink);
+  }
+  .globo h2 em { font-family: var(--serif); font-style: italic; font-weight: 500; color: var(--feat-accent); }
+  .globo-lead { font-family: var(--serif); color: var(--feat-soft); font-size: 1.1rem; line-height: 1.5; margin-top: 18px; max-width: 44ch; }
+  .globo-points { list-style: none; margin-top: 24px; display: grid; gap: 12px; }
+  .globo-points li {
+    position: relative; padding-left: 26px; color: var(--feat-soft); font-size: .98rem;
+  }
+  .globo-points li::before {
+    content: "→"; position: absolute; left: 0; color: var(--feat-accent); font-weight: 600;
+  }
+
+  .globo-stage { display: grid; place-items: center; position: relative; margin-right: -48px; }
+  .globo-stage::before {
+    content: ""; position: absolute; width: 72%; aspect-ratio: 1; border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--feat-accent) 22%, transparent), transparent 70%);
+    filter: blur(34px);
+  }
+  .globe-canvas {
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 1 / 1;
+    cursor: grab;
+    opacity: 0;
+    transition: opacity 1s var(--ease);
+    contain: layout paint size;
+  }
+
+  @media (max-width: 820px) {
+    .globo-grid { grid-template-columns: 1fr; gap: 30px; }
+    .globo-stage { order: -1; margin-right: 0; }
+    .globe-canvas { max-width: 440px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .globe-canvas { transition: none; opacity: 1; }
+  }
+</style>
+
+<script>
+  import '../scripts/globe.js';
+</script>

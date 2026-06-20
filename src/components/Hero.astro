@@ -1,0 +1,70 @@
+---
+// Hero: tipografia gigante + palavra rotativa, fixa na 2ª linha.
+---
+<section class="hero" id="topo">
+  <div class="wrap">
+    <p class="eyebrow">Fábrica de software</p>
+    <h1 class="hero-h">
+      <span class="l1">Você pensa,</span>
+      <span class="l2">a gente faz <span class="swap"><span class="word" id="rotWord">apps</span></span></span>
+    </h1>
+    <div class="foot">
+      <p class="lead">
+        Apps, sistemas web, automações e landing pages que tiram a sua ideia do
+        papel — sem você precisar entender de tecnologia.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#contato">Começar um projeto</a>
+        <a class="btn btn-ghost" href="#cases">Ver nosso trabalho</a>
+      </div>
+    </div>
+    <p class="trust">80+ projetos no ar · times sêniores · do conceito à escala</p>
+  </div>
+</section>
+
+<style>
+  .hero { padding: 76px 0 64px; border-bottom: 1px solid var(--line); }
+  .hero-h {
+    font-weight: 800;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.0;
+    letter-spacing: -.04em;
+  }
+  .l1, .l2 { display: block; }
+  /* Mobile-first: a 2ª linha quebra naturalmente (sem risco de estourar a tela). */
+  .swap {
+    display: inline-block;
+    text-align: left;
+    color: var(--accent);
+  }
+  .word {
+    display: inline-block;
+    transition: opacity .5s var(--ease), transform .5s var(--ease), filter .5s var(--ease);
+  }
+  .word.out { opacity: 0; transform: translateY(.14em); filter: blur(4px); }
+
+  .foot {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 28px; flex-wrap: wrap; margin-top: 40px;
+    border-top: 1px solid var(--line); padding-top: 26px;
+  }
+  .lead { max-width: 42ch; }
+  .cta-row { display: flex; gap: 13px; flex-wrap: wrap; }
+  .trust { margin-top: 24px; font-size: .88rem; color: var(--soft); }
+
+  /* Telas maiores: a palavra troca num espaço reservado, fixa na 2ª linha. */
+  @media (min-width: 700px) {
+    .l2 { white-space: nowrap; }
+    .swap { min-width: 11.5ch; }
+  }
+  @media (max-width: 560px) {
+    .foot { flex-direction: column; align-items: flex-start; gap: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .word { transition: none; }
+  }
+</style>
+
+<script>
+  import '../scripts/hero.js';
+</script>

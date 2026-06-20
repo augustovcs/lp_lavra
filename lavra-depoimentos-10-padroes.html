@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="ocre">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lavra · 10 padrões de depoimentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{--sans:"Inter",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--maxw:1080px;--ease:cubic-bezier(.4,0,.1,1)}
+  html[data-theme="ocre"]{--bg:#F1EAD9;--surface:#FBF7EE;--ink:#1E1D18;--muted:#3C3A31;--soft:#6B6A5E;--line:#E3DCC9;--accent:#9A7B1F;--accent-2:#B8932E;--accent-ink:#2E2408;--feat:#232820;--feat-ink:#F1EAD9;--feat-soft:#C7C6B6}
+  html[data-theme="floresta"]{--bg:#1B1F16;--surface:#242A1D;--ink:#EDE7D7;--muted:#C4C5B4;--soft:#8C8E7C;--line:#343C2B;--accent:#DDC079;--accent-2:#E6CD8C;--accent-ink:#2E2408;--feat:#F1EAD9;--feat-ink:#1E1D18;--feat-soft:#4A4940}
+  html[data-theme="musgo"]{--bg:#EAE8DB;--surface:#F4F2E8;--ink:#1E2019;--muted:#3A3E33;--soft:#6A6E5F;--line:#DAD8C7;--accent:#5C6B45;--accent-2:#6E7C57;--accent-ink:#ECF1E0;--feat:#2C3322;--feat-ink:#EAE8DB;--feat-soft:#BAC3A4}
+  html[data-theme="vinho"]{--bg:#EFE6DF;--surface:#F8F1EB;--ink:#1E1715;--muted:#3A302E;--soft:#6E605C;--line:#E4D8CF;--accent:#7A2E32;--accent-2:#8E3A3E;--accent-ink:#F6E9E6;--feat:#2A1A1B;--feat-ink:#EFE6DF;--feat-soft:#C9A9A4}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .5s var(--ease),color .5s var(--ease)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+  .top{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
+  .top-in{display:flex;align-items:center;gap:18px;height:64px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.04em}.logo .dot{color:var(--accent)}
+  .top-title{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:.92rem}
+  .pal{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--line);border-radius:100px}
+  .pal span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .sw{width:19px;height:19px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:transform .2s,border-color .2s}
+  .sw:hover{transform:scale(1.15)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+  .sw.s-ocre{background:#9A7B1F}.sw.s-floresta{background:#232820}.sw.s-musgo{background:#5C6B45}.sw.s-vinho{background:#7A2E32}
+
+  .pat{padding:50px 0;border-bottom:1px solid var(--line)}
+  .pat-head{margin-bottom:34px}
+  .pat-num{font-family:var(--serif);font-size:.9rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .pat-head h2{font-weight:700;font-size:1.5rem;letter-spacing:-.025em;margin:14px 0 6px}
+  .pat-head p{font-family:var(--serif);color:var(--muted);font-size:1.02rem;max-width:670px}
+  .pat-head .tag{display:inline-block;font-size:.74rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 12px;margin-top:10px}
+
+  /* person */
+  .person{display:flex;align-items:center;gap:12px}
+  .av{width:42px;height:42px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-size:.95rem;flex:none}
+  .pn{font-weight:500;font-size:.95rem;line-height:1.2}
+  .pr{color:var(--soft);font-size:.83rem}
+  .quote{font-family:var(--serif);line-height:1.5;color:var(--ink)}
+
+  /* 1 single big quote */
+  .single{text-align:center;max-width:760px;margin:0 auto}
+  .single .mark{font-family:var(--serif);font-size:4rem;color:var(--accent);line-height:.6;height:30px}
+  .single .quote{font-size:1.7rem;margin:18px 0 26px}
+  .single .person{justify-content:center}
+
+  /* 2 three cards */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .tcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 24px;display:flex;flex-direction:column;gap:18px}
+  .tcard .quote{font-size:1.02rem}
+  .tcard .person{margin-top:auto}
+  .stars{color:var(--accent);font-size:.9rem;letter-spacing:2px}
+
+  /* 3 split feature + small */
+  .split{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+  .split .feat{background:var(--feat);border-radius:18px;padding:34px;display:flex;flex-direction:column;gap:22px}
+  .split .feat .quote{color:var(--feat-ink);font-size:1.35rem}
+  .split .feat .pn{color:var(--feat-ink)}.split .feat .pr{color:var(--feat-soft)}
+  .split .col{display:grid;gap:14px}
+  .split .mini{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+  .split .mini .quote{font-size:.95rem}
+
+  /* 4 masonry wall */
+  .wall{columns:3;column-gap:16px}
+  .wall .tcard{display:inline-flex;width:100%;margin-bottom:16px;break-inside:avoid;gap:14px;padding:20px 22px}
+  .wall .tcard .quote{font-size:.96rem}
+
+  /* 5 carousel */
+  .caro{position:relative}
+  .caro-vp{overflow:hidden}
+  .caro-tr{display:flex;transition:transform .45s var(--ease)}
+  .caro-slide{flex:0 0 100%;padding:6px}
+  .caro-inner{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:40px;text-align:center;max-width:720px;margin:0 auto}
+  .caro-inner .quote{font-size:1.4rem;margin-bottom:24px}
+  .caro-inner .person{justify-content:center}
+  .caro-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:20px}
+  .caro-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1.1rem;cursor:pointer;transition:.2s}
+  .caro-btn:hover{background:var(--ink);color:var(--bg)}
+  .caro-dots{display:flex;gap:7px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line);border:none;cursor:pointer}.dot.on{background:var(--accent)}
+
+  /* 6 quote + logo focus */
+  .logoq{text-align:center;max-width:720px;margin:0 auto}
+  .logoq .brand{font-family:var(--serif);font-style:italic;font-weight:700;font-size:1.4rem;color:var(--soft);opacity:.8;margin-bottom:20px}
+  .logoq .quote{font-size:1.5rem;margin-bottom:22px}
+  .logoq .person{justify-content:center}
+
+  /* 7 list rows with avatar */
+  .qrows{display:grid;gap:0;border-top:1px solid var(--line)}
+  .qrow{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:24px 4px;border-bottom:1px solid var(--line);align-items:center}
+  .qrow .av{width:48px;height:48px}
+  .qrow .quote{font-size:1.05rem}
+  .qrow .meta{margin-top:8px;color:var(--soft);font-size:.85rem}
+  .qrow .meta b{color:var(--ink);font-weight:500}
+
+  /* 8 stat + quote pair */
+  .statq{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .sqcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px 24px}
+  .sqcard .big{font-weight:800;font-size:2.2rem;letter-spacing:-.03em;color:var(--accent);line-height:1;margin-bottom:14px}
+  .sqcard .quote{font-size:.98rem;margin-bottom:16px}
+
+  /* 9 video-style */
+  .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .vid{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface)}
+  .vid .thumb{aspect-ratio:16/10;background:var(--feat);position:relative;display:grid;place-items:center}
+  .vid .play{width:54px;height:54px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:1.1rem;padding-left:3px}
+  .vid .vmeta{padding:18px 20px}
+  .vid .quote{font-size:.95rem;margin-bottom:12px}
+
+  /* 10 marquee scroll */
+  .mq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+  .mq-tr{display:flex;gap:16px;width:max-content;animation:scroll 38s linear infinite}
+  .mq .tcard{width:330px;flex:none;gap:14px;padding:20px 22px}
+  .mq .quote{font-size:.95rem}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  footer{padding:48px 0;text-align:center;color:var(--soft);font-size:.86rem}
+  @media(max-width:820px){
+    .grid3,.statq,.vids{grid-template-columns:1fr}
+    .split{grid-template-columns:1fr}
+    .wall{columns:1}
+    .single .quote,.caro-inner .quote{font-size:1.25rem}
+    .pal span{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.mq-tr{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <span class="logo">Lavra<span class="dot">.</span></span>
+    <span class="top-title">10 padrões de depoimentos</span>
+    <div class="pal" role="group" aria-label="Trocar paleta">
+      <span>Cores</span>
+      <button class="sw s-ocre" data-theme="ocre" aria-label="Ocre" aria-pressed="true"></button>
+      <button class="sw s-floresta" data-theme="floresta" aria-label="Floresta" aria-pressed="false"></button>
+      <button class="sw s-musgo" data-theme="musgo" aria-label="Musgo" aria-pressed="false"></button>
+      <button class="sw s-vinho" data-theme="vinho" aria-label="Vinho" aria-pressed="false"></button>
+    </div>
+  </div>
+</div>
+
+<!-- 1 SINGLE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">01</span><h2>Depoimento único em destaque</h2><p>Uma só citação, grande e centralizada. O melhor formato quando você ainda tem poucos depoimentos — um forte vale mais que cinco fracos.</p><span class="tag">Ideal pra quem está começando</span></div>
+  <div class="single">
+    <div class="mark">“</div>
+    <p class="quote">Eu tinha a ideia na cabeça e zero noção de tecnologia. A Lavra entendeu tudo, construiu e colocou no ar — eu só precisei acompanhar funcionando.</p>
+    <div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Fundadora · Clínica Norte</div></div></div>
+  </div>
+</div></section>
+
+<!-- 2 THREE CARDS -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">02</span><h2>Três cartões</h2><p>Depoimentos lado a lado com nome, foto e avaliação. Mostra variedade de clientes sem precisar de volume grande.</p><span class="tag">Equilibrado</span></div>
+  <div class="grid3">
+    <div class="tcard"><div class="stars">★★★★★</div><p class="quote">Resolveram em duas semanas o que a gente arrastava há meses na planilha.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><p class="quote">Entregaram exatamente o que imaginei, sem dor de cabeça e no prazo.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div>
+    <div class="tcard"><div class="stars">★★★★★</div><p class="quote">Time sênior de verdade. Explicam tudo numa língua que eu entendo.</p><div class="person"><div class="av">CL</div><div><div class="pn">Camila Lima</div><div class="pr">Studio Lima</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- 3 SPLIT FEATURE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">03</span><h2>Destaque + secundários</h2><p>Um depoimento principal num bloco escuro, outros dois menores ao lado. Dá peso à melhor história sem esconder as outras.</p><span class="tag">Hierarquia</span></div>
+  <div class="split">
+    <div class="feat"><p class="quote">A gente chegou com uma ideia meio solta e saiu com um sistema rodando. Em nenhum momento me senti perdido no processo.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Diretor · Mercato</div></div></div></div>
+    <div class="col">
+      <div class="mini"><p class="quote">Acabaram com o retrabalho da nossa equipe.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div>
+      <div class="mini"><p class="quote">Rápidos, claros e sem enrolação.</p><div class="person"><div class="av">CL</div><div><div class="pn">Camila Lima</div><div class="pr">Studio Lima</div></div></div></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 4 WALL -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">04</span><h2>Mural ("wall of love")</h2><p>Muitos depoimentos curtos em colunas irregulares. Impressiona pelo volume — mas só funciona quando você já tem bastante.</p><span class="tag">Para quando tiver volume</span></div>
+  <div class="wall">
+    <div class="tcard"><p class="quote">Entregaram exatamente o que imaginei, sem dor de cabeça.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div>
+    <div class="tcard"><p class="quote">A planilha que travava virou um sistema que a equipe ama. 12h por semana de volta no nosso bolso.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div>
+    <div class="tcard"><p class="quote">Time sênior de verdade.</p><div class="person"><div class="av">CL</div><div><div class="pn">Camila Lima</div><div class="pr">Studio Lima</div></div></div></div>
+    <div class="tcard"><p class="quote">Botaram nosso app no ar em 8 semanas. Eu não acreditei.</p><div class="person"><div class="av">RD</div><div><div class="pn">Rafael Dias</div><div class="pr">Veloz Log</div></div></div></div>
+    <div class="tcard"><p class="quote">Explicam tudo numa língua que eu entendo.</p><div class="person"><div class="av">PA</div><div><div class="pn">Paula Antunes</div><div class="pr">Ateliê PA</div></div></div></div>
+    <div class="tcard"><p class="quote">Sumiu o retrabalho. Recomendo de olhos fechados.</p><div class="person"><div class="av">TG</div><div><div class="pn">Thiago Góes</div><div class="pr">GG Contábil</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- 5 CAROUSEL -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">05</span><h2>Carrossel</h2><p>Um depoimento por vez, com setas. Cabe muito em pouco espaço — mas esconde os demais, então use quando o destaque rotativo bastar.</p><span class="tag">Compacto</span></div>
+  <div class="caro" id="caro">
+    <div class="caro-vp"><div class="caro-tr" id="caroTrack">
+      <div class="caro-slide"><div class="caro-inner"><p class="quote">Eu tinha a ideia e zero noção técnica. A Lavra entendeu, construiu e colocou no ar — eu só acompanhei funcionando.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div></div>
+      <div class="caro-slide"><div class="caro-inner"><p class="quote">Entregaram exatamente o que imaginei, sem dor de cabeça e dentro do prazo combinado.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div></div>
+      <div class="caro-slide"><div class="caro-inner"><p class="quote">Botaram nosso app no ar em 8 semanas. Time sênior que explica tudo do meu jeito.</p><div class="person"><div class="av">RD</div><div><div class="pn">Rafael Dias</div><div class="pr">Veloz Log</div></div></div></div></div>
+    </div></div>
+    <div class="caro-ctrl">
+      <button class="caro-btn" id="caroPrev" aria-label="Anterior">‹</button>
+      <div class="caro-dots" id="caroDots"></div>
+      <button class="caro-btn" id="caroNext" aria-label="Próximo">›</button>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6 QUOTE + BRAND -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">06</span><h2>Citação com marca em foco</h2><p>O nome do cliente/empresa ganha destaque acima da citação. Forte quando o cliente é conhecido e empresta credibilidade.</p><span class="tag">Quando o nome pesa</span></div>
+  <div class="logoq">
+    <div class="brand">Mercato</div>
+    <p class="quote">A Lavra virou nosso braço técnico. Levamos a ideia, eles devolvem funcionando — e a gente só pensa no negócio.</p>
+    <div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Diretor de operações</div></div></div>
+  </div>
+</div></section>
+
+<!-- 7 LIST ROWS -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">07</span><h2>Lista com avatares</h2><p>Linhas horizontais, cada uma com foto, citação e quem disse. Sóbrio e escaneável — bom pra muitos depoimentos curtos sem virar mural.</p><span class="tag">Sóbrio e escaneável</span></div>
+  <div class="qrows">
+    <div class="qrow"><div class="av">MR</div><div><p class="quote">A planilha que travava virou um sistema que a equipe ama.</p><p class="meta"><b>Marina Rocha</b> · Clínica Norte</p></div></div>
+    <div class="qrow"><div class="av">JF</div><div><p class="quote">Entregaram exatamente o que imaginei, sem dor de cabeça.</p><p class="meta"><b>João Ferraz</b> · Mercato</p></div></div>
+    <div class="qrow"><div class="av">RD</div><div><p class="quote">Nosso app no ar em 8 semanas. Eu não acreditei no prazo.</p><p class="meta"><b>Rafael Dias</b> · Veloz Log</p></div></div>
+  </div>
+</div></section>
+
+<!-- 8 STAT + QUOTE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">08</span><h2>Resultado + depoimento</h2><p>Cada cartão junta um número de resultado com a fala do cliente. A combinação mais convincente: dado prova, fala humaniza.</p><span class="tag">Prova + emoção</span></div>
+  <div class="statq">
+    <div class="sqcard"><div class="big">−12h/sem</div><p class="quote">A planilha sumiu e a equipe respira. Recomendo demais.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div>
+    <div class="sqcard"><div class="big">8 sem</div><p class="quote">Do papel ao app no ar. Sem eu entender uma linha de código.</p><div class="person"><div class="av">RD</div><div><div class="pn">Rafael Dias</div><div class="pr">Veloz Log</div></div></div></div>
+    <div class="sqcard"><div class="big">−90%</div><p class="quote">Os erros de estoque praticamente acabaram.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div>
+  </div>
+</div></section>
+
+<!-- 9 VIDEO STYLE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">09</span><h2>Vídeo-depoimento</h2><p>Miniaturas de vídeo com a fala embaixo. O formato mais confiável que existe — mas dá trabalho de gravar e editar.</p><span class="tag">Mais confiável / mais trabalho</span></div>
+  <div class="vids">
+    <div class="vid"><div class="thumb"><div class="play">▶</div></div><div class="vmeta"><p class="quote">“Eu só precisei ter a ideia.”</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div></div>
+    <div class="vid"><div class="thumb"><div class="play">▶</div></div><div class="vmeta"><p class="quote">“No ar em 8 semanas.”</p><div class="person"><div class="av">RD</div><div><div class="pn">Rafael Dias</div><div class="pr">Veloz Log</div></div></div></div></div>
+    <div class="vid"><div class="thumb"><div class="play">▶</div></div><div class="vmeta"><p class="quote">“Viraram nosso braço técnico.”</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div></div>
+  </div>
+</div></section>
+
+<!-- 10 MARQUEE -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">10</span><h2>Faixa rolante</h2><p>Depoimentos deslizam em loop contínuo. Dinâmico e cabe muita coisa — bom como divisor leve entre seções.</p><span class="tag">Com movimento</span></div>
+  <div class="mq"><div class="mq-tr" id="mq">
+    <div class="tcard"><p class="quote">Entregaram exatamente o que imaginei.</p><div class="person"><div class="av">JF</div><div><div class="pn">João Ferraz</div><div class="pr">Mercato</div></div></div></div>
+    <div class="tcard"><p class="quote">A planilha virou sistema. 12h por semana de volta.</p><div class="person"><div class="av">MR</div><div><div class="pn">Marina Rocha</div><div class="pr">Clínica Norte</div></div></div></div>
+    <div class="tcard"><p class="quote">App no ar em 8 semanas, sem dor de cabeça.</p><div class="person"><div class="av">RD</div><div><div class="pn">Rafael Dias</div><div class="pr">Veloz Log</div></div></div></div>
+    <div class="tcard"><p class="quote">Time sênior que explica tudo do meu jeito.</p><div class="person"><div class="av">CL</div><div><div class="pn">Camila Lima</div><div class="pr">Studio Lima</div></div></div></div>
+  </div></div>
+</div></section>
+
+<footer>Lavra · marca fictícia para demonstração · Inter + Fraunces</footer>
+
+<script>
+  const root=document.documentElement, sws=document.querySelectorAll('.sw');
+  sws.forEach(b=>b.addEventListener('click',()=>{root.dataset.theme=b.dataset.theme;sws.forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false'));}));
+
+  // carousel
+  (function(){const tr=document.getElementById('caroTrack'),dots=document.getElementById('caroDots');if(!tr)return;
+    const n=tr.children.length;let i=0;
+    for(let k=0;k<n;k++){const d=document.createElement('button');d.className='dot'+(k===0?' on':'');d.setAttribute('aria-label','Depoimento '+(k+1));d.addEventListener('click',()=>go(k));dots.appendChild(d);}
+    function go(x){i=(x+n)%n;tr.style.transform='translateX('+(-i*100)+'%)';dots.querySelectorAll('.dot').forEach((d,k)=>d.classList.toggle('on',k===i));}
+    document.getElementById('caroPrev').addEventListener('click',()=>go(i-1));
+    document.getElementById('caroNext').addEventListener('click',()=>go(i+1));
+  })();
+
+  // marquee duplicate
+  const mq=document.getElementById('mq');if(mq)mq.innerHTML+=mq.innerHTML;
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+---
+const links = [
+  { href: '#servicos', label: 'Serviços' },
+  { href: '#processo', label: 'Processo' },
+  { href: '#cases', label: 'Cases' },
+  { href: '#sobre', label: 'Sobre' },
+];
+const themes = [
+  { id: 'ocre', label: 'Ocre' },
+  { id: 'floresta', label: 'Floresta' },
+  { id: 'musgo', label: 'Musgo' },
+  { id: 'vinho', label: 'Vinho' },
+];
+---
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="logo" href="#topo" aria-label="Lavra — início">Lavra<span class="dot">.</span></a>
+    <nav class="links" aria-label="Navegação principal">
+      {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+    <div class="pal" role="group" aria-label="Trocar paleta de cores">
+      <span>Cores</span>
+      {themes.map((t) => (
+        <button
+          class={`sw s-${t.id}`}
+          data-theme={t.id}
+          aria-label={t.label}
+          aria-pressed={t.id === 'ocre' ? 'true' : 'false'}
+        ></button>
+      ))}
+    </div>
+    <a class="btn btn-solid btn-sm cta" href="#contato">Vamos conversar</a>
+  </div>
+</header>
+
+<style>
+  .top {
+    position: sticky; top: 0; z-index: 60;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(1.4) blur(8px);
+    border-bottom: 1px solid var(--line);
+    transition: background .5s var(--ease);
+  }
+  .top-in { display: flex; align-items: center; gap: 22px; height: 66px; }
+  .links { display: flex; gap: 22px; margin-left: 8px; }
+  .links a { font-size: .9rem; color: var(--soft); transition: color .2s; }
+  .links a:hover { color: var(--ink); }
+  .pal {
+    margin-left: auto; display: flex; align-items: center; gap: 9px;
+    padding: 6px 11px; border: 1px solid var(--line); border-radius: 100px;
+  }
+  .pal span { font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+  .sw {
+    width: 19px; height: 19px; border-radius: 50%; border: 2px solid transparent;
+    cursor: pointer; padding: 0; transition: transform .2s, border-color .2s;
+  }
+  .sw:hover { transform: scale(1.15); }
+  .sw[aria-pressed="true"] { border-color: var(--ink); }
+  .s-ocre { background: #9A7B1F; }
+  .s-floresta { background: #232820; }
+  .s-musgo { background: #5C6B45; }
+  .s-vinho { background: #7A2E32; }
+
+  @media (max-width: 900px) {
+    .links { display: none; }
+  }
+  @media (max-width: 600px) {
+    .pal span { display: none; }
+    .cta { display: none; }
+  }
+</style>
+
+<script>
+  import '../scripts/theme.js';
+</script>

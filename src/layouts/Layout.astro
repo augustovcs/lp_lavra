@@ -1,0 +1,100 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title = 'Lavra — Você pensa, a gente faz. Fábrica de software sob medida',
+  description = 'Software house enxuta e sênior. Apps, sistemas web, automações em Python e landing pages — do conceito à escala. Você pensa, a gente faz.',
+  image = '/og-lavra.svg',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+
+// Dados estruturados (JSON-LD) — ajudam o Google a entender o negócio.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Lavra',
+  description,
+  url: Astro.site?.href,
+  image: ogImage,
+  priceRange: '$$',
+  areaServed: 'BR',
+  knowsLanguage: 'pt-BR',
+  slogan: 'Você pensa, a gente faz.',
+  makesOffer: [
+    'Sistemas web sob medida',
+    'Automações em Python',
+    'Landing pages autorais',
+    'Aplicativos sob demanda',
+  ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+};
+---
+
+<!doctype html>
+<html lang="pt-BR" data-theme="ocre">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="canonical" href={canonical} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Lavra" />
+    <meta name="theme-color" content="#F1EAD9" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Lavra" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Ícones -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Define o tema antes da pintura para evitar flash -->
+    <script is:inline>
+      (function () {
+        // marca que há JS antes da pintura: habilita o reveal sem esconder conteúdo se o JS falhar
+        document.documentElement.classList.add('js');
+        try {
+          var t = localStorage.getItem('lavra-theme');
+          var ok = ['ocre', 'floresta', 'musgo', 'vinho'];
+          if (t && ok.indexOf(t) !== -1) document.documentElement.dataset.theme = t;
+        } catch (e) {}
+      })();
+    </script>
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="ocre">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lavra · qualificador por chips — versões completas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root{--sans:"Inter",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--maxw:1080px;--ease:cubic-bezier(.4,0,.1,1)}
+  html[data-theme="ocre"]{--bg:#F1EAD9;--surface:#FBF7EE;--ink:#1E1D18;--muted:#3C3A31;--soft:#6B6A5E;--line:#E3DCC9;--accent:#9A7B1F;--accent-2:#B8932E;--accent-ink:#2E2408;--field:#FFFDF8;--soft-accent:#F3E7C8;--feat:#232820;--feat-ink:#F1EAD9;--feat-soft:#C7C6B6;--feat-accent:#DDC079;--feat-field:#2C3326;--feat-line:#39402F}
+  html[data-theme="floresta"]{--bg:#1B1F16;--surface:#242A1D;--ink:#EDE7D7;--muted:#C4C5B4;--soft:#8C8E7C;--line:#343C2B;--accent:#DDC079;--accent-2:#E6CD8C;--accent-ink:#2E2408;--field:#2C3326;--soft-accent:#33402a;--feat:#F1EAD9;--feat-ink:#1E1D18;--feat-soft:#4A4940;--feat-accent:#9A7B1F;--feat-field:#FFFDF8;--feat-line:#E0D9C6}
+  html[data-theme="musgo"]{--bg:#EAE8DB;--surface:#F4F2E8;--ink:#1E2019;--muted:#3A3E33;--soft:#6A6E5F;--line:#DAD8C7;--accent:#5C6B45;--accent-2:#6E7C57;--accent-ink:#ECF1E0;--field:#FCFBF5;--soft-accent:#E2E6D3;--feat:#2C3322;--feat-ink:#EAE8DB;--feat-soft:#BAC3A4;--feat-accent:#93A079;--feat-field:#39412C;--feat-line:#3F472F}
+  html[data-theme="vinho"]{--bg:#EFE6DF;--surface:#F8F1EB;--ink:#1E1715;--muted:#3A302E;--soft:#6E605C;--line:#E4D8CF;--accent:#7A2E32;--accent-2:#8E3A3E;--accent-ink:#F6E9E6;--field:#FFFCFA;--soft-accent:#F1DCD8;--feat:#2A1A1B;--feat-ink:#EFE6DF;--feat-soft:#C9A9A4;--feat-accent:#C98A82;--feat-field:#3A2526;--feat-line:#42292A}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .5s var(--ease),color .5s var(--ease)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  .top{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
+  .top-in{display:flex;align-items:center;gap:18px;height:64px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.04em}.logo .dot{color:var(--accent)}
+  .top-title{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:.92rem}
+  .pal{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--line);border-radius:100px}
+  .pal span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .sw{width:19px;height:19px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:transform .2s,border-color .2s}
+  .sw:hover{transform:scale(1.15)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+  .sw.s-ocre{background:#9A7B1F}.sw.s-floresta{background:#232820}.sw.s-musgo{background:#5C6B45}.sw.s-vinho{background:#7A2E32}
+
+  .pat{padding:54px 0;border-bottom:1px solid var(--line)}
+  .pat-head{margin-bottom:32px}
+  .pat-num{font-family:var(--serif);font-size:.9rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .pat-head h2{font-weight:700;font-size:1.55rem;letter-spacing:-.025em;margin:14px 0 6px}
+  .pat-head p{font-family:var(--serif);color:var(--muted);font-size:1.02rem;max-width:680px}
+  .pat-head .tag{display:inline-block;font-size:.74rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 12px;margin-top:10px}
+
+  /* shared field + chip */
+  label{display:block;font-size:.9rem;font-weight:500;margin-bottom:10px;color:var(--ink)}
+  .field{width:100%;background:var(--field);border:1px solid var(--line);border-radius:10px;padding:14px 16px;font-family:var(--sans);font-size:.96rem;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+  .field::placeholder{color:var(--soft)}
+  .field:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 20%,transparent)}
+  textarea.field{resize:vertical;min-height:92px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);font-weight:500;font-size:1rem;padding:15px 26px;border-radius:10px;cursor:pointer;border:1.5px solid transparent;transition:transform .15s,background .3s;background:var(--accent);color:var(--accent-ink)}
+  .btn:hover{background:var(--accent-2)}.btn:active{transform:scale(.99)}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+  .btn.ghost:hover{background:var(--surface)}
+  .btn[disabled]{opacity:.45;pointer-events:none}
+  .fg{margin-bottom:22px}
+
+  .chips{display:flex;gap:10px;flex-wrap:wrap}
+  .chip{font-family:var(--sans);font-size:.92rem;padding:11px 18px;border-radius:100px;border:1px solid var(--line);background:var(--field);color:var(--muted);cursor:pointer;transition:.18s;display:inline-flex;align-items:center;gap:8px}
+  .chip:hover{border-color:var(--accent);color:var(--ink)}
+  .chip.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .chip .g{font-family:var(--serif);font-size:.95rem;opacity:.9}
+
+  /* chip as big card (for the tile variant) */
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .tile{border:1px solid var(--line);background:var(--field);border-radius:14px;padding:18px 16px;cursor:pointer;text-align:left;transition:.18s;display:flex;flex-direction:column;gap:8px;font-family:var(--sans)}
+  .tile:hover{border-color:var(--accent);transform:translateY(-3px)}
+  .tile.on{border-color:var(--accent);background:var(--soft-accent)}
+  .tile .ti{font-family:var(--serif);font-size:1.5rem;color:var(--accent)}
+  .tile .tn{font-weight:500;font-size:.98rem;color:var(--ink)}
+  .tile .td{font-size:.82rem;color:var(--soft);line-height:1.4}
+
+  .ttl{font-weight:700;font-size:1.7rem;letter-spacing:-.025em;line-height:1.12}
+  .sub{font-family:var(--serif);color:var(--muted);font-size:1.08rem;margin-top:10px}
+  .qlabel{font-weight:700;font-size:1.05rem;letter-spacing:-.01em;margin-bottom:14px}
+  .opt{color:var(--soft);font-weight:400;font-size:.85rem}
+
+  /* ============ V1 — wizard guiado em cartão escuro ============ */
+  .wzd{max-width:620px;margin:0 auto;background:var(--feat);border-radius:22px;padding:36px;color:var(--feat-ink)}
+  .wzd .bar{height:5px;background:var(--feat-line);border-radius:3px;overflow:hidden;margin-bottom:8px}
+  .wzd .bar i{display:block;height:100%;background:var(--feat-accent);border-radius:3px;width:20%;transition:width .4s var(--ease)}
+  .wzd .count{font-size:.8rem;color:var(--feat-soft);margin-bottom:24px}
+  .wzd .step{display:none}.wzd .step.on{display:block;animation:fade .35s var(--ease)}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .wzd .q{font-weight:700;font-size:1.5rem;letter-spacing:-.02em;margin-bottom:6px;color:var(--feat-ink)}
+  .wzd .qh{color:var(--feat-soft);font-family:var(--serif);font-size:1rem;margin-bottom:20px}
+  .wzd .chip{background:var(--feat-field);border-color:transparent;color:var(--feat-soft)}
+  .wzd .chip:hover{color:var(--feat-ink)}
+  .wzd .chip.on{background:var(--feat-accent);color:var(--accent-ink);border-color:transparent}
+  .wzd .tile{background:var(--feat-field);border-color:transparent}
+  .wzd .tile.on{background:var(--feat-field);border-color:var(--feat-accent)}
+  .wzd .tile .tn{color:var(--feat-ink)}.wzd .tile .ti{color:var(--feat-accent)}
+  .wzd .field{background:var(--feat-field);border-color:transparent;color:var(--feat-ink)}
+  .wzd .field::placeholder{color:var(--feat-soft)}
+  .wzd label{color:var(--feat-ink)}
+  .wzd .nav{display:flex;gap:10px;margin-top:26px}
+  .wzd .nav .btn{background:var(--feat-accent);color:var(--accent-ink)}
+  .wzd .nav .btn.ghost{background:transparent;color:var(--feat-ink);border-color:var(--feat-line)}
+  .wzd .done{display:none;text-align:center;padding:18px 0}
+  .wzd .done.on{display:block;animation:fade .4s var(--ease)}
+  .wzd .done .ic{width:60px;height:60px;border-radius:50%;background:var(--feat-accent);color:var(--accent-ink);display:grid;place-items:center;font-size:1.6rem;margin:0 auto 16px}
+  .wzd .summary{background:var(--feat-field);border-radius:12px;padding:16px 18px;text-align:left;margin-top:18px;font-size:.9rem;color:var(--feat-soft)}
+  .wzd .summary b{color:var(--feat-ink);font-weight:500}
+
+  /* ============ V2 — tudo numa tela, claro, com tiles ============ */
+  .one{max-width:680px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:38px}
+  .one .head{margin-bottom:26px}
+  .one .seg{display:flex;gap:8px;flex-wrap:wrap}
+  .one .seg .chip{flex:0 0 auto}
+  .one .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+  /* ============ V3 — split: resumo vivo + perguntas ============ */
+  .splitq{display:grid;grid-template-columns:.85fr 1.15fr;gap:24px;align-items:start}
+  .splitq .aside{background:var(--feat);border-radius:20px;padding:30px;color:var(--feat-ink);position:sticky;top:84px}
+  .splitq .aside .ttl{color:var(--feat-ink);font-size:1.5rem}
+  .splitq .aside .sub{color:var(--feat-soft)}
+  .splitq .live{margin-top:22px;display:grid;gap:12px}
+  .splitq .lrow{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;border-top:1px solid var(--feat-line);padding-top:12px}
+  .splitq .lrow .k{color:var(--feat-soft)}
+  .splitq .lrow .v{color:var(--feat-ink);font-weight:500;text-align:right}
+  .splitq .lrow .v.empty{color:var(--feat-line);font-weight:400}
+  .splitq .formside{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:30px}
+
+  footer{padding:48px 0;text-align:center;color:var(--soft);font-size:.86rem}
+  @media(max-width:820px){
+    .tiles{grid-template-columns:1fr 1fr}
+    .one .two{grid-template-columns:1fr}
+    .splitq{grid-template-columns:1fr}
+    .splitq .aside{position:static}
+    .pal span{display:none}
+  }
+  @media(max-width:520px){.tiles{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <span class="logo">Lavra<span class="dot">.</span></span>
+    <span class="top-title">qualificador por chips — versões completas</span>
+    <div class="pal" role="group" aria-label="Trocar paleta">
+      <span>Cores</span>
+      <button class="sw s-ocre" data-theme="ocre" aria-label="Ocre" aria-pressed="true"></button>
+      <button class="sw s-floresta" data-theme="floresta" aria-label="Floresta" aria-pressed="false"></button>
+      <button class="sw s-musgo" data-theme="musgo" aria-label="Musgo" aria-pressed="false"></button>
+      <button class="sw s-vinho" data-theme="vinho" aria-label="Vinho" aria-pressed="false"></button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ V1 — WIZARD GUIADO ============ -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">01</span><h2>Wizard guiado (uma pergunta por vez)</h2><p>Cinco passos curtos com barra de progresso, em cartão escuro. Cada tela faz uma pergunta — nunca assusta, e te entrega o lead já qualificado.</p><span class="tag">Mais completo / menos intimidador</span></div>
+  <div class="wzd" id="wzd">
+    <div class="bar"><i id="wzBar"></i></div>
+    <div class="count" id="wzCount">Passo 1 de 5</div>
+
+    <!-- step 1: tipo -->
+    <div class="step on" data-step>
+      <p class="q">O que você quer construir?</p>
+      <p class="qh">Pode escolher mais de um, se for o caso.</p>
+      <div class="tiles" data-multi>
+        <button type="button" class="tile"><span class="ti">◰</span><span class="tn">Sistema web</span><span class="td">Plataforma sob medida</span></button>
+        <button type="button" class="tile"><span class="ti">⚡</span><span class="tn">Automação</span><span class="td">Python, sem burocracia</span></button>
+        <button type="button" class="tile"><span class="ti">◇</span><span class="tn">Landing page</span><span class="td">Página autoral</span></button>
+        <button type="button" class="tile"><span class="ti">▤</span><span class="tn">App</span><span class="td">Sob demanda</span></button>
+      </div>
+      <div class="nav"><button class="btn" data-next>Continuar</button></div>
+    </div>
+
+    <!-- step 2: estágio -->
+    <div class="step" data-step>
+      <p class="q">Em que pé está a ideia?</p>
+      <p class="qh">Pra gente saber por onde começar com você.</p>
+      <div class="chips" data-single>
+        <button type="button" class="chip">Só uma ideia na cabeça</button>
+        <button type="button" class="chip">Já tenho o escopo</button>
+        <button type="button" class="chip">Tenho algo rodando e quero melhorar</button>
+      </div>
+      <div class="nav"><button class="btn ghost" data-back>Voltar</button><button class="btn" data-next>Continuar</button></div>
+    </div>
+
+    <!-- step 3: prazo -->
+    <div class="step" data-step>
+      <p class="q">Tem algum prazo em mente?</p>
+      <p class="qh">Sem stress se ainda não souber.</p>
+      <div class="chips" data-single>
+        <button type="button" class="chip">É pra ontem</button>
+        <button type="button" class="chip">Nas próximas semanas</button>
+        <button type="button" class="chip">Nos próximos meses</button>
+        <button type="button" class="chip">Sem pressa</button>
+      </div>
+      <div class="nav"><button class="btn ghost" data-back>Voltar</button><button class="btn" data-next>Continuar</button></div>
+    </div>
+
+    <!-- step 4: orçamento -->
+    <div class="step" data-step>
+      <p class="q">Faixa de orçamento? <span class="opt">(opcional)</span></p>
+      <p class="qh">Ajuda a gente a propor o caminho certo — mas pode pular.</p>
+      <div class="chips" data-single>
+        <button type="button" class="chip">Até R$ 5 mil</button>
+        <button type="button" class="chip">R$ 5–15 mil</button>
+        <button type="button" class="chip">R$ 15–40 mil</button>
+        <button type="button" class="chip">Acima disso</button>
+        <button type="button" class="chip">Prefiro não dizer agora</button>
+      </div>
+      <div class="nav"><button class="btn ghost" data-back>Voltar</button><button class="btn" data-next>Continuar</button></div>
+    </div>
+
+    <!-- step 5: contato -->
+    <div class="step" data-step>
+      <p class="q">Por onde a gente te chama?</p>
+      <p class="qh">A gente responde em até 1 dia útil.</p>
+      <div class="fg"><label>Seu nome</label><input class="field" placeholder="Como te chamamos?" /></div>
+      <div class="fg" style="margin-bottom:8px"><label>WhatsApp ou e-mail</label><input class="field" placeholder="Onde te respondemos" /></div>
+      <div class="nav"><button class="btn ghost" data-back>Voltar</button><button class="btn" data-send>Enviar</button></div>
+    </div>
+
+    <!-- done -->
+    <div class="done" data-done>
+      <div class="ic">✓</div>
+      <p class="q">Recebido! A gente te chama já já.</p>
+      <p class="qh">Enquanto isso, se quiser, fala com a gente direto no WhatsApp.</p>
+      <div class="summary" id="wzSummary"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ============ V2 — TUDO NUMA TELA ============ -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">02</span><h2>Tudo numa tela (com tiles)</h2><p>As mesmas perguntas, mas todas visíveis de uma vez, em fundo claro. Pra quem prefere ver o formulário inteiro e preencher rápido.</p><span class="tag">Tudo à vista</span></div>
+  <div class="one">
+    <div class="head"><h2 class="ttl">Conta sua ideia pra gente</h2><p class="sub">Quanto mais a gente souber, melhor a gente te chama preparado.</p></div>
+    <form onsubmit="return false">
+      <div class="fg">
+        <p class="qlabel">1. O que você quer construir?</p>
+        <div class="tiles" data-multi>
+          <button type="button" class="tile"><span class="ti">◰</span><span class="tn">Sistema web</span><span class="td">Plataforma sob medida</span></button>
+          <button type="button" class="tile"><span class="ti">⚡</span><span class="tn">Automação</span><span class="td">Python, sem burocracia</span></button>
+          <button type="button" class="tile"><span class="ti">◇</span><span class="tn">Landing page</span><span class="td">Página autoral</span></button>
+          <button type="button" class="tile"><span class="ti">▤</span><span class="tn">App</span><span class="td">Sob demanda</span></button>
+        </div>
+      </div>
+      <div class="fg">
+        <p class="qlabel">2. Em que pé está?</p>
+        <div class="chips" data-single>
+          <button type="button" class="chip">Só uma ideia</button>
+          <button type="button" class="chip">Já tenho o escopo</button>
+          <button type="button" class="chip">Algo rodando, quero melhorar</button>
+        </div>
+      </div>
+      <div class="fg">
+        <p class="qlabel">3. Prazo e orçamento <span class="opt">(opcional)</span></p>
+        <div class="chips" data-single style="margin-bottom:10px">
+          <button type="button" class="chip">É pra ontem</button>
+          <button type="button" class="chip">Próximas semanas</button>
+          <button type="button" class="chip">Próximos meses</button>
+          <button type="button" class="chip">Sem pressa</button>
+        </div>
+        <div class="chips" data-single>
+          <button type="button" class="chip">Até R$ 5 mil</button>
+          <button type="button" class="chip">R$ 5–15 mil</button>
+          <button type="button" class="chip">R$ 15–40 mil</button>
+          <button type="button" class="chip">Prefiro não dizer</button>
+        </div>
+      </div>
+      <div class="fg">
+        <p class="qlabel">4. Conte um pouco mais <span class="opt">(opcional)</span></p>
+        <textarea class="field" placeholder="O problema que você quer resolver, o que já tentou..."></textarea>
+      </div>
+      <div class="fg">
+        <p class="qlabel">5. Por onde a gente te chama?</p>
+        <div class="two"><input class="field" placeholder="Seu nome" aria-label="Seu nome" /><input class="field" placeholder="WhatsApp ou e-mail" aria-label="Contato" /></div>
+      </div>
+      <button class="btn" style="width:100%">Quero começar</button>
+      <p style="text-align:center;font-size:.8rem;color:var(--soft);margin-top:12px">A gente responde em até 1 dia útil.</p>
+    </form>
+  </div>
+</div></section>
+
+<!-- ============ V3 — SPLIT COM RESUMO VIVO ============ -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">03</span><h2>Split com resumo ao vivo</h2><p>As perguntas de um lado e, do outro, um resumo que se preenche conforme você responde. Dá sensação de progresso e transparência.</p><span class="tag">Mais sofisticado</span></div>
+  <div class="splitq">
+    <div class="aside">
+      <h2 class="ttl">Seu projeto, em resumo</h2>
+      <p class="sub">Vai se montando enquanto você responde.</p>
+      <div class="live" id="liveSummary">
+        <div class="lrow"><span class="k">Tipo</span><span class="v empty" data-k="tipo">—</span></div>
+        <div class="lrow"><span class="k">Estágio</span><span class="v empty" data-k="estagio">—</span></div>
+        <div class="lrow"><span class="k">Prazo</span><span class="v empty" data-k="prazo">—</span></div>
+        <div class="lrow"><span class="k">Orçamento</span><span class="v empty" data-k="orcamento">—</span></div>
+      </div>
+    </div>
+    <div class="formside" id="liveForm">
+      <form onsubmit="return false">
+        <div class="fg">
+          <p class="qlabel">O que você quer construir?</p>
+          <div class="chips" data-single data-target="tipo">
+            <button type="button" class="chip">Sistema web</button>
+            <button type="button" class="chip">Automação</button>
+            <button type="button" class="chip">Landing page</button>
+            <button type="button" class="chip">App</button>
+            <button type="button" class="chip">Ainda não sei</button>
+          </div>
+        </div>
+        <div class="fg">
+          <p class="qlabel">Em que pé está?</p>
+          <div class="chips" data-single data-target="estagio">
+            <button type="button" class="chip">Só uma ideia</button>
+            <button type="button" class="chip">Tenho o escopo</button>
+            <button type="button" class="chip">Algo rodando</button>
+          </div>
+        </div>
+        <div class="fg">
+          <p class="qlabel">Prazo</p>
+          <div class="chips" data-single data-target="prazo">
+            <button type="button" class="chip">É pra ontem</button>
+            <button type="button" class="chip">Semanas</button>
+            <button type="button" class="chip">Meses</button>
+            <button type="button" class="chip">Sem pressa</button>
+          </div>
+        </div>
+        <div class="fg">
+          <p class="qlabel">Orçamento <span class="opt">(opcional)</span></p>
+          <div class="chips" data-single data-target="orcamento">
+            <button type="button" class="chip">Até 5k</button>
+            <button type="button" class="chip">5–15k</button>
+            <button type="button" class="chip">15–40k</button>
+            <button type="button" class="chip">Não dizer</button>
+          </div>
+        </div>
+        <div class="fg"><label>Seu nome</label><input class="field" placeholder="Como te chamamos?" /></div>
+        <div class="fg"><label>WhatsApp ou e-mail</label><input class="field" placeholder="Onde te respondemos" /></div>
+        <button class="btn" style="width:100%">Quero começar</button>
+      </form>
+    </div>
+  </div>
+</div></section>
+
+<footer>Lavra · marca fictícia para demonstração · Inter + Fraunces</footer>
+
+<script>
+  const root=document.documentElement, sws=document.querySelectorAll('.sw');
+  sws.forEach(b=>b.addEventListener('click',()=>{root.dataset.theme=b.dataset.theme;sws.forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false'));}));
+
+  // generic chip/tile selection (single or multi)
+  function wireGroup(group){
+    const multi=group.hasAttribute('data-multi');
+    group.addEventListener('click',e=>{
+      const opt=e.target.closest('.chip,.tile');if(!opt)return;
+      if(multi){opt.classList.toggle('on');}
+      else{group.querySelectorAll('.chip,.tile').forEach(x=>x.classList.toggle('on',x===opt));}
+      // live summary
+      const tgt=group.dataset.target;
+      if(tgt){const el=document.querySelector('#liveSummary .v[data-k="'+tgt+'"]');if(el){el.textContent=opt.textContent.trim();el.classList.remove('empty');}}
+    });
+  }
+  document.querySelectorAll('[data-single],[data-multi]').forEach(wireGroup);
+
+  // wizard
+  (function(){const w=document.getElementById('wzd');if(!w)return;
+    const steps=[...w.querySelectorAll('[data-step]')],done=w.querySelector('[data-done]'),bar=document.getElementById('wzBar'),count=document.getElementById('wzCount');
+    let i=0;const total=steps.length;
+    function show(){steps.forEach((s,k)=>s.classList.toggle('on',k===i));bar.style.width=((i+1)/total*100)+'%';count.textContent='Passo '+(i+1)+' de '+total;}
+    w.addEventListener('click',e=>{
+      if(e.target.closest('[data-next]')){i=Math.min(total-1,i+1);show();}
+      if(e.target.closest('[data-back]')){i=Math.max(0,i-1);show();}
+      if(e.target.closest('[data-send]')){
+        steps.forEach(s=>s.classList.remove('on'));done.classList.add('on');bar.style.width='100%';count.textContent='Concluído';
+        // build summary
+        const picks=[];
+        w.querySelectorAll('[data-step] .on').forEach(o=>picks.push(o.querySelector('.tn')?o.querySelector('.tn').textContent:o.textContent.trim()));
+        const sum=document.getElementById('wzSummary');
+        sum.innerHTML = picks.length? 'Você escolheu: <b>'+picks.join('</b>, <b>')+'</b>.' : '';
+      }
+    });
+    show();
+  })();
+</script>
+</body>
+</html>

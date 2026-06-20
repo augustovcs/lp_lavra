@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="ocre">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lavra · sobre — 3 versões disruptivas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{--sans:"Inter",system-ui,sans-serif;--serif:"Fraunces",Georgia,serif;--mono:"JetBrains Mono",monospace;--maxw:1080px;--ease:cubic-bezier(.4,0,.1,1)}
+  html[data-theme="ocre"]{--bg:#F1EAD9;--surface:#FBF7EE;--ink:#1E1D18;--muted:#3C3A31;--soft:#6B6A5E;--line:#E3DCC9;--accent:#9A7B1F;--accent-2:#B8932E;--accent-ink:#2E2408;--feat:#232820;--feat-ink:#F1EAD9;--feat-soft:#C7C6B6;--feat-accent:#DDC079;--feat-line:#39402F}
+  html[data-theme="floresta"]{--bg:#1B1F16;--surface:#242A1D;--ink:#EDE7D7;--muted:#C4C5B4;--soft:#8C8E7C;--line:#343C2B;--accent:#DDC079;--accent-2:#E6CD8C;--accent-ink:#2E2408;--feat:#F1EAD9;--feat-ink:#1E1D18;--feat-soft:#4A4940;--feat-accent:#9A7B1F;--feat-line:#E0D9C6}
+  html[data-theme="musgo"]{--bg:#EAE8DB;--surface:#F4F2E8;--ink:#1E2019;--muted:#3A3E33;--soft:#6A6E5F;--line:#DAD8C7;--accent:#5C6B45;--accent-2:#6E7C57;--accent-ink:#ECF1E0;--feat:#2C3322;--feat-ink:#EAE8DB;--feat-soft:#BAC3A4;--feat-accent:#93A079;--feat-line:#3F472F}
+  html[data-theme="vinho"]{--bg:#EFE6DF;--surface:#F8F1EB;--ink:#1E1715;--muted:#3A302E;--soft:#6E605C;--line:#E4D8CF;--accent:#7A2E32;--accent-2:#8E3A3E;--accent-ink:#F6E9E6;--feat:#2A1A1B;--feat-ink:#EFE6DF;--feat-soft:#C9A9A4;--feat-accent:#C98A82;--feat-line:#42292A}
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;transition:background .5s var(--ease),color .5s var(--ease)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  ::selection{background:var(--accent);color:var(--accent-ink)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+
+  .top{position:sticky;top:0;z-index:60;background:var(--bg);border-bottom:1px solid var(--line);transition:background .5s var(--ease)}
+  .top-in{display:flex;align-items:center;gap:18px;height:64px;flex-wrap:wrap}
+  .logo{font-weight:800;font-size:1.3rem;letter-spacing:-.04em}.logo .dot{color:var(--accent)}
+  .top-title{font-family:var(--serif);font-style:italic;color:var(--soft);font-size:.92rem}
+  .pal{margin-left:auto;display:flex;align-items:center;gap:9px;padding:6px 11px;border:1px solid var(--line);border-radius:100px}
+  .pal span{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+  .sw{width:19px;height:19px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0;transition:transform .2s,border-color .2s}
+  .sw:hover{transform:scale(1.15)}.sw[aria-pressed="true"]{border-color:var(--ink)}
+  .sw.s-ocre{background:#9A7B1F}.sw.s-floresta{background:#232820}.sw.s-musgo{background:#5C6B45}.sw.s-vinho{background:#7A2E32}
+
+  .pat{padding:56px 0;border-bottom:1px solid var(--line)}
+  .pat-head{margin-bottom:36px}
+  .pat-num{font-family:var(--serif);font-size:.9rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:3px}
+  .pat-head h2{font-weight:700;font-size:1.55rem;letter-spacing:-.025em;margin:14px 0 6px}
+  .pat-head p{font-family:var(--serif);color:var(--muted);font-size:1.02rem;max-width:680px}
+  .pat-head .tag{display:inline-block;font-size:.74rem;letter-spacing:.04em;color:var(--soft);border:1px solid var(--line);border-radius:100px;padding:3px 12px;margin-top:10px}
+  .ph{color:var(--soft);font-style:italic}
+  .eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+
+  /* ============ V1 — MANIFESTO TIPOGRÁFICO ============ */
+  .mani{}
+  .mani .big{font-weight:800;font-size:clamp(1.9rem,4.4vw,3.1rem);letter-spacing:-.03em;line-height:1.14;max-width:920px}
+  .mani .big .dim{color:var(--soft)}
+  .mani .big .hl{color:var(--accent)}
+  .mani .big .scratch{position:relative;white-space:nowrap}
+  .mani .big .scratch::after{content:"";position:absolute;left:-2px;right:-2px;top:54%;height:3px;background:var(--soft);transform:rotate(-1.5deg)}
+  .mani .duo{display:flex;gap:32px;flex-wrap:wrap;margin-top:46px;border-top:1px solid var(--line);padding-top:30px}
+  .mani .who{display:flex;align-items:center;gap:14px}
+  .mani .mono{width:52px;height:52px;border-radius:13px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:1.1rem;flex:none}
+  .mani .who .n{font-weight:500;font-size:1.02rem}
+  .mani .who .r{color:var(--soft);font-size:.86rem}
+  .mani .sig{margin-left:auto;font-family:var(--serif);font-style:italic;color:var(--soft);align-self:flex-end}
+
+  /* ============ V2 — TERMINAL / git log ============ */
+  .term{background:var(--feat);border-radius:16px;overflow:hidden;border:1px solid var(--feat-line);font-family:var(--mono);font-size:.92rem}
+  .term .bar{display:flex;align-items:center;gap:8px;padding:13px 16px;border-bottom:1px solid var(--feat-line)}
+  .term .bar i{width:11px;height:11px;border-radius:50%;background:var(--feat-line)}
+  .term .bar .path{margin-left:10px;color:var(--feat-soft);font-size:.82rem}
+  .term .body{padding:24px 22px;color:var(--feat-soft);line-height:1.9}
+  .term .body .pr{color:var(--feat-accent)}
+  .term .body .cm{color:var(--feat-soft);opacity:.7}
+  .term .body .out{color:var(--feat-ink)}
+  .term .body .k{color:var(--feat-accent)}
+  .term .body .b{color:var(--feat-ink);font-weight:500}
+  .term .cursor{display:inline-block;width:9px;height:1.05em;background:var(--feat-accent);vertical-align:-2px;animation:blink 1.1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ============ V3 — CARTÕES "FICHA TÉCNICA" assimétricos ============ */
+  .crew{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .intro{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:8px}
+  .intro .t{font-weight:800;font-size:clamp(1.8rem,3.8vw,2.7rem);letter-spacing:-.03em;line-height:1.1}
+  .intro .t em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--accent)}
+  .intro .d{font-family:var(--serif);color:var(--muted);font-size:1.05rem}
+  .card{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--surface);position:relative;overflow:hidden}
+  .card .tagn{position:absolute;top:0;right:0;font-family:var(--mono);font-size:.72rem;color:var(--accent-ink);background:var(--accent);padding:4px 12px;border-bottom-left-radius:10px}
+  .card .mono{width:56px;height:56px;border-radius:14px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-family:var(--mono);font-weight:500;font-size:1.2rem;margin-bottom:18px}
+  .card h3{font-weight:700;font-size:1.3rem;letter-spacing:-.02em}
+  .card .role{color:var(--accent);font-size:.9rem;margin-bottom:14px}
+  .card .spec{display:grid;gap:8px;margin-top:14px;border-top:1px solid var(--line);padding-top:14px}
+  .card .sr{display:flex;justify-content:space-between;gap:12px;font-size:.86rem}
+  .card .sr .sk{color:var(--soft);font-family:var(--mono);font-size:.78rem}
+  .card .sr .sv{color:var(--ink);text-align:right}
+  .card.wide{grid-column:1/-1;background:var(--feat);border-color:transparent;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+  .card.wide .tx{font-family:var(--serif);font-size:1.3rem;color:var(--feat-ink);flex:1;min-width:240px;line-height:1.4}
+  .card.wide .tx .hl{color:var(--feat-accent)}
+  .card.wide .mono{margin-bottom:0;background:var(--feat-accent);color:var(--accent-ink)}
+
+  footer{padding:48px 0;text-align:center;color:var(--soft);font-size:.86rem}
+  @media(max-width:820px){
+    .crew,.intro{grid-template-columns:1fr;gap:22px}
+    .mani .sig{margin-left:0}
+    .pal span{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.term .cursor{animation:none}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="wrap top-in">
+    <span class="logo">Lavra<span class="dot">.</span></span>
+    <span class="top-title">sobre · 3 versões disruptivas</span>
+    <div class="pal" role="group" aria-label="Trocar paleta">
+      <span>Cores</span>
+      <button class="sw s-ocre" data-theme="ocre" aria-label="Ocre" aria-pressed="true"></button>
+      <button class="sw s-floresta" data-theme="floresta" aria-label="Floresta" aria-pressed="false"></button>
+      <button class="sw s-musgo" data-theme="musgo" aria-label="Musgo" aria-pressed="false"></button>
+      <button class="sw s-vinho" data-theme="vinho" aria-label="Vinho" aria-pressed="false"></button>
+    </div>
+  </div>
+</div>
+
+<!-- V1 -->
+<section class="pat"><div class="wrap mani">
+  <div class="pat-head"><span class="pat-num">01</span><h2>Manifesto tipográfico</h2><p>Sem foto, sem bio corporativa. Uma declaração grande do que vocês são (e do que não são), e a dupla assina embaixo. Type-first, na cara da marca.</p><span class="tag">Ousado / coeso com o hero</span></div>
+  <p class="eyebrow">Quem faz</p>
+  <p class="big">Somos <span class="hl">dois engenheiros</span> que já carregaram produto em produção e cansaram de ver boa ideia morrer por <span class="scratch">falta de execução</span>. A Lavra é isso: você pensa, a gente constrói — <span class="dim">sem terceirizar, sem enrolação.</span></p>
+  <div class="duo">
+    <div class="who"><div class="mono">NM</div><div><div class="n ph">[Nome do fundador 1]</div><div class="r ph">[ex: back-end &amp; automações]</div></div></div>
+    <div class="who"><div class="mono">SF</div><div><div class="n ph">[Nome do fundador 2]</div><div class="r ph">[ex: front-end &amp; produto]</div></div></div>
+    <div class="sig">— a dupla por trás da Lavra</div>
+  </div>
+</div></section>
+
+<!-- V2 -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">02</span><h2>Terminal / git log</h2><p>A história de vocês contada como saída de terminal. Disruptiva e 100% "fábrica de software" — fala a língua de quem programa e diverte quem não programa.</p><span class="tag">Nerd na medida / memorável</span></div>
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span class="path">~/lavra — quem-somos.sh</span></div>
+    <div class="body">
+      <div><span class="pr">lavra@dupla</span>:<span class="k">~</span>$ whoami</div>
+      <div class="out">dois engenheiros sêniores, cansados de CLT e de ver ideia boa parada.</div>
+      <div style="height:10px"></div>
+      <div><span class="pr">lavra@dupla</span>:<span class="k">~</span>$ cat fundadores.txt</div>
+      <div class="out"><span class="b ph">[Fundador 1]</span> <span class="cm ph">// back-end, automações em Python</span></div>
+      <div class="out"><span class="b ph">[Fundador 2]</span> <span class="cm ph">// front-end, produto e design</span></div>
+      <div style="height:10px"></div>
+      <div><span class="pr">lavra@dupla</span>:<span class="k">~</span>$ git log --oneline</div>
+      <div class="out"><span class="k">a1b2c3d</span> nasce a Lavra: você pensa, a gente faz</div>
+      <div class="out"><span class="k">e4f5g6h</span> primeiro sistema no ar</div>
+      <div class="out"><span class="k">i7j8k9l</span> <span class="cm">(HEAD) o próximo projeto é o seu</span></div>
+      <div style="height:10px"></div>
+      <div><span class="pr">lavra@dupla</span>:<span class="k">~</span>$ <span class="cursor"></span></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- V3 -->
+<section class="pat"><div class="wrap">
+  <div class="pat-head"><span class="pat-num">03</span><h2>Ficha técnica (cartões)</h2><p>Cada fundador como uma "ficha" com stack e função, mais um cartão-frase que amarra a dupla. Estruturado e com personalidade, sem cair na foto redonda padrão.</p><span class="tag">Estruturado com caráter</span></div>
+  <div class="crew">
+    <div class="intro">
+      <p class="t">Uma dupla <em>pequena</em> e sênior.</p>
+      <p class="d">Sem camada de gerente, sem terceirização. Quem conversa com você é quem constrói.</p>
+    </div>
+    <div class="card">
+      <span class="tagn">01</span>
+      <div class="mono">NM</div>
+      <h3 class="ph">[Nome do fundador 1]</h3>
+      <p class="role ph">[ex: back-end &amp; automações]</p>
+      <div class="spec">
+        <div class="sr"><span class="sk">foco</span><span class="sv ph">[ex: sistemas e Python]</span></div>
+        <div class="sr"><span class="sk">mania</span><span class="sv ph">[ex: código que dura]</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="tagn">02</span>
+      <div class="mono">SF</div>
+      <h3 class="ph">[Nome do fundador 2]</h3>
+      <p class="role ph">[ex: front-end &amp; produto]</p>
+      <div class="spec">
+        <div class="sr"><span class="sk">foco</span><span class="sv ph">[ex: interface e experiência]</span></div>
+        <div class="sr"><span class="sk">mania</span><span class="sv ph">[ex: pixel no lugar certo]</span></div>
+      </div>
+    </div>
+    <div class="card wide">
+      <div class="mono">↗</div>
+      <p class="tx">Juntos, a gente faz o que uma fábrica grande faz — <span class="hl">só que você fala direto com quem põe a mão no código.</span></p>
+    </div>
+  </div>
+</div></section>
+
+<footer>Lavra · marca fictícia para demonstração · troque os campos [entre colchetes] pelos dados reais</footer>
+
+<script>
+  const root=document.documentElement, sws=document.querySelectorAll('.sw');
+  sws.forEach(b=>b.addEventListener('click',()=>{root.dataset.theme=b.dataset.theme;sws.forEach(s=>s.setAttribute('aria-pressed',s===b?'true':'false'));}));
+</script>
+</body>
+</html>

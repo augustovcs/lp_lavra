@@ -1,0 +1,166 @@
+---
+const tipo = ['Sistema web', 'Automação', 'Landing page', 'App', 'Ainda não sei'];
+const estagio = ['Só uma ideia', 'Tenho o escopo', 'Algo rodando'];
+const prazo = ['É pra ontem', 'Semanas', 'Meses', 'Sem pressa'];
+const orcamento = ['Até R$ 5 mil', 'R$ 5–15 mil', 'R$ 15–40 mil', 'Prefiro não dizer'];
+---
+<section class="sec contato" id="contato">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Conta sua ideia</span>
+      <h2>Vamos tirar do papel.</h2>
+      <p>Responda rápido — a gente recebe e te chama em até 1 dia útil.</p>
+    </div>
+
+    <div class="qual" id="qual">
+      <!-- Resumo ao vivo (desktop) -->
+      <aside class="qual-aside">
+        <h3 class="aside-t">Seu projeto, em resumo</h3>
+        <p class="aside-sub">Vai se montando enquanto você responde.</p>
+        <div class="live">
+          <div class="lrow"><span class="k">Tipo</span><span class="v empty" data-k="tipo">—</span></div>
+          <div class="lrow"><span class="k">Estágio</span><span class="v empty" data-k="estagio">—</span></div>
+          <div class="lrow"><span class="k">Prazo</span><span class="v empty" data-k="prazo">—</span></div>
+          <div class="lrow"><span class="k">Orçamento</span><span class="v empty" data-k="orcamento">—</span></div>
+        </div>
+      </aside>
+
+      <!-- Perguntas -->
+      <div class="qual-form">
+        <div class="stepper-top">
+          <div class="pbar"><i data-progress></i></div>
+          <span class="pcount" data-count-label>Passo 1 de 5</span>
+        </div>
+
+        <form novalidate>
+          <fieldset class="qstep" data-step>
+            <legend class="qlabel">O que você quer construir?</legend>
+            <div class="chips" data-multi data-target="tipo">
+              {tipo.map((t) => <button type="button" class="chip">{t}</button>)}
+            </div>
+          </fieldset>
+
+          <fieldset class="qstep" data-step>
+            <legend class="qlabel">Em que pé está?</legend>
+            <div class="chips" data-single data-target="estagio">
+              {estagio.map((t) => <button type="button" class="chip">{t}</button>)}
+            </div>
+          </fieldset>
+
+          <fieldset class="qstep" data-step>
+            <legend class="qlabel">Tem algum prazo?</legend>
+            <div class="chips" data-single data-target="prazo">
+              {prazo.map((t) => <button type="button" class="chip">{t}</button>)}
+            </div>
+          </fieldset>
+
+          <fieldset class="qstep" data-step>
+            <legend class="qlabel">Faixa de orçamento <span class="opt">(opcional)</span></legend>
+            <div class="chips" data-single data-target="orcamento">
+              {orcamento.map((t) => <button type="button" class="chip">{t}</button>)}
+            </div>
+          </fieldset>
+
+          <fieldset class="qstep" data-step>
+            <legend class="qlabel">Por onde a gente te chama?</legend>
+            <div class="fg">
+              <label for="f-nome">Seu nome</label>
+              <input class="field" id="f-nome" name="nome" autocomplete="name" placeholder="Como te chamamos?" required />
+            </div>
+            <div class="fg">
+              <label for="f-contato">WhatsApp ou e-mail</label>
+              <input class="field" id="f-contato" name="contato" autocomplete="email" placeholder="Onde te respondemos" required />
+            </div>
+            <div class="fg">
+              <label for="f-msg">Conte um pouco mais <span class="opt">(opcional)</span></label>
+              <textarea class="field" id="f-msg" name="mensagem" placeholder="O problema que você quer resolver, o que já tentou..."></textarea>
+            </div>
+            <p class="err" data-error hidden role="alert">Preencha nome e contato pra gente conseguir responder.</p>
+          </fieldset>
+
+          <div class="stepper-nav">
+            <button type="button" class="btn btn-ghost" data-prev hidden>Voltar</button>
+            <button type="button" class="btn btn-solid" data-next>Continuar</button>
+            <button type="button" class="btn btn-solid" data-send hidden>Enviar</button>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit" class="btn btn-solid full">Quero começar</button>
+            <span class="submit-note">A gente responde em até 1 dia útil.</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .qual { display: grid; grid-template-columns: .85fr 1.15fr; gap: 24px; align-items: start; }
+
+  .qual-aside {
+    background: var(--feat); border-radius: 20px; padding: 30px; color: var(--feat-ink);
+    position: sticky; top: 90px;
+  }
+  .aside-t { font-weight: 700; font-size: 1.5rem; letter-spacing: -.025em; }
+  .aside-sub { font-family: var(--serif); color: var(--feat-soft); margin-top: 8px; }
+  .live { margin-top: 22px; display: grid; gap: 12px; }
+  .lrow { display: flex; justify-content: space-between; gap: 12px; font-size: .9rem; border-top: 1px solid var(--feat-line); padding-top: 12px; }
+  .lrow .k { color: var(--feat-soft); }
+  .lrow .v { color: var(--feat-ink); font-weight: 500; text-align: right; }
+  .lrow .v.empty { color: var(--feat-line); font-weight: 400; }
+
+  .qual-form { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+
+  fieldset { border: none; margin: 0 0 22px; padding: 0; }
+  .qlabel { font-weight: 700; font-size: 1.05rem; letter-spacing: -.01em; margin-bottom: 14px; padding: 0; }
+  .opt { color: var(--soft); font-weight: 400; font-size: .85rem; }
+
+  .chips { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    font-family: var(--sans); font-size: .92rem; padding: 11px 18px; border-radius: 100px;
+    border: 1px solid var(--line); background: var(--field); color: var(--muted);
+    cursor: pointer; transition: .18s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--ink); }
+  .chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+  .fg { margin-bottom: 16px; }
+  label { display: block; font-size: .9rem; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+  .field {
+    width: 100%; background: var(--field); border: 1px solid var(--line); border-radius: 10px;
+    padding: 14px 16px; font-family: var(--sans); font-size: .96rem; color: var(--ink);
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .field::placeholder { color: var(--soft); }
+  .field:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent); }
+  textarea.field { resize: vertical; min-height: 92px; }
+  .err { color: var(--bad); font-size: .88rem; margin-top: 4px; }
+
+  .full { width: 100%; }
+  .submit-row { margin-top: 6px; }
+  .submit-note { display: block; text-align: center; font-size: .8rem; color: var(--soft); margin-top: 12px; }
+
+  /* Barra de progresso + navegação: só aparecem no modo "passos" (mobile) */
+  .stepper-top { display: none; margin-bottom: 22px; }
+  .pbar { height: 5px; background: var(--line); border-radius: 3px; overflow: hidden; margin-bottom: 8px; }
+  .pbar i { display: block; height: 100%; width: 20%; background: var(--accent); border-radius: 3px; transition: width .4s var(--ease); }
+  .pcount { font-size: .8rem; color: var(--soft); }
+  .stepper-nav { display: none; gap: 10px; }
+  .stepper-nav .btn { flex: 1; }
+
+  .qual.stepped .qual-aside { display: none; }
+  .qual.stepped .stepper-top { display: block; }
+  .qual.stepped .stepper-nav { display: flex; }
+  .qual.stepped .submit-row { display: none; }
+  .qual.stepped .qstep { display: none; }
+  .qual.stepped .qstep.is-active { display: block; animation: fade .35s var(--ease); }
+  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  @media (max-width: 820px) {
+    .qual { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  import '../scripts/form.js';
+</script>
