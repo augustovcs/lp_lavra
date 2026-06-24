@@ -1,21 +1,23 @@
-// Seletor de paleta (Ocre / Floresta / Musgo / Vinho) com persistência.
-const VALID = ['ocre', 'floresta', 'musgo', 'vinho'];
+// Alternância de tema claro (Ocre) ↔ escuro (Noven dark), com persistência.
+const VALID = ['ocre', 'floresta'];
 const root = document.documentElement;
-const buttons = Array.from(document.querySelectorAll('.sw'));
+const toggle = document.querySelector('.mode');
 
-function setTheme(theme) {
+function apply(theme) {
   if (!VALID.includes(theme)) return;
   root.dataset.theme = theme;
   try {
-    localStorage.setItem('lavra-theme', theme);
+    localStorage.setItem('noven-theme', theme);
   } catch (e) {
     /* armazenamento indisponível — segue só na sessão */
   }
-  buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.theme === theme)));
+  if (toggle) toggle.setAttribute('aria-pressed', String(theme === 'floresta'));
 }
 
-// Reflete o tema já aplicado (pelo script inline do <head>) nos botões.
-buttons.forEach((b) => {
-  b.setAttribute('aria-pressed', String(b.dataset.theme === root.dataset.theme));
-  b.addEventListener('click', () => setTheme(b.dataset.theme));
-});
+if (toggle) {
+  // Reflete o tema já aplicado (pelo script inline do <head>) no botão.
+  toggle.setAttribute('aria-pressed', String((root.dataset.theme || 'ocre') === 'floresta'));
+  toggle.addEventListener('click', () => {
+    apply((root.dataset.theme || 'ocre') === 'floresta' ? 'ocre' : 'floresta');
+  });
+}
