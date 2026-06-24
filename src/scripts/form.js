@@ -1,9 +1,9 @@
 // Qualificador: split com resumo ao vivo no desktop; passos "gamificados" no mobile.
-// Sem backend — o envio monta um e-mail (mailto) já preenchido para a Lavra.
+// Sem backend — o envio monta um e-mail (mailto) já preenchido para a Noven.
 const qual = document.getElementById('qual');
 
 if (qual) {
-  const CONTACT_EMAIL = 'ola@lavra.dev'; // troque pelo e-mail real
+  const CONTACT_EMAIL = 'contato@noven.dev'; // troque pelo e-mail real
   const form = qual.querySelector('form');
   const steps = Array.from(qual.querySelectorAll('[data-step]'));
   const bar = qual.querySelector('[data-progress]');
@@ -98,7 +98,7 @@ if (qual) {
     if (err) err.hidden = true;
 
     const lines = [
-      'Novo contato pelo site da Lavra',
+      'Novo contato pelo site da Noven',
       '',
       'Nome: ' + name,
       'Contato: ' + contact,
@@ -109,7 +109,7 @@ if (qual) {
     ];
     if (note) lines.push('', 'Detalhes: ' + note);
 
-    const subject = 'Projeto Lavra — ' + name;
+    const subject = 'Projeto Noven — ' + name;
     const href =
       'mailto:' + CONTACT_EMAIL +
       '?subject=' + encodeURIComponent(subject) +
