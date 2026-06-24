@@ -1,10 +1,11 @@
-# Lavra — landing de fábrica de software (Astro)
+# Noven — landing de fábrica de software (Astro)
 
 Site estático em **Astro**, focado em SEO e performance. Reúne, numa página só, as
 sections aprovadas da marca, com separação clara entre **HTML** (componentes `.astro`),
 **CSS** (`global.css` + estilos com escopo por componente) e **JS** (`src/scripts/*.js`).
 
-> ⚠️ **Lavra** é nome fictício. Confirme marca e domínio antes de publicar.
+> Marca **Noven** — *"Fábrica de software. Sempre o próximo passo."*
+> Confirme domínio e dados de contato antes de publicar.
 
 ## Rodar
 
@@ -20,18 +21,18 @@ npm run preview  # serve o build de produção
 ```
 src/
   layouts/Layout.astro       # <head>, SEO, Open Graph, JSON-LD, fontes
-  styles/global.css          # tokens das 4 paletas + primitivos compartilhados
+  styles/global.css          # tokens (Ocre claro + Noven dark) + primitivos compartilhados
   components/                # uma section por arquivo (HTML + CSS com escopo)
     Header · Hero · Impacto · Problema · Servicos · Processo
     Cases · Depoimentos · Formulario · Sobre · CtaFinal · Footer
   scripts/                   # comportamento, um arquivo por responsabilidade
-    theme.js     # seletor de paleta (persiste em localStorage)
+    theme.js     # alterna tema claro/escuro (persiste em localStorage)
     hero.js      # palavra rotativa do hero
     counters.js  # contagem dos números ao rolar
     cases.js     # comparador antes/depois (arraste / teclado)
     form.js      # qualificador: split no desktop, passos no mobile, envio por e-mail
   pages/index.astro          # monta a página
-public/                      # favicon.svg, og-lavra.svg, robots.txt
+public/                      # favicon.svg, og-noven.svg, robots.txt
 ```
 
 ## Sections (padrões escolhidos)
@@ -51,9 +52,10 @@ public/                      # favicon.svg, og-lavra.svg, robots.txt
 | CTA final    | cartão com próximos passos → WhatsApp (P09)                      |
 | Rodapé       | minimalista, wordmark gigante (V2)                              |
 
-Paletas: **Ocre** (padrão) + Floresta, Musgo e Vinho no seletor.
-Fontes: **Hanken Grotesk** (sans, estilo AnthropicSans) + **Newsreader**
-(serifada editorial, estilo AnthropicSerif) + JetBrains Mono (terminal).
+Tema: **Ocre** (claro, padrão) ↔ **Noven dark** (escuro), via toggle no header
+(respeita `prefers-color-scheme` e persiste a escolha).
+Fontes: **Inter** (logo, corpo e interface) + **Fraunces** (serifada editorial,
+itálico nos destaques) + JetBrains Mono (terminal da seção "Sobre").
 
 Os blocos surgem com **reveal ao rolar** (`src/scripts/reveal.js` + estilos
 escopados em `.js` no `global.css`); sem JS, nada fica escondido. O globo usa a
@@ -67,7 +69,7 @@ mais escuro, mas o brilho e os marcadores continuam visíveis.
 - `src/scripts/form.js` → `CONTACT_EMAIL` (destino do formulário)
 - `src/components/CtaFinal.astro` → `WHATSAPP_NUMBER` (formato internacional, sem `+`)
 - `src/components/Sobre.astro` e `Footer.astro` → campos `[entre colchetes]`
-- `public/og-lavra.svg` → gere um **PNG 1200×630** equivalente para melhor compat. social
+- `public/og-noven.svg` → gere um **PNG 1200×630** equivalente para melhor compat. social
 
 ## SEO & segurança
 
