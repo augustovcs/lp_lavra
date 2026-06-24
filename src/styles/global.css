@@ -36,7 +36,7 @@ html[data-theme="floresta"] {
 [hidden] { display: none !important; }
 /* Escala global ~110%: tudo que usa rem (tipografia, raios, vários espaços)
    cresce junto, dando a sensação de zoom 110% sem causar rolagem horizontal. */
-html { scroll-behavior: smooth; font-size: 110%; }
+html { scroll-behavior: smooth; font-size: 110%; overflow-x: hidden; }
 body {
   background: var(--bg);
   color: var(--ink);
@@ -73,8 +73,10 @@ img { max-width: 100%; display: block; }
   transition: transform .15s, background .3s, color .3s, opacity .2s;
 }
 .btn:active { transform: scale(.97); }
-.btn-solid { background: var(--accent); color: var(--accent-ink); }
-.btn-solid:hover { background: var(--accent-2); }
+.btn-solid { background: var(--muted); color: var(--bg); }
+.btn-solid:hover { background: var(--ink); }
+html[data-theme="ocre"] .btn-solid { background: #6B5A15; color: #F1EAD9; }
+html[data-theme="ocre"] .btn-solid:hover { background: #54480F; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
 .btn-sm { padding: 9px 16px; font-size: .88rem; }
