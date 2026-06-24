@@ -35,7 +35,8 @@ const links = [
 
 <style>
   .top {
-    position: sticky; top: 0; z-index: 60;
+    position: sticky; top: 0; z-index: 100;
+    transform: translateY(0); transition: transform .35s var(--ease), background .5s var(--ease);
     background: color-mix(in srgb, var(--bg) 88%, transparent);
     backdrop-filter: saturate(1.4) blur(8px);
     border-bottom: 1px solid var(--line);
@@ -75,4 +76,24 @@ const links = [
 
 <script>
   import '../scripts/theme.js';
+
+  // Header: esconde ao rolar pra baixo, reaparece ao rolar pra cima
+  const header = document.querySelector('.top');
+  if (header) {
+    let lastY = 0;
+    let hidden = false;
+    const THRESHOLD = 200;
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (y > THRESHOLD && y > lastY && !hidden) {
+        header.style.transform = 'translateY(-100%)';
+        hidden = true;
+      } else if (y < lastY && hidden) {
+        header.style.transform = 'translateY(0)';
+        hidden = false;
+      }
+      lastY = y;
+    }, { passive: true });
+  }
 </script>
