@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Lavra">
-  <rect width="64" height="64" rx="14" fill="#232820"/>
-  <text x="50%" y="50%" dy="2" text-anchor="middle" dominant-baseline="middle"
-        font-family="Georgia, 'Times New Roman', serif" font-weight="700" font-size="40" fill="#F1EAD9">L</text>
-  <circle cx="46" cy="44" r="4" fill="#DDC079"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Noven">
+  <rect width="64" height="64" rx="15" fill="#232820"/>
+  <circle cx="32" cy="46" r="7" fill="#DDC079"/>
+  <path d="M32 43 V18" stroke="#F1EAD9" stroke-width="5" stroke-linecap="round"/>
+  <path d="M20.5 28 L32 16.5 L43.5 28" stroke="#F1EAD9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

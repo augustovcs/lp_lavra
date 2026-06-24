@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Noven — Sempre o próximo passo.">
+  <rect width="1200" height="630" fill="#F1EAD9"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#9A7B1F"/>
+  <text x="80" y="150" font-family="Inter, sans-serif" font-weight="500" font-size="28" letter-spacing="3" fill="#9A7B1F">SOFTWARE SOB MEDIDA</text>
+  <text x="76" y="300" font-family="Inter, sans-serif" font-weight="800" font-size="118" letter-spacing="-5" fill="#1E1D18">Sempre o</text>
+  <text x="76" y="426" font-family="Inter, sans-serif" font-weight="800" font-size="118" letter-spacing="-5" fill="#1E1D18">próximo passo<tspan fill="#9A7B1F">.</tspan></text>
+  <text x="80" y="528" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="34" fill="#3C3A31">Apps · sistemas · automações · landing pages</text>
+  <g transform="translate(1006 516)">
+    <circle cx="16" cy="23" r="4" fill="#9A7B1F"/>
+    <path d="M16 22 V7" stroke="#1E1D18" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M9.5 13 L16 6.5 L22.5 13" stroke="#1E1D18" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="1040" y="550" font-family="Inter, sans-serif" font-weight="800" font-size="40" letter-spacing="-2" fill="#1E1D18">Noven<tspan fill="#9A7B1F">.</tspan></text>
+</svg>

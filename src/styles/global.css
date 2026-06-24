@@ -1,20 +1,20 @@
 /* ============================================================
-   Lavra — sistema de design global
-   Tokens de paleta (4 temas), reset e primitivos compartilhados.
-   Tipos: Inter (títulos/corpo) + Fraunces (serifada editorial)
+   Noven — sistema de design global
+   Tokens de paleta (Ocre claro + Floresta escuro), reset e primitivos.
+   Tipos: Inter (logo/corpo/interface) + Fraunces (serifada editorial)
           + JetBrains Mono (terminal da seção "Sobre").
    ============================================================ */
 
 :root {
-  /* Grotesca contemporânea (estilo AnthropicSans) + serifada editorial (estilo AnthropicSerif) */
-  --sans: "Hanken Grotesk", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  /* Inter (interface/corpo) + Fraunces (serifada editorial, itálico nos destaques) */
+  --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --maxw: 1080px;
   --ease: cubic-bezier(.4, 0, .1, 1);
 }
 
-/* Ocre — claro (padrão) */
+/* Noven Ocre — tema claro (padrão) */
 html[data-theme="ocre"] {
   --bg: #F1EAD9; --surface: #FBF7EE; --ink: #1E1D18; --muted: #3C3A31;
   --soft: #6B6A5E; --line: #E3DCC9; --accent: #9A7B1F; --accent-2: #B8932E;
@@ -22,29 +22,13 @@ html[data-theme="ocre"] {
   --feat-accent: #DDC079; --feat-line: #39402F; --field: #FFFDF8; --soft-accent: #F3E7C8;
   --feat-field: #2C3326; --bad: #7A2E32;
 }
-/* Floresta — escuro */
+/* Noven dark — tema escuro (toggle) */
 html[data-theme="floresta"] {
   --bg: #1B1F16; --surface: #242A1D; --ink: #EDE7D7; --muted: #C4C5B4;
   --soft: #8C8E7C; --line: #343C2B; --accent: #DDC079; --accent-2: #E6CD8C;
   --accent-ink: #2E2408; --feat: #10130C; --feat-ink: #EDE7D7; --feat-soft: #9AA088;
   --feat-accent: #DDC079; --feat-line: #2A311F; --field: #2C3326; --soft-accent: #33402a;
   --feat-field: #2C3326; --bad: #C98A82;
-}
-/* Musgo — claro/verde */
-html[data-theme="musgo"] {
-  --bg: #EAE8DB; --surface: #F4F2E8; --ink: #1E2019; --muted: #3A3E33;
-  --soft: #6A6E5F; --line: #DAD8C7; --accent: #5C6B45; --accent-2: #6E7C57;
-  --accent-ink: #ECF1E0; --feat: #2C3322; --feat-ink: #EAE8DB; --feat-soft: #BAC3A4;
-  --feat-accent: #93A079; --feat-line: #3F472F; --field: #FCFBF5; --soft-accent: #E2E6D3;
-  --feat-field: #39412C; --bad: #8E3A3E;
-}
-/* Vinho — claro/quente */
-html[data-theme="vinho"] {
-  --bg: #EFE6DF; --surface: #F8F1EB; --ink: #1E1715; --muted: #3A302E;
-  --soft: #6E605C; --line: #E4D8CF; --accent: #7A2E32; --accent-2: #8E3A3E;
-  --accent-ink: #F6E9E6; --feat: #2A1A1B; --feat-ink: #EFE6DF; --feat-soft: #C9A9A4;
-  --feat-accent: #C98A82; --feat-line: #42292A; --field: #FFFCFA; --soft-accent: #F1DCD8;
-  --feat-field: #3A2526; --bad: #8E3A3E;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

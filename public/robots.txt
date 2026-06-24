@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://lavra.dev/sitemap-index.xml
+Sitemap: https://noven.dev/sitemap-index.xml

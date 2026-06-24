@@ -8,9 +8,9 @@ export interface Props {
 }
 
 const {
-  title = 'Lavra — Você pensa, a gente faz. Fábrica de software sob medida',
-  description = 'Software house enxuta e sênior. Apps, sistemas web, automações em Python e landing pages — do conceito à escala. Você pensa, a gente faz.',
-  image = '/og-lavra.svg',
+  title = 'Noven — Software sob medida, do conceito à escala',
+  description = 'Apps, sistemas web, automações em Python e landing pages sob medida — do conceito à escala. Sempre o próximo passo.',
+  image = '/og-noven.svg',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -20,14 +20,14 @@ const ogImage = new URL(image, Astro.site).href;
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
-  name: 'Lavra',
+  name: 'Noven',
   description,
   url: Astro.site?.href,
   image: ogImage,
   priceRange: '$$',
   areaServed: 'BR',
   knowsLanguage: 'pt-BR',
-  slogan: 'Você pensa, a gente faz.',
+  slogan: 'Sempre o próximo passo.',
   makesOffer: [
     'Sistemas web sob medida',
     'Automações em Python',
@@ -48,13 +48,13 @@ const jsonLd = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="author" content="Lavra" />
+    <meta name="author" content="Noven" />
     <meta name="theme-color" content="#F1EAD9" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
-    <meta property="og:site_name" content="Lavra" />
+    <meta property="og:site_name" content="Noven" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -74,7 +74,7 @@ const jsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -84,9 +84,8 @@ const jsonLd = {
         // marca que há JS antes da pintura: habilita o reveal sem esconder conteúdo se o JS falhar
         document.documentElement.classList.add('js');
         try {
-          var t = localStorage.getItem('lavra-theme');
-          var ok = ['ocre', 'floresta', 'musgo', 'vinho'];
-          if (t && ok.indexOf(t) !== -1) document.documentElement.dataset.theme = t;
+          var t = localStorage.getItem('noven-theme');
+          if (t === 'floresta') document.documentElement.dataset.theme = t;
         } catch (e) {}
       })();
     </script>
