@@ -2,6 +2,19 @@
 // Hero: tipografia gigante + palavra rotativa, fixa na 2ª linha.
 ---
 <section class="hero" id="topo">
+  <!-- Glow + linhas geométricas que sangram nas seções abaixo -->
+  <div class="hero-aura" aria-hidden="true">
+    <div class="hero-glow"></div>
+    <svg class="hero-lines" viewBox="0 0 1200 900" fill="none" preserveAspectRatio="xMidYMid slice">
+      <line x1="200" y1="0" x2="400" y2="900" stroke="var(--accent)" stroke-width=".8" opacity=".25"/>
+      <line x1="500" y1="0" x2="300" y2="900" stroke="var(--accent)" stroke-width=".6" opacity=".18"/>
+      <line x1="800" y1="0" x2="900" y2="900" stroke="var(--accent)" stroke-width=".7" opacity=".22"/>
+      <line x1="1050" y1="0" x2="750" y2="900" stroke="var(--accent)" stroke-width=".5" opacity=".15"/>
+      <circle cx="400" cy="320" r="120" stroke="var(--accent)" stroke-width=".7" opacity=".14"/>
+      <circle cx="850" cy="500" r="80" stroke="var(--accent)" stroke-width=".5" opacity=".10"/>
+    </svg>
+  </div>
+
   <div class="wrap">
     <h1 class="hero-h">
       <span class="l1">Você pensa,</span>
@@ -22,7 +35,31 @@
 </section>
 
 <style>
-  .hero { padding: 76px 0 64px; border-bottom: 1px solid var(--line); }
+  .hero {
+    position: relative; z-index: 1;
+    padding: 76px 0 64px; border-bottom: 1px solid var(--line);
+    overflow: visible;
+  }
+
+  /* Aura: glow + linhas que sangram ~200px além do hero */
+  .hero-aura {
+    position: absolute; inset: -40px 0 0; bottom: -200px;
+    pointer-events: none; z-index: 0;
+    will-change: transform, opacity;
+  }
+  .hero-glow {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 75% 60% at 30% 25%, color-mix(in srgb, var(--accent) 28%, transparent) 0%, transparent 65%),
+      radial-gradient(ellipse 55% 50% at 75% 55%, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 35% at 50% 40%, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 55%);
+  }
+  .hero-lines {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+  }
+
+  .hero .wrap { position: relative; z-index: 2; }
+
   .hero-h {
     font-weight: 800;
     font-size: clamp(2.6rem, 7vw, 5rem);
@@ -30,7 +67,6 @@
     letter-spacing: -.04em;
   }
   .l1, .l2 { display: block; }
-  /* Mobile-first: a 2ª linha quebra naturalmente (sem risco de estourar a tela). */
   .swap {
     display: inline-block;
     text-align: left;
@@ -51,7 +87,6 @@
   .cta-row { display: flex; gap: 13px; flex-wrap: wrap; }
   .trust { margin-top: 24px; font-size: .88rem; color: var(--soft); }
 
-  /* Telas maiores: a palavra troca num espaço reservado, fixa na 2ª linha. */
   @media (min-width: 700px) {
     .l2 { white-space: nowrap; }
     .swap { min-width: 11.5ch; }
@@ -61,9 +96,27 @@
   }
   @media (prefers-reduced-motion: reduce) {
     .word { transition: none; }
+    .hero-aura { display: none; }
   }
 </style>
 
 <script>
   import '../scripts/hero.js';
+
+  // Parallax + fade da aura ao rolar
+  const aura = document.querySelector('.hero-aura');
+  if (aura && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        const fade = Math.max(0, 1 - y / 700);
+        aura.style.transform = `translateY(${y * 0.35}px)`;
+        aura.style.opacity = String(fade);
+        ticking = false;
+      });
+    }, { passive: true });
+  }
 </script>
