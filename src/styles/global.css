@@ -6,7 +6,9 @@
    ============================================================ */
 
 :root {
-  /* Inter (interface/corpo) + Fraunces (serifada editorial, itálico nos destaques) */
+  /* Space Grotesk (títulos, cara de software) + Inter (interface/corpo)
+     + Fraunces (serifada editorial, lead/itálico) */
+  --display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -14,21 +16,21 @@
   --ease: cubic-bezier(.4, 0, .1, 1);
 }
 
-/* Noven Ocre — tema claro (padrão) */
+/* Noven — tema claro (padrão): quase-branco quente + acento verde-engenharia */
 html[data-theme="ocre"] {
-  --bg: #F1EAD9; --surface: #FBF7EE; --ink: #1E1D18; --muted: #3C3A31;
-  --soft: #6B6A5E; --line: #E3DCC9; --accent: #9A7B1F; --accent-2: #B8932E;
-  --accent-ink: #2E2408; --feat: #232820; --feat-ink: #F1EAD9; --feat-soft: #C7C6B6;
-  --feat-accent: #DDC079; --feat-line: #39402F; --field: #FFFDF8; --soft-accent: #F3E7C8;
-  --feat-field: #2C3326; --bad: #7A2E32;
+  --bg: #F6F5F0; --surface: #FFFFFF; --ink: #101110; --muted: #44463F;
+  --soft: #7A7C72; --line: #E4E3DB; --accent: #2F6B3A; --accent-2: #3C7D49;
+  --accent-ink: #FFFFFF; --feat: #14180F; --feat-ink: #F1F3EC; --feat-soft: #AEB2A2;
+  --feat-accent: #8FCE9C; --feat-line: #2A3122; --field: #FFFFFF; --soft-accent: #E5EFE2;
+  --feat-field: #20271A; --bad: #A23B32;
 }
-/* Noven dark — tema escuro (toggle) */
+/* Noven — tema escuro (toggle): verde-floresta + acento verde claro */
 html[data-theme="floresta"] {
-  --bg: #1B1F16; --surface: #242A1D; --ink: #EDE7D7; --muted: #C4C5B4;
-  --soft: #8C8E7C; --line: #343C2B; --accent: #DDC079; --accent-2: #E6CD8C;
-  --accent-ink: #2E2408; --feat: #10130C; --feat-ink: #EDE7D7; --feat-soft: #9AA088;
-  --feat-accent: #DDC079; --feat-line: #2A311F; --field: #2C3326; --soft-accent: #33402a;
-  --feat-field: #2C3326; --bad: #C98A82;
+  --bg: #11140E; --surface: #1A1F15; --ink: #EDF0E6; --muted: #BFC3B4;
+  --soft: #87897A; --line: #2A301F; --accent: #79C089; --accent-2: #8FCE9C;
+  --accent-ink: #0E1A12; --feat: #0B0E08; --feat-ink: #EDF0E6; --feat-soft: #9AA088;
+  --feat-accent: #8FCE9C; --feat-line: #232A1B; --field: #1A1F15; --soft-accent: #1E2A18;
+  --feat-field: #1A1F15; --bad: #D98A82;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -61,7 +63,7 @@ img { max-width: 100%; display: block; }
 .skip:focus { left: 0; }
 
 /* Marca / wordmark reutilizável */
-.logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -.04em; }
+.logo { font-family: var(--display); font-weight: 700; font-size: 1.3rem; letter-spacing: -.04em; }
 .logo .dot { color: var(--accent); }
 
 /* Botões compartilhados */
@@ -75,8 +77,8 @@ img { max-width: 100%; display: block; }
 .btn:active { transform: scale(.97); }
 .btn-solid { background: var(--muted); color: var(--bg); }
 .btn-solid:hover { background: var(--ink); }
-html[data-theme="ocre"] .btn-solid { background: #6B5A15; color: #F1EAD9; }
-html[data-theme="ocre"] .btn-solid:hover { background: #54480F; }
+html[data-theme="ocre"] .btn-solid { background: var(--accent); color: #fff; }
+html[data-theme="ocre"] .btn-solid:hover { background: #25572E; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
 .btn-sm { padding: 9px 16px; font-size: .88rem; }
@@ -95,8 +97,8 @@ html[data-theme="ocre"] .btn-solid:hover { background: #54480F; }
 }
 
 /* Escala tipográfica de títulos */
-.h-xl { font-weight: 800; font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.02; letter-spacing: -.035em; }
-.h-lg { font-weight: 800; font-size: clamp(2.1rem, 4.4vw, 3.2rem); line-height: 1.05; letter-spacing: -.03em; }
+.h-xl { font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.02; letter-spacing: -.035em; }
+.h-lg { font-family: var(--display); font-weight: 700; font-size: clamp(2.1rem, 4.4vw, 3.2rem); line-height: 1.05; letter-spacing: -.03em; }
 .lead { font-family: var(--serif); font-size: 1.2rem; line-height: 1.5; color: var(--muted); }
 
 /* Cabeçalho de seção (eyebrow + título + descrição) */
@@ -107,10 +109,10 @@ html[data-theme="ocre"] .btn-solid:hover { background: #54480F; }
   border-bottom: 2px solid var(--accent); padding-bottom: 3px;
 }
 .sec-head h2 {
-  font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.3rem);
+  font-family: var(--display); font-weight: 700; font-size: clamp(1.7rem, 3.2vw, 2.3rem);
   letter-spacing: -.025em; margin: 16px 0 8px; line-height: 1.1;
 }
-.sec-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+.sec-head h2 em { font-family: var(--display); font-style: normal; font-weight: 700; color: var(--accent); }
 .sec-head p { font-family: var(--serif); color: var(--muted); font-size: 1.08rem; }
 
 /* Mock de tela compartilhado (placeholders de produto) */
