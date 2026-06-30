@@ -1,0 +1,521 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Variação 4 — "Atelier OS": a alma editorial do v2 + prova de software de verdade.
+// Janelas de produto (dashboard/app/automação), painel de código, stack técnica.
+// Objetivo: legível como SOFTWARE HOUSE na hora, sem ficar genérico nem esquisito.
+const stack = ['TypeScript', 'React', 'Python', 'Node', 'Postgres', 'AWS', 'Astro', 'Tailwind'];
+const services = [
+  { n: '01', t: 'Sistemas web', d: 'Carro-chefe: plataformas sob medida, do MVP ao produto maduro, feitas pro seu fluxo.' },
+  { n: '02', t: 'Automações em Python', d: 'Escaláveis e sem burocracia. O repetitivo roda sozinho.' },
+  { n: '03', t: 'Landing pages autorais', d: 'A vitrine do seu negócio, feita pra converter.' },
+  { n: '04', t: 'Apps sob demanda', d: 'Quando a ideia pede um aplicativo.' },
+];
+const steps = [
+  { n: '01', t: 'Descoberta', d: 'Entendemos a ideia, o problema e o que significa dar certo — antes de qualquer linha de código.' },
+  { n: '02', t: 'Design', d: 'Prototipamos cedo, pra você ajustar enquanto ainda é barato mudar.' },
+  { n: '03', t: 'Construção', d: 'Entregas curtas, contínuas e testadas: o software cresce toda semana.' },
+  { n: '04', t: 'No ar & evolução', d: 'No ar e por perto — medindo, ajustando e evoluindo com dado.' },
+];
+const cases = [
+  { who: 'Veloz Log', t: 'App de rotas no ar em 8 semanas', q: 'Botaram nosso app no ar num prazo que eu não acreditei.' },
+  { who: 'Studio Lima', t: 'Landing que dobrou os contatos', q: 'Rápidos, claros e sem enrolação.' },
+  { who: 'GG Contábil', t: 'Fechamento manual automatizado', q: 'Sumiu o retrabalho. Recomendo de olhos fechados.' },
+];
+---
+<Layout title="Noven — atelier de software" description="Software sob medida: sistemas web, automações, apps e landing pages. Do conceito à escala.">
+  <div class="v4">
+    <header class="nav">
+      <div class="wrap row">
+        <a class="logo" href="#topo">Noven<span>.</span></a>
+        <nav class="links"><a href="#produto">Trabalho</a><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#sobre">Sobre</a></nav>
+        <a class="btn" href="#contato">Vamos conversar</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- HERO: editorial + janela de produto real -->
+      <section class="hero" id="topo">
+        <div class="wrap hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow" data-reveal>Atelier de software · do conceito à escala</span>
+            <h1 class="big" data-reveal>Você pensa,<br>a gente <em>constrói</em>.</h1>
+            <p class="lead" data-reveal>Sistemas web, automações, apps e landing pages sob medida — engenharia de verdade, sem você precisar entender de tecnologia.</p>
+            <div class="cta" data-reveal>
+              <a class="btn big-btn" href="#contato">Começar um projeto →</a>
+              <a class="link-u" href="#produto">Ver o que construímos</a>
+            </div>
+          </div>
+
+          <!-- janela de app escura sobre o papel = sinal imediato de software -->
+          <div class="hero-app" data-reveal>
+            <div class="win app">
+              <div class="win-bar"><i></i><i></i><i></i><span class="win-url">painel.noven.app</span></div>
+              <div class="app-body">
+                <aside class="app-side">
+                  <span class="app-logo">N</span>
+                  <span class="nav-i on"></span><span class="nav-i"></span><span class="nav-i"></span><span class="nav-i"></span>
+                </aside>
+                <div class="app-main">
+                  <div class="app-row">
+                    <div><b class="app-title">Visão geral</b><small>atualizado agora</small></div>
+                    <span class="badge">● ao vivo</span>
+                  </div>
+                  <div class="app-kpis">
+                    <div class="kpi"><small>uptime</small><b>99.8%</b></div>
+                    <div class="kpi"><small>usuários</small><b>1.247</b></div>
+                    <div class="kpi"><small>latência</small><b>42ms</b></div>
+                  </div>
+                  <div class="app-chart">
+                    <span style="height:42%"></span><span style="height:60%"></span><span style="height:50%"></span><span style="height:78%"></span><span style="height:64%"></span><span style="height:92%"></span><span style="height:74%"></span><span style="height:84%"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chip chip-a">deploy ✓ <b>em produção</b></div>
+            <div class="chip chip-b"><b>build</b> 8.2s</div>
+          </div>
+        </div>
+
+        <!-- stack técnica: prova de engenharia, discreta -->
+        <div class="wrap stack" data-reveal>
+          <span class="stack-l">Construído com</span>
+          <div class="stack-items">{stack.map((s) => <span>{s}</span>)}</div>
+        </div>
+
+        <div class="wrap stats" data-reveal>
+          <div><b>80+</b><small>projetos no ar</small></div>
+          <div><b>12h</b><small>economizadas/semana</small></div>
+          <div><b>8 sem</b><small>do conceito ao ar</small></div>
+          <div><b>100%</b><small>times sêniores</small></div>
+        </div>
+      </section>
+
+      <!-- PROBLEMA -->
+      <section class="sec">
+        <div class="wrap">
+          <p class="idx" data-reveal>① O problema</p>
+          <h2 class="h2" data-reveal>A ideia é sua. <em>Falta quem execute.</em></h2>
+          <div class="pas">
+            <div class="pas-col" data-reveal>
+              <span class="lbl bad">Como costuma ser</span>
+              <ul><li>Ideia parada na sua cabeça</li><li>Planilha que trava e ninguém mantém</li><li>Orçamento caro, lento e confuso</li><li>Você perdido no meio do processo</li></ul>
+            </div>
+            <div class="pas-col good" data-reveal>
+              <span class="lbl">Com a Noven</span>
+              <ul><li>Ideia no ar, do conceito à escala</li><li>Sistema sob medida pro seu fluxo</li><li>Caminho claro, sem jargão</li><li>Você só acompanha funcionando</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- O QUE CONSTRUÍMOS: galeria de telas = prova de software house -->
+      <section class="sec" id="produto">
+        <div class="wrap">
+          <p class="idx" data-reveal>② O que construímos</p>
+          <h2 class="h2" data-reveal>Software que você <em>vê funcionando</em>.</h2>
+          <div class="gallery">
+            <!-- 1: dashboard SaaS -->
+            <figure class="shot wide" data-reveal>
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span class="win-url">app.clinicanorte.com</span></div>
+                <div class="app-body">
+                  <aside class="app-side light"><span class="app-logo sm">C</span><span class="nav-i on"></span><span class="nav-i"></span><span class="nav-i"></span></aside>
+                  <div class="app-main">
+                    <div class="app-row"><b class="app-title">Agendamentos · hoje</b><span class="badge">+18%</span></div>
+                    <div class="rows"><span class="lr w8"></span><span class="lr w6"></span><span class="lr w7"></span><span class="lr w5"></span><span class="lr w8"></span><span class="lr w6"></span></div>
+                  </div>
+                </div>
+              </div>
+              <figcaption>Sistema web · gestão de clínica</figcaption>
+            </figure>
+            <!-- 2: app mobile -->
+            <figure class="shot" data-reveal>
+              <div class="phone">
+                <div class="phone-top"></div>
+                <div class="phone-body">
+                  <span class="ph-title">Veloz Log</span>
+                  <div class="ph-map"><span class="pin"></span><span class="route"></span></div>
+                  <div class="ph-card"><b>Rota #204</b><small>12 paradas · 3h20</small></div>
+                  <div class="ph-card"><b>Rota #205</b><small>8 paradas · 1h45</small></div>
+                </div>
+              </div>
+              <figcaption>App mobile · rotas e entregas</figcaption>
+            </figure>
+            <!-- 3: automação / código -->
+            <figure class="shot" data-reveal>
+              <div class="win code">
+                <div class="win-bar dark"><i></i><i></i><i></i><span class="win-url">fechamento.py</span></div>
+                <pre><code><span class="g">def</span> fechar_mes(dados):
+    total = <span class="o">sum</span>(d.valor <span class="g">for</span> d <span class="g">in</span> dados)
+    relatorio = gerar(total)
+    enviar(relatorio)
+    <span class="g">return</span> <span class="s">"ok ✓"</span>
+<span class="c"># 12h → 20min, sem retrabalho</span></code></pre>
+              </div>
+              <figcaption>Automação em Python · financeiro</figcaption>
+            </figure>
+            <!-- 4: landing -->
+            <figure class="shot wide" data-reveal>
+              <div class="win">
+                <div class="win-bar"><i></i><i></i><i></i><span class="win-url">studiolima.com</span></div>
+                <div class="land">
+                  <div class="land-l"><span class="lr w6 big"></span><span class="lr w8"></span><span class="lr w5"></span><span class="land-btn"></span></div>
+                  <div class="land-r"></div>
+                </div>
+              </div>
+              <figcaption>Landing page · que dobrou os contatos</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section class="sec" id="servicos">
+        <div class="wrap">
+          <p class="idx" data-reveal>③ Serviços</p>
+          <h2 class="h2" data-reveal>Um carro-chefe — e tudo que <em>orbita</em> ele.</h2>
+          <ul class="svc">
+            {services.map((s) => (
+              <li class="svc-row" data-reveal><span class="svc-n">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- SEM FRONTEIRAS -->
+      <section class="sec dark">
+        <div class="wrap">
+          <p class="idx" data-reveal>④ Sem fronteiras</p>
+          <h2 class="h2" data-reveal>Sistemas que <em>escalam</em> em qualquer lugar do mundo.</h2>
+          <p class="dark-lead" data-reveal>Construímos para a web e para a escala desde o primeiro dia: abre rápido em São Paulo, Lisboa, Tóquio ou Nova York — e cresce junto com o negócio.</p>
+          <div class="cities" data-reveal><span>São Paulo</span><span>Lisboa</span><span>Nova York</span><span>Tóquio</span><span>Londres</span><span>Singapura</span><span>Sydney</span></div>
+        </div>
+      </section>
+
+      <!-- PROCESSO -->
+      <section class="sec" id="processo">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑤ Como trabalhamos</p>
+          <h2 class="h2" data-reveal>Um caminho curto e <em>honesto</em>.</h2>
+          <div class="proc">
+            <div class="steps">
+              {steps.map((s) => (
+                <article class="step" data-reveal><span class="step-n">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></article>
+              ))}
+            </div>
+            <div class="win code proc-code" data-reveal>
+              <div class="win-bar dark"><i></i><i></i><i></i><span class="win-url">~/noven · ciclo</span></div>
+              <pre><code><span class="c">$</span> git commit -m <span class="s">"entrega da semana"</span>
+<span class="o">✓</span> testes        <span class="c">passou</span>
+<span class="o">✓</span> deploy        <span class="c">no ar</span>
+<span class="o">✓</span> você vê        <span class="c">crescer</span></code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES -->
+      <section class="sec" id="cases">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑥ Cases</p>
+          <h2 class="h2" data-reveal>Histórias que <em>saíram do papel</em>.</h2>
+          <article class="feature" data-reveal>
+            <div class="feature-l">
+              <span class="lbl">Clínica Norte</span>
+              <h3>Da planilha que travava a um sistema que a equipe ama.</h3>
+              <p>Agendamentos e estoque viviam numa planilha que ninguém mantinha. Construímos um sistema sob medida — e devolvemos 12 horas por semana pro time.</p>
+              <blockquote>“Eu só precisei ter a ideia. A Noven entendeu tudo e colocou no ar.”<cite>— Marina Rocha, Fundadora</cite></blockquote>
+            </div>
+            <div class="feature-r">
+              <div class="big-stat"><b>8</b><small>semanas do papel ao ar</small></div>
+              <div class="big-stat"><b>−90%</b><small>erros de estoque</small></div>
+              <div class="big-stat"><b>12h→20min</b><small>fechamento financeiro</small></div>
+            </div>
+          </article>
+          <ul class="case-list">
+            {cases.map((c) => (
+              <li class="case-row" data-reveal><span class="lbl">{c.who}</span><h4>{c.t}</h4><p>“{c.q}”</p></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section class="sec">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑦ Depoimentos</p>
+          <h2 class="h2" data-reveal>Quem confiou, <em>recomenda</em>.</h2>
+          <div class="quotes">
+            <blockquote data-reveal>“Resolveram em duas semanas o que a gente arrastava há meses na planilha.”<cite>Marina Rocha · Clínica Norte</cite></blockquote>
+            <blockquote data-reveal>“Entregaram exatamente o que imaginei, sem dor de cabeça e no prazo.”<cite>João Ferraz · Mercato</cite></blockquote>
+            <blockquote data-reveal>“Time sênior de verdade. Explicam tudo numa língua que eu entendo.”<cite>Camila Lima · Studio Lima</cite></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="sec" id="sobre">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑧ Quem está por trás</p>
+          <h2 class="h2" data-reveal>Dois engenheiros que põem a <em>mão no código</em>.</h2>
+          <p class="about-lead" data-reveal>Cansados de ver boa ideia parar por falta de quem execute. Sem camada de gerente, sem terceirização — você fala direto com quem constrói.</p>
+          <div class="founders" data-reveal>
+            <div><span class="k">@augusto</span><b>Augusto Berriel</b><small>Engenharia de Software</small></div>
+            <div><span class="k">@keven</span><b>Keven Lima</b><small>Engenharia de Software</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="sec contato" id="contato">
+        <div class="wrap">
+          <h2 class="cta-h" data-reveal>É simples <em>começar</em>.</h2>
+          <p class="about-lead" data-reveal>Sem compromisso na primeira conversa. Você conta a ideia → a gente devolve um caminho → começamos a construir.</p>
+          <div class="cta-row" data-reveal>
+            <a class="btn big-btn" href="https://wa.me/" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="link-u" href="mailto:contato@noven.dev">contato@noven.dev</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="wordmark" data-reveal>Noven<span>.</span></div>
+        <div class="foot-row">
+          <small>© 2026 Noven · do conceito à escala — Sempre o próximo passo.</small>
+          <nav class="links"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">GitHub</a></nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  body { background: #F4F0E6; }
+</style>
+
+<style>
+  .v4 {
+    --paper: #F4F0E6; --paper-2: #EDE8DB; --ink: #14130E; --muted: #57544A; --soft: #8A8678;
+    --line: #14130E; --hair: #D8D2C2; --acc: #C2541C; --acc-soft: #F0E2D4;
+    --scr: #16140F; --scr-line: #2c2a22; --scr-ink: #D8D3C4;
+    background: var(--paper); color: var(--ink); font-family: var(--sans); min-height: 100vh;
+  }
+  .v4 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .v4 .row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+  .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--hair); }
+  .nav .row { padding: 15px 0; }
+  .logo { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; letter-spacing: -.02em; }
+  .logo span { color: var(--acc); }
+  .links { display: flex; gap: 24px; font-size: .86rem; font-weight: 500; }
+  .links a { position: relative; }
+  .links a::after { content:""; position:absolute; left:0; bottom:-3px; width:0; height:1.5px; background:var(--acc); transition:.25s; }
+  .links a:hover::after { width:100%; }
+  @media (max-width:760px){ .nav .links{ display:none; } }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .9rem;
+    padding: 11px 20px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper); transition: .18s; cursor: pointer; }
+  .btn:hover { background: var(--acc); border-color: var(--acc); }
+  .big-btn { font-size: 1.05rem; padding: 16px 30px; }
+  .link-u { font-weight: 600; border-bottom: 2px solid var(--acc); padding-bottom: 2px; }
+
+  /* hero */
+  .hero { padding: 56px 0 0; border-bottom: 2px solid var(--line); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 50px; align-items: center; }
+  .eyebrow { font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--acc); }
+  .big { font-family: var(--serif); font-weight: 400; font-size: clamp(3rem, 6.5vw, 5.6rem); line-height: .96; letter-spacing: -.03em; margin: 22px 0 24px; }
+  .big em { font-style: italic; color: var(--acc); }
+  .lead { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; color: var(--muted); max-width: 40ch; }
+  .cta { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; margin-top: 32px; }
+
+  /* janelas de produto */
+  .win { background: var(--paper); border: 1px solid var(--hair); border-radius: 12px; overflow: hidden;
+    box-shadow: 0 40px 80px -40px rgba(20,19,14,.45); }
+  .win-bar { display: flex; align-items: center; gap: 6px; padding: 11px 14px; border-bottom: 1px solid var(--hair); background: var(--paper-2); }
+  .win-bar i { width: 9px; height: 9px; border-radius: 50%; background: #cdc6b4; }
+  .win-bar.dark { background: var(--scr); border-color: var(--scr-line); }
+  .win-bar.dark i { background: #3a3830; }
+  .win-url { margin-left: 10px; font-family: var(--mono); font-size: .72rem; color: var(--soft); }
+  .win-bar.dark .win-url { color: #6f6c5e; }
+
+  /* hero app (escuro) */
+  .hero-app { position: relative; }
+  .win.app { background: var(--scr); border-color: var(--scr-line); }
+  .win.app .win-bar { background: #1d1b14; border-color: var(--scr-line); }
+  .app-body { display: grid; grid-template-columns: 56px 1fr; min-height: 320px; }
+  .app-side { border-right: 1px solid var(--scr-line); padding: 16px 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .app-side.light { border-color: var(--hair); }
+  .app-logo { width: 28px; height: 28px; border-radius: 8px; background: var(--acc); color: #fff; font-weight: 800; display: grid; place-items: center; }
+  .app-logo.sm { width: 24px; height: 24px; font-size: .8rem; }
+  .nav-i { width: 24px; height: 8px; border-radius: 4px; background: #2f2d24; }
+  .nav-i.on { background: var(--acc); }
+  .app-side.light .nav-i { background: #ddd6c4; } .app-side.light .nav-i.on { background: var(--acc); }
+  .app-main { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+  .app-row { display: flex; justify-content: space-between; align-items: center; }
+  .app-title { font-size: 1rem; color: var(--scr-ink); } .light ~ .app-main .app-title, .shot .app-title { color: var(--ink); }
+  .app-row small { display: block; font-family: var(--mono); font-size: .68rem; color: #6f6c5e; }
+  .badge { font-family: var(--mono); font-size: .68rem; color: var(--acc); border: 1px solid currentColor; border-radius: 999px; padding: 3px 10px; }
+  .app-kpis { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .kpi { background: #1d1b14; border: 1px solid var(--scr-line); border-radius: 10px; padding: 12px; }
+  .kpi small { font-family: var(--mono); font-size: .64rem; color: #6f6c5e; } .kpi b { display: block; font-size: 1.2rem; color: var(--scr-ink); margin-top: 4px; }
+  .app-chart { flex: 1; display: flex; align-items: flex-end; gap: 8px; min-height: 90px; }
+  .app-chart span { flex: 1; background: linear-gradient(180deg, var(--acc), #7a3411); border-radius: 5px 5px 0 0; min-height: 12px; }
+  .chip { position: absolute; background: var(--paper); border: 1px solid var(--hair); border-radius: 10px;
+    padding: 9px 14px; font-size: .8rem; color: var(--muted); box-shadow: 0 16px 30px -16px rgba(20,19,14,.4); }
+  .chip b { color: var(--ink); }
+  .chip-a { top: -16px; left: -20px; animation: bob 5s ease-in-out infinite; }
+  .chip-b { bottom: 22px; right: -16px; font-family: var(--mono); animation: bob 5s ease-in-out infinite .8s; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+
+  /* stack */
+  .stack { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; padding: 30px 0 6px; }
+  .stack-l { font-family: var(--mono); font-size: .76rem; text-transform: uppercase; letter-spacing: .08em; color: var(--soft); }
+  .stack-items { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .stack-items span { font-family: var(--mono); font-size: .9rem; color: var(--muted); }
+  .stack-items span::before { content: "·  "; color: var(--acc); }
+
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 30px; border-top: 1px solid var(--hair); }
+  .stats > div { padding: 28px 24px; border-right: 1px solid var(--hair); }
+  .stats > div:last-child { border-right: 0; }
+  .stats b { font-family: var(--serif); font-size: 2.6rem; display: block; letter-spacing: -.02em; }
+  .stats small { color: var(--soft); font-size: .84rem; }
+
+  /* sections */
+  .sec { padding: 90px 0; border-bottom: 2px solid var(--line); }
+  .idx { font-family: var(--mono); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--acc); margin-bottom: 16px; }
+  .h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.02;
+    letter-spacing: -.025em; max-width: 17ch; margin-bottom: 50px; }
+  .h2 em { font-style: italic; color: var(--acc); }
+
+  /* pas */
+  .pas { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--line); }
+  .pas-col { padding: 32px; }
+  .pas-col:first-child { border-right: 2px solid var(--line); }
+  .pas-col.good { background: var(--ink); color: var(--paper); }
+  .lbl { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 20px; }
+  .lbl.bad { color: var(--acc); } .pas-col.good .lbl { color: #E9B894; }
+  .pas-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .pas-col li { font-size: 1.05rem; padding-left: 22px; position: relative; }
+  .pas-col li::before { content: "—"; position: absolute; left: 0; color: var(--acc); }
+
+  /* gallery de produto */
+  .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .shot.wide { grid-column: span 2; }
+  .shot { display: flex; flex-direction: column; gap: 12px; }
+  .shot figcaption { font-family: var(--mono); font-size: .8rem; color: var(--soft); }
+  .shot figcaption::before { content: "→ "; color: var(--acc); }
+  .rows { display: flex; flex-direction: column; gap: 9px; padding-top: 6px; }
+  .lr { height: 11px; border-radius: 5px; background: #ddd6c4; }
+  .lr.big { height: 22px; } .w5{width:50%} .w6{width:62%} .w7{width:74%} .w8{width:86%}
+  .land { display: grid; grid-template-columns: 1.1fr 1fr; min-height: 220px; }
+  .land-l { padding: 26px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+  .land-btn { width: 120px; height: 34px; border-radius: 7px; background: var(--acc); margin-top: 8px; }
+  .land-r { background: linear-gradient(135deg, var(--acc-soft), #e3d3bf); border-left: 1px solid var(--hair); }
+  /* phone */
+  .phone { background: var(--scr); border-radius: 26px; padding: 10px; box-shadow: 0 40px 80px -40px rgba(20,19,14,.5); max-width: 240px; margin: 0 auto; width: 100%; }
+  .phone-top { height: 18px; }
+  .phone-top::after { content:""; display:block; width:80px; height:6px; border-radius:6px; background:#2f2d24; margin:0 auto; }
+  .phone-body { background: var(--paper); border-radius: 18px; padding: 18px; min-height: 280px; display: flex; flex-direction: column; gap: 12px; }
+  .ph-title { font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
+  .ph-map { position: relative; height: 110px; border-radius: 12px; background: linear-gradient(135deg, var(--acc-soft), #e3d3bf); overflow: hidden; }
+  .pin { position: absolute; top: 30%; left: 40%; width: 14px; height: 14px; border-radius: 50% 50% 50% 0; background: var(--acc); transform: rotate(-45deg); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent); }
+  .route { position: absolute; inset: 20% 18% 30% 22%; border: 2px dashed var(--acc); border-radius: 40%; opacity: .5; }
+  .ph-card { border: 1px solid var(--hair); border-radius: 10px; padding: 12px; }
+  .ph-card b { display: block; } .ph-card small { color: var(--soft); font-family: var(--mono); font-size: .72rem; }
+  /* code */
+  .win.code { background: var(--scr); border-color: var(--scr-line); }
+  .win.code pre { padding: 20px; margin: 0; overflow-x: auto; }
+  .win.code code { font-family: var(--mono); font-size: .9rem; line-height: 1.75; color: var(--scr-ink); white-space: pre; }
+  .win.code .g { color: #c98a5a; } .win.code .o { color: #9ccc83; } .win.code .s { color: #d9b06a; }
+  .win.code .c { color: #6f6c5e; }
+  @media (max-width:820px){ .gallery{ grid-template-columns:1fr; } .shot.wide{ grid-column:span 1; } }
+
+  /* services */
+  .svc { list-style: none; border-top: 1px solid var(--hair); }
+  .svc-row { display: grid; grid-template-columns: 70px 1fr 1.3fr; gap: 24px; align-items: baseline; padding: 28px 8px; border-bottom: 1px solid var(--hair); transition: .2s; }
+  .svc-row:hover { background: var(--ink); color: var(--paper); padding-left: 20px; }
+  .svc-row:hover .svc-n { color: var(--acc); } .svc-row:hover p { color: #C9C4B6; }
+  .svc-n { font-family: var(--mono); color: var(--soft); }
+  .svc-row h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.4rem,2.6vw,2rem); letter-spacing: -.02em; }
+  .svc-row p { color: var(--muted); }
+  @media (max-width:760px){ .svc-row{ grid-template-columns:1fr; gap:6px; } }
+
+  /* dark section */
+  .sec.dark { background: var(--ink); color: var(--paper); }
+  .dark .idx { color: #E9B894; } .dark .h2 em { color: #E9B894; }
+  .dark-lead { font-family: var(--serif); font-size: 1.3rem; color: #C9C4B6; max-width: 52ch; margin-top: -30px; }
+  .cities { display: flex; flex-wrap: wrap; gap: 0 14px; margin-top: 38px; }
+  .cities span { font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem,3.4vw,2.6rem); opacity: .5; transition: .2s; }
+  .cities span:hover { opacity: 1; color: #E9B894; }
+
+  /* processo */
+  .proc { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; align-items: start; }
+  .steps { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--line); }
+  .step { padding: 26px; border-right: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+  .step:nth-child(2n){ border-right: 0; } .step:nth-child(n+3){ border-bottom: 0; }
+  .step-n { font-family: var(--mono); color: var(--acc); }
+  .step h3 { font-family: var(--serif); font-weight: 400; font-size: 1.5rem; margin: 12px 0 10px; letter-spacing: -.02em; }
+  .step p { color: var(--muted); font-size: .95rem; }
+  .proc-code { position: sticky; top: 90px; }
+  @media (max-width:860px){ .proc{ grid-template-columns:1fr; } }
+  @media (max-width:600px){ .steps{ grid-template-columns:1fr; } .step{ border-right:0; } .step:nth-child(3){ border-bottom:2px solid var(--line);} }
+
+  /* cases */
+  .feature { display: grid; grid-template-columns: 1.5fr 1fr; border: 2px solid var(--line); margin-bottom: 40px; }
+  .feature-l { padding: 40px; border-right: 2px solid var(--line); }
+  .feature-l h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem,3vw,2.4rem); letter-spacing: -.02em; margin: 14px 0 16px; line-height: 1.05; }
+  .feature-l p { color: var(--muted); font-size: 1.05rem; }
+  .feature-l blockquote { margin-top: 22px; font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
+  .feature-l cite { display: block; font-style: normal; font-family: var(--sans); font-size: .85rem; color: var(--soft); margin-top: 8px; }
+  .feature-r { display: flex; flex-direction: column; }
+  .big-stat { padding: 28px 32px; border-bottom: 1px solid var(--hair); flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .big-stat:last-child { border-bottom: 0; }
+  .big-stat b { font-family: var(--serif); font-size: 2.3rem; letter-spacing: -.02em; color: var(--acc); }
+  .big-stat small { color: var(--soft); }
+  .case-list { list-style: none; border-top: 1px solid var(--hair); }
+  .case-row { display: grid; grid-template-columns: 200px 1fr 1.2fr; gap: 24px; align-items: baseline; padding: 26px 8px; border-bottom: 1px solid var(--hair); }
+  .case-row h4 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; letter-spacing: -.01em; }
+  .case-row p { color: var(--muted); font-style: italic; font-family: var(--serif); }
+  @media (max-width:760px){ .feature{ grid-template-columns:1fr; } .feature-l{ border-right:0; border-bottom:2px solid var(--line);} .case-row{ grid-template-columns:1fr; gap:6px; } }
+
+  /* quotes */
+  .quotes { display: grid; grid-template-columns: repeat(3,1fr); border: 2px solid var(--line); }
+  .quotes blockquote { padding: 30px; border-right: 1px solid var(--hair); font-family: var(--serif); font-style: italic; font-size: 1.18rem; }
+  .quotes blockquote:last-child { border-right: 0; }
+  .quotes cite { display: block; font-style: normal; font-family: var(--mono); font-size: .74rem; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin-top: 18px; }
+  @media (max-width:760px){ .quotes{ grid-template-columns:1fr; } .quotes blockquote{ border-right:0; border-bottom:1px solid var(--hair);} }
+
+  .about-lead { font-family: var(--serif); font-size: 1.3rem; color: var(--muted); max-width: 52ch; margin: -30px 0 30px; }
+  .founders { display: grid; grid-template-columns: 1fr 1fr; border: 2px solid var(--line); }
+  .founders > div { padding: 28px 32px; border-right: 2px solid var(--line); }
+  .founders > div:last-child { border-right: 0; }
+  .founders .k { font-family: var(--mono); font-size: .76rem; color: var(--acc); }
+  .founders b { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; display: block; margin-top: 8px; }
+  .founders small { color: var(--soft); }
+
+  .contato { text-align: center; }
+  .cta-h { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem,7vw,6rem); letter-spacing: -.03em; margin: 0 auto 24px; max-width: none; }
+  .cta-h em { font-style: italic; color: var(--acc); }
+  .contato .about-lead { margin: 0 auto 32px; }
+  .cta-row { display: flex; gap: 24px; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+  .foot { padding: 60px 0 40px; }
+  .wordmark { font-family: var(--serif); font-weight: 400; font-size: clamp(4rem, 18vw, 15rem); line-height: .8; letter-spacing: -.04em; }
+  .wordmark span { color: var(--acc); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding-top: 24px; border-top: 2px solid var(--line); flex-wrap: wrap; gap: 16px; }
+  .foot small { color: var(--soft); font-size: .84rem; }
+
+  @media (max-width:860px){ .hero-grid{ grid-template-columns:1fr; } .hero-app{ order:-1; } }
+  @media (max-width:600px){ .stats{ grid-template-columns:1fr 1fr; } .stats>div:nth-child(2n){ border-right:0; } .founders{ grid-template-columns:1fr; } .founders>div{ border-right:0; border-bottom:2px solid var(--line);} .founders>div:last-child{ border-bottom:0; } }
+
+  :global(.js) [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ :global(.js) [data-reveal]{ opacity:1; transform:none; } .chip{ animation:none; } }
+</style>
+
+<script>
+  import '../scripts/reveal-generic.js';
+</script>
