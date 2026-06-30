@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Variação 3 — "Grid": swiss/técnico. Branco, grade blueprint, monospace, terminal,
+// acento verde-floresta (puxa o tema dark da marca). Mesma marca/copy/seções.
+const services = [
+  { k: 'SYS', t: 'Sistemas web', d: 'Carro-chefe: plataformas sob medida, do MVP ao produto maduro, feitas pro seu fluxo.' },
+  { k: 'AUT', t: 'Automações em Python', d: 'Escaláveis e sem burocracia. O repetitivo roda sozinho.' },
+  { k: 'LND', t: 'Landing pages autorais', d: 'A vitrine do seu negócio, feita pra converter.' },
+  { k: 'APP', t: 'Apps sob demanda', d: 'Quando a ideia pede um aplicativo.' },
+];
+const steps = [
+  { n: '01', t: 'Descoberta', f: 'briefing.md', d: 'Entendemos a ideia, o problema e o que significa dar certo — antes de qualquer linha de código.' },
+  { n: '02', t: 'Design', f: 'prototipo.fig', d: 'Prototipamos cedo, pra você ajustar enquanto ainda é barato mudar.' },
+  { n: '03', t: 'Construção', f: 'app.tsx', d: 'Entregas curtas, contínuas e testadas: o software cresce toda semana.' },
+  { n: '04', t: 'No ar & evolução', f: 'painel.noven.app', d: 'No ar e por perto — medindo, ajustando, evoluindo com dado.' },
+];
+const cases = [
+  { id: 'CASE-02', who: 'Veloz Log', t: 'App de rotas no ar em 8 semanas', q: 'Botaram nosso app no ar num prazo que eu não acreditei.' },
+  { id: 'CASE-03', who: 'Studio Lima', t: 'Landing que dobrou os contatos', q: 'Rápidos, claros e sem enrolação.' },
+  { id: 'CASE-04', who: 'GG Contábil', t: 'Fechamento manual automatizado', q: 'Sumiu o retrabalho. Recomendo de olhos fechados.' },
+];
+---
+<Layout title="Noven — engenharia de software" description="Software sob medida: sistemas web, automações, landing pages e apps. Do conceito à escala.">
+  <div class="v3">
+    <header class="nav">
+      <div class="wrap row">
+        <a class="logo" href="#topo">▲ Noven<span>.</span></a>
+        <nav class="links"><a href="#servicos">/serviços</a><a href="#processo">/processo</a><a href="#cases">/cases</a><a href="#sobre">/sobre</a></nav>
+        <a class="btn" href="#contato">vamos_conversar()</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- HERO -->
+      <section class="hero" id="topo">
+        <div class="wrap">
+          <div class="coord" data-reveal><span>01 / HERO</span><span>BR · LAT -23.55 LNG -46.63</span><span>v1.0.0</span></div>
+          <h1 class="big" data-reveal>Você pensa,<br>a gente faz <span class="acc">sistemas</span>_</h1>
+          <div class="hero-grid">
+            <p class="lead" data-reveal>Apps, sistemas web, automações e landing pages que tiram a sua ideia do papel — sem você precisar entender de tecnologia.</p>
+            <div class="term" data-reveal>
+              <div class="term-bar"><i></i><i></i><i></i><span>~/noven</span></div>
+              <pre><code><span class="c1">$</span> noven init "minha-ideia"
+<span class="c2">✓</span> descoberta    <span class="c3">ok</span>
+<span class="c2">✓</span> design        <span class="c3">ok</span>
+<span class="c2">✓</span> build         <span class="c3">ok</span>
+<span class="c1">→</span> deploy        <span class="blink">no ar ●</span></code></pre>
+            </div>
+          </div>
+          <div class="cta" data-reveal>
+            <a class="btn solid" href="#contato">começar_projeto →</a>
+            <a class="btn ghost" href="#cases">ver_trabalho</a>
+          </div>
+          <div class="stats" data-reveal>
+            <div><b>80+</b><small>// projetos no ar</small></div>
+            <div><b>12h</b><small>// economizadas/sem</small></div>
+            <div><b>8 sem</b><small>// conceito → ar</small></div>
+            <div><b>100%</b><small>// times sêniores</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEMA -->
+      <section class="sec" id="problema">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">02 / PROBLEMA</span><h2>A ideia é sua. <span class="acc">Falta quem execute.</span></h2></div>
+          <div class="diff">
+            <div class="diff-col bad" data-reveal>
+              <span class="dh">- como costuma ser</span>
+              <ul><li>Ideia parada na sua cabeça</li><li>Planilha que trava e ninguém mantém</li><li>Orçamento caro, lento e confuso</li><li>Você perdido no meio do processo</li></ul>
+            </div>
+            <div class="diff-col good" data-reveal>
+              <span class="dh">+ com a Noven</span>
+              <ul><li>Ideia no ar, do conceito à escala</li><li>Sistema sob medida pro seu fluxo</li><li>Caminho claro, sem jargão</li><li>Você só acompanha funcionando</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section class="sec" id="servicos">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">03 / SERVIÇOS</span><h2>Um carro-chefe — e tudo que <span class="acc">orbita</span> ele.</h2></div>
+          <div class="svc-grid">
+            {services.map((s) => (
+              <article class="svc" data-reveal><span class="k">{s.k}</span><h3>{s.t}</h3><p>{s.d}</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- SEM FRONTEIRAS -->
+      <section class="sec" id="globo">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">04 / ESCALA</span><h2>Sistemas que <span class="acc">escalam</span> em qualquer lugar do mundo.</h2></div>
+          <div class="globe-grid">
+            <p class="g-lead" data-reveal>Construímos para a web e para a escala desde o primeiro dia: o seu software abre rápido em São Paulo, Lisboa, Tóquio ou Nova York — e cresce junto com o negócio.</p>
+            <ul class="g-list" data-reveal>
+              <li><b>web</b> roda 100% no navegador, em qualquer país</li>
+              <li><b>infra</b> escala do 1º ao milésimo usuário</li>
+              <li><b>latência</b> baixa onde seu cliente estiver</li>
+            </ul>
+          </div>
+          <div class="nodes" data-reveal>
+            {['São Paulo','Lisboa','Nova York','Tóquio','Londres','Cidade do México','Singapura','Sydney'].map((c) => (
+              <span class="node">● {c}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESSO -->
+      <section class="sec" id="processo">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">05 / PROCESSO</span><h2>Um caminho curto e <span class="acc">honesto</span>.</h2></div>
+          <div class="steps">
+            {steps.map((s) => (
+              <article class="step" data-reveal>
+                <div class="step-top"><span class="sn">{s.n}</span><span class="sf">{s.f}</span></div>
+                <h3>{s.t}</h3><p>{s.d}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES -->
+      <section class="sec" id="cases">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">06 / CASES</span><h2>Histórias que <span class="acc">saíram do papel</span>.</h2></div>
+          <article class="feat" data-reveal>
+            <div class="feat-head"><span class="k">CASE-01</span><span class="k">Clínica Norte</span></div>
+            <div class="feat-body">
+              <div>
+                <h3>Da planilha que travava a um sistema que a equipe ama.</h3>
+                <p>Agendamentos e estoque viviam numa planilha que ninguém mantinha. Construímos um sistema sob medida — e devolvemos 12 horas por semana pro time.</p>
+                <blockquote>“Eu só precisei ter a ideia. A Noven entendeu tudo e colocou no ar.” <cite>— Marina Rocha, Fundadora</cite></blockquote>
+              </div>
+              <div class="metrics">
+                <div class="m"><b>8</b><small>semanas papel→ar</small></div>
+                <div class="m"><b>−90%</b><small>erros de estoque</small></div>
+                <div class="m"><b>12h→20min</b><small>fechamento fin.</small></div>
+              </div>
+            </div>
+          </article>
+          <div class="case-grid">
+            {cases.map((c) => (
+              <article class="case" data-reveal><div class="feat-head"><span class="k">{c.id}</span><span class="k">{c.who}</span></div><h4>{c.t}</h4><p>“{c.q}”</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section class="sec">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">07 / DEPOIMENTOS</span><h2>Quem confiou, <span class="acc">recomenda</span>.</h2></div>
+          <div class="case-grid">
+            <article class="case" data-reveal><div class="stars">★★★★★</div><p>“Resolveram em duas semanas o que a gente arrastava há meses na planilha.”</p><cite>Marina Rocha · Clínica Norte</cite></article>
+            <article class="case" data-reveal><div class="stars">★★★★★</div><p>“Entregaram exatamente o que imaginei, sem dor de cabeça e no prazo.”</p><cite>João Ferraz · Mercato</cite></article>
+            <article class="case" data-reveal><div class="stars">★★★★★</div><p>“Time sênior de verdade. Explicam tudo numa língua que eu entendo.”</p><cite>Camila Lima · Studio Lima</cite></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="sec" id="sobre">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">08 / EQUIPE</span><h2>Uma dupla que põe a <span class="acc">mão no código</span>.</h2></div>
+          <p class="g-lead" data-reveal>Dois engenheiros de software cansados de ver boa ideia parar por falta de quem execute. Sem camada de gerente, sem terceirização — você fala direto com quem constrói.</p>
+          <div class="team" data-reveal>
+            <div class="member"><span class="k">@augusto</span><b>Augusto Berriel</b><small>Engenharia de Software</small></div>
+            <div class="member"><span class="k">@keven</span><b>Keven Lima</b><small>Engenharia de Software</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="sec contato" id="contato">
+        <div class="wrap">
+          <div class="head" data-reveal><span class="tag">09 / CONTATO</span><h2>É simples <span class="acc">começar</span>.</h2></div>
+          <p class="g-lead" data-reveal>Sem compromisso na primeira conversa. Você conta a ideia → a gente devolve um caminho → começamos a construir.</p>
+          <div class="cta" data-reveal>
+            <a class="btn solid" href="https://wa.me/" target="_blank" rel="noopener">falar_no_whatsapp()</a>
+            <a class="btn ghost" href="mailto:contato@noven.dev">contato@noven.dev</a>
+          </div>
+          <p class="tagline" data-reveal>// Sempre o próximo passo.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap row">
+        <a class="logo" href="#topo">▲ Noven<span>.</span></a>
+        <small>© 2026 Noven · do conceito à escala</small>
+        <nav class="links"><a href="#">/instagram</a><a href="#">/linkedin</a><a href="#">/github</a></nav>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  body { background: #FCFCFA; }
+</style>
+
+<style>
+  .v3 {
+    --bg: #FCFCFA; --ink: #111410; --muted: #555B4F; --soft: #8A8F82; --line: #E2E4DC;
+    --grid: #EEF0E9; --acc: #3F6B2E; --acc-soft: #EAF1E3; --card: #FFFFFF;
+    background:
+      linear-gradient(var(--grid) 1px, transparent 1px) 0 0 / 100% 40px,
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 40px 100%,
+      var(--bg);
+    color: var(--ink); font-family: var(--sans); min-height: 100vh;
+  }
+  .v3 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+  .v3 .row { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+
+  .nav { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  .nav .row { padding: 13px 0; }
+  .logo { font-family: var(--mono); font-weight: 500; font-size: 1.05rem; letter-spacing: -.01em; }
+  .logo span { color: var(--acc); }
+  .links { display: flex; gap: 20px; font-family: var(--mono); font-size: .84rem; color: var(--muted); }
+  .links a:hover { color: var(--acc); }
+  @media (max-width:760px){ .nav .links{ display:none; } }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-weight: 500; font-size: .86rem;
+    padding: 11px 18px; border: 1px solid var(--ink); border-radius: 6px; background: transparent; color: var(--ink); transition: .16s; cursor: pointer; }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn.solid { background: var(--acc); border-color: var(--acc); color: #fff; }
+  .btn.solid:hover { background: #345824; }
+  .btn.ghost:hover { background: var(--acc); border-color: var(--acc); color: #fff; }
+
+  /* hero */
+  .hero { padding: 56px 0 80px; border-bottom: 1px solid var(--line); }
+  .coord { display: flex; gap: 24px; flex-wrap: wrap; font-family: var(--mono); font-size: .78rem; color: var(--soft); margin-bottom: 28px; }
+  .coord span:nth-child(2){ color: var(--acc); }
+  .big { font-weight: 800; font-size: clamp(2.4rem, 6.4vw, 5.2rem); line-height: 1.0; letter-spacing: -.04em; }
+  .big .acc { color: var(--acc); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center; margin: 40px 0 28px; }
+  .lead { font-family: var(--serif); font-size: 1.3rem; line-height: 1.45; color: var(--muted); }
+
+  .term { background: var(--ink); border-radius: 10px; overflow: hidden; box-shadow: 0 20px 50px -28px #000; }
+  .term-bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid #2a2f26; }
+  .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a4034; }
+  .term-bar span { margin-left: 10px; font-family: var(--mono); font-size: .74rem; color: #6f7567; }
+  .term pre { padding: 18px; margin: 0; overflow-x: auto; }
+  .term code { font-family: var(--mono); font-size: .92rem; line-height: 1.7; color: #d6dacb; white-space: pre; }
+  .c1 { color: #7fa86a; } .c2 { color: #9ccc83; } .c3 { color: #6f7567; }
+  .blink { color: #9ccc83; animation: blink 1.2s step-end infinite; }
+  @keyframes blink { 50% { opacity: .3; } }
+
+  .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; margin-top: 48px;
+    background: var(--line); border: 1px solid var(--line); }
+  .stats > div { background: var(--bg); padding: 22px 20px; }
+  .stats b { font-size: 2rem; font-weight: 800; letter-spacing: -.03em; display: block; color: var(--acc); }
+  .stats small { font-family: var(--mono); color: var(--soft); font-size: .76rem; }
+
+  /* sections */
+  .sec { padding: 86px 0; border-bottom: 1px solid var(--line); }
+  .head { margin-bottom: 44px; }
+  .tag { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; color: var(--acc); }
+  .head h2 { font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.8rem); letter-spacing: -.03em; line-height: 1.1; margin-top: 14px; max-width: 18ch; }
+  .acc { color: var(--acc); }
+
+  /* diff */
+  .diff { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .diff-col { background: var(--card); padding: 28px; }
+  .diff-col.good { background: var(--acc-soft); }
+  .dh { font-family: var(--mono); font-size: .84rem; display: block; margin-bottom: 18px; }
+  .diff-col.bad .dh { color: #a23b32; } .diff-col.good .dh { color: var(--acc); }
+  .diff-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .diff-col li { color: var(--muted); padding-left: 18px; position: relative; }
+  .diff-col li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; background: var(--soft); }
+  .diff-col.good li::before { background: var(--acc); }
+
+  /* services */
+  .svc-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .svc { background: var(--card); padding: 28px; transition: .16s; }
+  .svc:hover { background: var(--acc-soft); }
+  .k { font-family: var(--mono); font-size: .76rem; letter-spacing: .08em; color: var(--acc); }
+  .svc h3 { font-size: 1.4rem; font-weight: 700; margin: 12px 0 8px; letter-spacing: -.02em; }
+  .svc p { color: var(--muted); }
+  @media (max-width:700px){ .svc-grid{ grid-template-columns:1fr; } }
+
+  /* globe / nodes */
+  .globe-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: start; }
+  .g-lead { font-family: var(--serif); font-size: 1.25rem; color: var(--muted); line-height: 1.5; }
+  .g-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .g-list li { font-family: var(--mono); font-size: .92rem; color: var(--muted); padding-left: 16px; border-left: 2px solid var(--acc); }
+  .g-list b { color: var(--ink); }
+  .nodes { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
+  .node { font-family: var(--mono); font-size: .84rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 7px 14px; background: var(--card); }
+  .node::first-letter { color: var(--acc); }
+  @media (max-width:760px){ .globe-grid{ grid-template-columns:1fr; } }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .step { background: var(--card); padding: 24px; }
+  .step-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+  .sn { font-family: var(--mono); font-size: 1.4rem; font-weight: 500; color: var(--acc); }
+  .sf { font-family: var(--mono); font-size: .72rem; color: var(--soft); }
+  .step h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .step p { color: var(--muted); font-size: .9rem; }
+  @media (max-width:820px){ .steps{ grid-template-columns:1fr 1fr; } }
+
+  /* cases */
+  .feat { border: 1px solid var(--ink); border-radius: 10px; overflow: hidden; margin-bottom: 18px; background: var(--card); }
+  .feat-head { display: flex; gap: 18px; padding: 12px 20px; background: var(--ink); }
+  .feat-head .k { color: #9ccc83; }
+  .feat-body { display: grid; grid-template-columns: 1.6fr 1fr; gap: 0; }
+  .feat-body > div:first-child { padding: 30px; }
+  .feat-body h3 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.02em; margin-bottom: 12px; }
+  .feat-body p { color: var(--muted); }
+  .feat-body blockquote { margin-top: 18px; font-family: var(--serif); font-style: italic; border-left: 2px solid var(--acc); padding-left: 14px; }
+  .feat-body cite { display: block; font-style: normal; font-size: .82rem; color: var(--soft); margin-top: 6px; }
+  .metrics { border-left: 1px solid var(--line); display: flex; flex-direction: column; }
+  .m { padding: 20px 24px; border-bottom: 1px solid var(--line); flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .m:last-child { border-bottom: 0; }
+  .m b { font-size: 1.5rem; font-weight: 800; color: var(--acc); letter-spacing: -.02em; }
+  .m small { font-family: var(--mono); color: var(--soft); font-size: .74rem; }
+  .case-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .case { background: var(--card); padding: 24px; }
+  .case h4 { font-size: 1.1rem; font-weight: 700; margin: 12px 0 10px; }
+  .case p { color: var(--muted); font-family: var(--serif); font-style: italic; }
+  .stars { color: var(--acc); letter-spacing: 2px; margin-bottom: 12px; }
+  .case cite { display: block; font-family: var(--mono); font-style: normal; font-size: .74rem; color: var(--soft); margin-top: 14px; }
+  @media (max-width:820px){ .feat-body{ grid-template-columns:1fr; } .metrics{ border-left:0; border-top:1px solid var(--line); flex-direction:row; } .case-grid{ grid-template-columns:1fr; } }
+
+  /* team */
+  .team { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 28px; }
+  .member { background: var(--card); padding: 26px; }
+  .member b { display: block; font-size: 1.3rem; font-weight: 700; margin-top: 10px; }
+  .member small { color: var(--soft); font-family: var(--mono); font-size: .8rem; }
+
+  .contato .cta { margin-top: 28px; }
+  .tagline { font-family: var(--mono); color: var(--soft); margin-top: 28px; }
+
+  .foot { padding: 30px 0; }
+  .foot small { font-family: var(--mono); color: var(--soft); font-size: .8rem; }
+
+  @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr 1fr; } }
+
+  :global(.js) [data-reveal] { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; } .blink{ animation:none; } }
+</style>
+
+<script>
+  import '../scripts/reveal-generic.js';
+</script>

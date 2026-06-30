@@ -1,0 +1,353 @@
+---
+import Layout from '../layouts/Layout.astro';
+// Variação 2 — "Atelier": editorial brutalista. Papel claro, tinta preta, Fraunces gigante,
+// um acento terracota, réguas duras, índice numerado, marquee. Mesma marca/copy/seções.
+const services = [
+  { n: '01', t: 'Sistemas web', d: 'Nosso carro-chefe: plataformas sob medida, do MVP ao produto maduro, feitas pro seu fluxo.' },
+  { n: '02', t: 'Automações em Python', d: 'Escaláveis e sem burocracia. O repetitivo roda sozinho.' },
+  { n: '03', t: 'Landing pages autorais', d: 'A vitrine do seu negócio, feita pra converter.' },
+  { n: '04', t: 'Apps sob demanda', d: 'Quando a ideia pede um aplicativo.' },
+];
+const steps = [
+  { n: '01', t: 'Descoberta', d: 'Sentamos com você pra entender a ideia, o problema e o que significa dar certo — antes de qualquer linha de código.' },
+  { n: '02', t: 'Design', d: 'Desenhamos e prototipamos cedo, pra você ajustar enquanto ainda é barato mudar.' },
+  { n: '03', t: 'Construção', d: 'Entregas curtas, contínuas e testadas: você vê o software crescer toda semana.' },
+  { n: '04', t: 'No ar & evolução', d: 'Colocamos no ar e seguimos por perto — medindo, ajustando, evoluindo.' },
+];
+const cases = [
+  { who: 'Veloz Log', t: 'App de rotas no ar em 8 semanas', q: 'Botaram nosso app no ar num prazo que eu não acreditei.' },
+  { who: 'Studio Lima', t: 'Landing que dobrou os contatos', q: 'Rápidos, claros e sem enrolação.' },
+  { who: 'GG Contábil', t: 'Fechamento manual automatizado', q: 'Sumiu o retrabalho. Recomendo de olhos fechados.' },
+];
+---
+<Layout title="Noven — atelier de software" description="Software sob medida: sistemas web, automações, landing pages e apps. Do conceito à escala.">
+  <div class="v2">
+    <header class="nav">
+      <div class="wrap row">
+        <a class="logo" href="#topo">Noven<span>.</span></a>
+        <nav class="links"><a href="#servicos">Serviços</a><a href="#processo">Processo</a><a href="#cases">Cases</a><a href="#sobre">Sobre</a></nav>
+        <a class="btn" href="#contato">Vamos conversar</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- HERO -->
+      <section class="hero" id="topo">
+        <div class="wrap">
+          <div class="meta-row" data-reveal><span>Atelier de software</span><span>EST. 2026 · Brasil → mundo</span></div>
+          <h1 class="big" data-reveal>Você pensa,<br>a gente <em>faz</em>.</h1>
+          <div class="hero-low">
+            <p class="lead" data-reveal>Apps, sistemas web, automações e landing pages que tiram a sua ideia do papel — sem você precisar entender de tecnologia.</p>
+            <div class="hero-side" data-reveal>
+              <a class="btn big-btn" href="#contato">Começar um projeto →</a>
+              <a class="link-u" href="#cases">Ver nosso trabalho</a>
+            </div>
+          </div>
+        </div>
+        <div class="marquee" aria-hidden="true"><div class="track">
+          <span>Sistemas web</span><i>✶</i><span>Automações</span><i>✶</i><span>Landing pages</span><i>✶</i><span>Apps</span><i>✶</i>
+          <span>Sistemas web</span><i>✶</i><span>Automações</span><i>✶</i><span>Landing pages</span><i>✶</i><span>Apps</span><i>✶</i>
+        </div></div>
+        <div class="wrap stats" data-reveal>
+          <div><b>80+</b><small>projetos no ar</small></div>
+          <div><b>12h</b><small>economizadas/semana</small></div>
+          <div><b>8 sem</b><small>do conceito ao ar</small></div>
+          <div><b>100%</b><small>times sêniores</small></div>
+        </div>
+      </section>
+
+      <!-- PROBLEMA -->
+      <section class="sec">
+        <div class="wrap">
+          <p class="idx" data-reveal>① O problema</p>
+          <h2 class="h2" data-reveal>A ideia é sua. <em>Falta quem execute.</em></h2>
+          <div class="pas">
+            <div class="pas-col" data-reveal>
+              <span class="lbl bad">Como costuma ser</span>
+              <ul><li>Ideia parada na sua cabeça</li><li>Planilha que trava e ninguém mantém</li><li>Orçamento caro, lento e confuso</li><li>Você perdido no meio do processo</li></ul>
+            </div>
+            <div class="pas-col good" data-reveal>
+              <span class="lbl">Com a Noven</span>
+              <ul><li>Ideia no ar, do conceito à escala</li><li>Sistema sob medida pro seu fluxo</li><li>Caminho claro, sem jargão</li><li>Você só acompanha funcionando</li></ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVIÇOS -->
+      <section class="sec" id="servicos">
+        <div class="wrap">
+          <p class="idx" data-reveal>② O que fazemos</p>
+          <h2 class="h2" data-reveal>Um carro-chefe — e tudo que <em>orbita</em> ele.</h2>
+          <ul class="svc">
+            {services.map((s) => (
+              <li class="svc-row" data-reveal>
+                <span class="svc-n">{s.n}</span>
+                <h3>{s.t}</h3>
+                <p>{s.d}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- SEM FRONTEIRAS -->
+      <section class="sec dark">
+        <div class="wrap">
+          <p class="idx" data-reveal>③ Sem fronteiras</p>
+          <h2 class="h2" data-reveal>Sistemas que <em>escalam</em> em qualquer lugar do mundo.</h2>
+          <p class="dark-lead" data-reveal>Construímos para a web e para a escala desde o primeiro dia: o seu software abre rápido em São Paulo, Lisboa, Tóquio ou Nova York — e cresce junto com o negócio.</p>
+          <div class="cities" data-reveal>
+            <span>São Paulo</span><span>Lisboa</span><span>Nova York</span><span>Tóquio</span><span>Londres</span><span>Cidade do México</span><span>Singapura</span><span>Sydney</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROCESSO -->
+      <section class="sec" id="processo">
+        <div class="wrap">
+          <p class="idx" data-reveal>④ Como trabalhamos</p>
+          <h2 class="h2" data-reveal>Um caminho curto e <em>honesto</em>.</h2>
+          <div class="steps">
+            {steps.map((s) => (
+              <article class="step" data-reveal><span class="step-n">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES -->
+      <section class="sec" id="cases">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑤ Cases</p>
+          <h2 class="h2" data-reveal>Histórias que <em>saíram do papel</em>.</h2>
+          <article class="feature" data-reveal>
+            <div class="feature-l">
+              <span class="lbl">Clínica Norte</span>
+              <h3>Da planilha que travava a um sistema que a equipe ama.</h3>
+              <p>Agendamentos e estoque viviam numa planilha que ninguém mantinha. Desenhamos e construímos um sistema sob medida — e devolvemos 12 horas por semana pro time.</p>
+              <blockquote>“Eu só precisei ter a ideia. A Noven entendeu tudo e colocou no ar.”<cite>— Marina Rocha, Fundadora</cite></blockquote>
+            </div>
+            <div class="feature-r">
+              <div class="big-stat"><b>8</b><small>semanas do papel ao ar</small></div>
+              <div class="big-stat"><b>−90%</b><small>erros de estoque</small></div>
+              <div class="big-stat"><b>12h→20min</b><small>fechamento financeiro</small></div>
+            </div>
+          </article>
+          <ul class="case-list">
+            {cases.map((c) => (
+              <li class="case-row" data-reveal><span class="lbl">{c.who}</span><h4>{c.t}</h4><p>“{c.q}”</p></li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section class="sec">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑥ Depoimentos</p>
+          <h2 class="h2" data-reveal>Quem confiou, <em>recomenda</em>.</h2>
+          <div class="quotes">
+            <blockquote data-reveal>“Resolveram em duas semanas o que a gente arrastava há meses na planilha.”<cite>Marina Rocha · Clínica Norte</cite></blockquote>
+            <blockquote data-reveal>“Entregaram exatamente o que imaginei, sem dor de cabeça e no prazo.”<cite>João Ferraz · Mercato</cite></blockquote>
+            <blockquote data-reveal>“Time sênior de verdade. Explicam tudo numa língua que eu entendo.”<cite>Camila Lima · Studio Lima</cite></blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOBRE -->
+      <section class="sec" id="sobre">
+        <div class="wrap">
+          <p class="idx" data-reveal>⑦ Quem está por trás</p>
+          <h2 class="h2" data-reveal>Uma dupla que põe a <em>mão no código</em>.</h2>
+          <p class="about-lead" data-reveal>Dois engenheiros de software cansados de ver boa ideia parar por falta de quem execute. Sem camada de gerente, sem terceirização — você fala direto com quem constrói.</p>
+          <div class="founders" data-reveal>
+            <div><b>Augusto Berriel</b><small>Engenharia de Software</small></div>
+            <div><b>Keven Lima</b><small>Engenharia de Software</small></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="sec contato" id="contato">
+        <div class="wrap">
+          <h2 class="cta-h" data-reveal>É simples <em>começar</em>.</h2>
+          <p class="about-lead" data-reveal>Sem compromisso na primeira conversa. Você conta a ideia → a gente devolve um caminho → começamos a construir.</p>
+          <div class="cta-row" data-reveal>
+            <a class="btn big-btn" href="https://wa.me/" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            <a class="link-u" href="mailto:contato@noven.dev">contato@noven.dev</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap">
+        <div class="wordmark" data-reveal>Noven<span>.</span></div>
+        <div class="foot-row">
+          <small>© 2026 Noven · do conceito à escala — Sempre o próximo passo.</small>
+          <nav class="links"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">GitHub</a></nav>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>
+
+<style is:global>
+  body { background: #F4F0E6; }
+</style>
+
+<style>
+  .v2 {
+    --paper: #F4F0E6; --ink: #14130E; --muted: #57544A; --soft: #8A8678;
+    --line: #14130E; --hair: #D8D2C2; --acc: #C2541C; --dark: #14130E; --dark-ink: #F4F0E6;
+    background: var(--paper); color: var(--ink); font-family: var(--sans); min-height: 100vh;
+  }
+  .v2 .wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+  .v2 .row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+  .nav { position: sticky; top: 0; z-index: 50; background: var(--paper); border-bottom: 2px solid var(--line); }
+  .nav .row { padding: 16px 0; }
+  .logo { font-family: var(--serif); font-weight: 600; font-size: 1.5rem; letter-spacing: -.02em; }
+  .logo span { color: var(--acc); }
+  .links { display: flex; gap: 24px; font-size: .86rem; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+  .links a { position: relative; }
+  .links a::after { content:""; position:absolute; left:0; bottom:-3px; width:0; height:1.5px; background:var(--acc); transition:.25s; }
+  .links a:hover::after { width:100%; }
+  @media (max-width:760px){ .nav .links{ display:none; } }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: .9rem;
+    padding: 11px 20px; border: 2px solid var(--ink); background: var(--ink); color: var(--paper);
+    border-radius: 0; transition: .18s; cursor: pointer; }
+  .btn:hover { background: var(--acc); border-color: var(--acc); }
+  .big-btn { font-size: 1.05rem; padding: 16px 30px; }
+
+  /* hero */
+  .hero { padding-top: 60px; border-bottom: 2px solid var(--line); }
+  .meta-row { display: flex; justify-content: space-between; font-family: var(--mono); font-size: .8rem;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-bottom: 24px; }
+  .big { font-family: var(--serif); font-weight: 400; font-size: clamp(3.4rem, 12vw, 9.5rem);
+    line-height: .92; letter-spacing: -.03em; margin: 6px 0 0; }
+  .big em { font-style: italic; color: var(--acc); }
+  .hero-low { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: end;
+    margin: 40px 0 50px; }
+  .lead { font-family: var(--serif); font-size: clamp(1.2rem, 2vw, 1.5rem); line-height: 1.45; color: var(--muted); max-width: 30ch; }
+  .hero-side { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+  .link-u { font-weight: 600; border-bottom: 2px solid var(--acc); padding-bottom: 2px; }
+
+  .marquee { border-top: 2px solid var(--line); border-bottom: 2px solid var(--line); overflow: hidden; background: var(--ink); }
+  .track { display: inline-flex; align-items: center; gap: 28px; white-space: nowrap;
+    padding: 14px 0; animation: scroll 22s linear infinite; }
+  .track span { font-family: var(--serif); font-style: italic; font-size: 1.7rem; color: var(--paper); }
+  .track i { color: var(--acc); font-style: normal; }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; padding: 0; }
+  .stats > div { padding: 30px 24px; border-right: 1px solid var(--hair); }
+  .stats > div:last-child { border-right: 0; }
+  .stats b { font-family: var(--serif); font-size: 2.6rem; display: block; letter-spacing: -.02em; }
+  .stats small { color: var(--soft); font-size: .84rem; }
+
+  /* sections */
+  .sec { padding: 90px 0; border-bottom: 2px solid var(--line); }
+  .idx { font-family: var(--mono); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; color: var(--acc); margin-bottom: 16px; }
+  .h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.02;
+    letter-spacing: -.025em; max-width: 16ch; margin-bottom: 50px; }
+  .h2 em { font-style: italic; color: var(--acc); }
+
+  /* pas */
+  .pas { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 2px solid var(--line); }
+  .pas-col { padding: 32px; }
+  .pas-col:first-child { border-right: 2px solid var(--line); }
+  .pas-col.good { background: var(--ink); color: var(--paper); }
+  .lbl { font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: 20px; }
+  .lbl.bad { color: var(--acc); }
+  .pas-col.good .lbl { color: #E9B894; }
+  .pas-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .pas-col li { font-size: 1.05rem; padding-left: 22px; position: relative; }
+  .pas-col li::before { content: "—"; position: absolute; left: 0; color: var(--acc); }
+
+  /* services list */
+  .svc { list-style: none; border-top: 1px solid var(--hair); }
+  .svc-row { display: grid; grid-template-columns: 80px 1fr 1.3fr; gap: 24px; align-items: baseline;
+    padding: 30px 8px; border-bottom: 1px solid var(--hair); transition: .2s; }
+  .svc-row:hover { background: var(--ink); color: var(--paper); padding-left: 24px; }
+  .svc-row:hover .svc-n { color: var(--acc); }
+  .svc-n { font-family: var(--mono); font-size: 1.1rem; color: var(--soft); }
+  .svc-row h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.5rem,3vw,2.4rem); letter-spacing: -.02em; }
+  .svc-row p { color: var(--muted); font-size: 1rem; }
+  .svc-row:hover p { color: #C9C4B6; }
+  @media (max-width:760px){ .svc-row{ grid-template-columns: 1fr; gap:8px; } }
+
+  /* dark section */
+  .sec.dark { background: var(--ink); color: var(--paper); }
+  .dark .idx { color: #E9B894; }
+  .dark .h2 em { color: #E9B894; }
+  .dark-lead { font-family: var(--serif); font-size: 1.3rem; color: #C9C4B6; max-width: 50ch; margin-top: -30px; }
+  .cities { display: flex; flex-wrap: wrap; gap: 0 12px; margin-top: 40px; }
+  .cities span { font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem,4vw,3rem); color: var(--paper); opacity: .55; transition: .2s; }
+  .cities span:hover { opacity: 1; color: #E9B894; }
+
+  /* steps */
+  .steps { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; border: 2px solid var(--line); }
+  .step { padding: 36px 32px; border-right: 2px solid var(--line); border-bottom: 2px solid var(--line); }
+  .step:nth-child(2n){ border-right: 0; } .step:nth-child(n+3){ border-bottom: 0; }
+  .step-n { font-family: var(--mono); font-size: 1rem; color: var(--acc); }
+  .step h3 { font-family: var(--serif); font-weight: 400; font-size: 1.8rem; margin: 14px 0 12px; letter-spacing: -.02em; }
+  .step p { color: var(--muted); }
+  @media (max-width:700px){ .steps{ grid-template-columns:1fr; } .step{ border-right:0; } .step:nth-child(n+3){ border-bottom:2px solid var(--line);} .step:last-child{ border-bottom:0; } }
+
+  /* cases feature */
+  .feature { display: grid; grid-template-columns: 1.5fr 1fr; gap: 0; border: 2px solid var(--line); margin-bottom: 40px; }
+  .feature-l { padding: 40px; border-right: 2px solid var(--line); }
+  .feature-l h3 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.6rem,3vw,2.4rem); letter-spacing: -.02em; margin: 14px 0 16px; line-height: 1.05; }
+  .feature-l p { color: var(--muted); font-size: 1.05rem; }
+  .feature-l blockquote { margin-top: 24px; font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
+  .feature-l cite { display: block; font-style: normal; font-family: var(--sans); font-size: .85rem; color: var(--soft); margin-top: 8px; }
+  .feature-r { display: flex; flex-direction: column; }
+  .big-stat { padding: 28px 32px; border-bottom: 1px solid var(--hair); flex: 1; display: flex; flex-direction: column; justify-content: center; }
+  .big-stat:last-child { border-bottom: 0; }
+  .big-stat b { font-family: var(--serif); font-size: 2.4rem; letter-spacing: -.02em; color: var(--acc); }
+  .big-stat small { color: var(--soft); }
+  .case-list { list-style: none; border-top: 1px solid var(--hair); }
+  .case-row { display: grid; grid-template-columns: 200px 1fr 1.2fr; gap: 24px; align-items: baseline; padding: 26px 8px; border-bottom: 1px solid var(--hair); }
+  .case-row h4 { font-family: var(--serif); font-weight: 400; font-size: 1.4rem; letter-spacing: -.01em; }
+  .case-row p { color: var(--muted); font-style: italic; font-family: var(--serif); }
+  @media (max-width:760px){ .feature{ grid-template-columns:1fr; } .feature-l{ border-right:0; border-bottom:2px solid var(--line);} .case-row{ grid-template-columns:1fr; gap:6px; } }
+
+  /* quotes */
+  .quotes { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; border: 2px solid var(--line); }
+  .quotes blockquote { padding: 32px; border-right: 1px solid var(--hair); font-family: var(--serif); font-style: italic; font-size: 1.2rem; }
+  .quotes blockquote:last-child { border-right: 0; }
+  .quotes cite { display: block; font-style: normal; font-family: var(--mono); font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; color: var(--soft); margin-top: 18px; }
+  @media (max-width:760px){ .quotes{ grid-template-columns:1fr; } .quotes blockquote{ border-right:0; border-bottom:1px solid var(--hair);} }
+
+  .about-lead { font-family: var(--serif); font-size: 1.3rem; color: var(--muted); max-width: 52ch; margin: -30px 0 30px; }
+  .founders { display: flex; gap: 0; border: 2px solid var(--line); }
+  .founders > div { flex: 1; padding: 30px 32px; border-right: 2px solid var(--line); }
+  .founders > div:last-child { border-right: 0; }
+  .founders b { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; display: block; }
+  .founders small { color: var(--soft); }
+
+  .contato { text-align: center; }
+  .cta-h { font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem,7vw,6rem); letter-spacing: -.03em; margin: 0 auto 24px; max-width: none; }
+  .cta-h em { font-style: italic; color: var(--acc); }
+  .contato .about-lead { margin: 0 auto 32px; }
+  .cta-row { display: flex; gap: 24px; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+  .foot { padding: 60px 0 40px; }
+  .wordmark { font-family: var(--serif); font-weight: 400; font-size: clamp(4rem, 18vw, 15rem); line-height: .8; letter-spacing: -.04em; }
+  .wordmark span { color: var(--acc); }
+  .foot-row { display: flex; justify-content: space-between; align-items: center; margin-top: 30px; padding-top: 24px; border-top: 2px solid var(--line); flex-wrap: wrap; gap: 16px; }
+  .foot small { color: var(--soft); font-size: .84rem; }
+
+  @media (max-width:760px){ .hero-low{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr 1fr; } .stats>div:nth-child(2n){ border-right:0; } }
+
+  :global(.js) [data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  [data-reveal].in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce){ [data-reveal]{ opacity:1; transform:none; } .track{ animation:none; } }
+</style>
+
+<script>
+  import '../scripts/reveal-generic.js';
+</script>

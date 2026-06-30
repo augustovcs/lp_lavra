@@ -1,0 +1,122 @@
+# TAREFA: Rebrand da landing page Lavra → Noven
+
+O site atual está em https://lp-lavra.vercel.app/ (projeto Astro).
+Aplique o rebrand completo conforme o manual de marca da Noven abaixo.
+NÃO altere a estrutura de seções nem o conteúdo/copy — apenas a identidade visual e o nome.
+
+---
+
+## IDENTIDADE NOVEN (manual completo)
+
+### Nome e wordmark
+- Nome: **Noven** (conceito: novum · o novo)
+- Tagline oficial: *"Fábrica de software. Sempre o próximo passo."*
+- Wordmark: `Noven` + ponto de acento (`Noven.`) — o ponto SEMPRE na cor acento `#9A7B1F`
+- Símbolo SVG (usar em nav, favicon, lockup horizontal):
+```svg
+
+  
+  
+
+```
+- Lockup horizontal (nav): símbolo SVG (26–30px) + wordmark ao lado
+- Área de proteção: margem equivalente à altura do "N" ao redor do logo
+
+### Paleta — Principal (Ocre) — usar em 100% das seções
+--bg:       #F1EAD9   (fundo base)
+
+--surface:  #FBF7EE   (cards, painéis)
+
+--ink:      #1E1D18   (texto principal)
+
+--muted:    #3C3A31   (texto secundário)
+
+--soft:     #6B6A5E   (legendas, placeholders)
+
+--line:     #E3DCC9   (bordas, divisores)
+
+--accent:   #9A7B1F   (acento principal — ponto, links, badges, highlights)
+
+--accent-2: #B8932E   (hover/realce)
+
+--accent-ink:#2E2408  (texto sobre fundo de acento)
+
+### Paleta — Tema escuro (SOMENTE para seções/componentes dark explícitos)
+--d-bg:      #1B1F16
+
+--d-surface: #242A1D
+
+--d-ink:     #EDE7D7
+
+--d-soft:    #8C8E7C
+
+--d-line:    #343C2B
+
+--d-accent:  #DDC079
+Regra: o tema escuro existe para seções hero dark, modo dark do sistema,
+ou posts/cartões específicos. NÃO usar como alternativa de campanha no light.
+
+### Tipografia
+- **Fraunces** (Google Fonts) — títulos editoriais e destaques
+  - Usar em itálico nas frases-chave, leads e citações
+  - Dá o ar "revista", sofisticado e humano
+- **Inter** (Google Fonts) — logo, corpo e interface
+  - Display: 800, letter-spacing: -0.03em
+  - Título: 700
+  - Corpo/UI: 500
+  - Legenda: 400, color: --soft
+- Importar ambas via Google Fonts:
+```html
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet"/>
+```
+
+### Regras de uso da marca
+- ✓ Cor sólida, contraste alto, proporção original
+- ✕ Não inclinar, distorcer ou trocar a cor do ponto (sempre ocre)
+- ✕ Não aplicar sombra ou contorno no wordmark
+- ✕ Não usar o acento claro sobre fundo claro (baixo contraste)
+- ✕ Tema escuro só em modo dark — nunca como variante de campanha
+
+---
+
+## O QUE ALTERAR
+
+1. **Nome** — trocar toda ocorrência de "Lavra" por "Noven" (nav, hero, footer, meta tags, title, og:title, og:description, etc.)
+
+2. **Tagline** — substituir pela oficial: *"Fábrica de software. Sempre o próximo passo."*
+
+3. **Cores** — aplicar a paleta Ocre da Noven em todos os tokens CSS/Tailwind do projeto.
+   Manter as seções dark (se existirem) com a paleta dark da Noven.
+
+4. **Tipografia** — substituir as fontes atuais por Inter (corpo/interface) + Fraunces (títulos/destaques itálicos). Aplicar as escalas e pesos corretos.
+
+5. **Logo / nav** — substituir pelo lockup horizontal (símbolo SVG + wordmark "Noven.") com o ponto em `#9A7B1F`. No dark: ponto em `#DDC079`.
+
+6. **Favicon** — gerar um favicon SVG usando o símbolo da marca (seta + círculo ocre).
+
+7. **Metadados SEO** — atualizar:
+   - `<title>` → `Noven — Fábrica de software sob medida`
+   - `og:title`, `og:description`, `og:site_name`
+   - `meta name="description"`
+   - `meta name="theme-color"` → `#F1EAD9`
+
+8. **Footer** — atualizar com nome, e-mail e copy da Noven:
+   - Nome: `Noven.`
+   - E-mail: `contato@noven.dev`
+   - Copy: *"fábrica de software · do conceito à escala"*
+
+---
+
+## O QUE NÃO ALTERAR
+- Estrutura de seções e ordem do layout
+- Textos e copy das seções (exceto nome, tagline e metadados)
+- Componentes e interações existentes
+- Stack Astro — não migrar o framework
+
+---
+
+## ENTREGA
+- Todos os arquivos alterados com diff claro
+- Checar se há hardcoded colors que não passaram pelos tokens e corrigir
+- Confirmar que as duas fontes estão importadas e aplicadas corretamente
+- Testar que o símbolo SVG renderiza em todas as ocorrências (nav, favicon, lockup)
